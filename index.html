@@ -363,6 +363,13 @@ const BRANDS = [
   // EP/DP/GP) — strictModelMatch, alleen bevestigde wiellader-prefixen
   // (LW/ZL) tellen mee totdat er meer zekerheid is over de rest.
   { id:"XCMG",       label:"XCMG",      group:"Concurrent", aliases:["XCMG"],            strictModelMatch:true, colorVar:"--s-other", active:true },
+  // Ontdekt tijdens onderzoek naar een Caterpillar-alias ("CAT"): RDW-merk
+  // "TEREX" (los van de al bestaande TEREX-FUCHS-alias bij Fuchs materieel-
+  // handling) blijkt een aparte, substantiële concurrent — compacte
+  // wielladers (TL/TW/SKL/SKS-serie) en verreikers (TELELIFT/GTH) — 1.398
+  // registraties. Bewust een apart merk, niet samengevoegd met Fuchs (ander
+  // productsegment).
+  { id:"TEREX",      label:"Terex",     group:"Concurrent", aliases:["TEREX"],                                    colorVar:"--s-other", active:true },
 ];
 function brandById(id) { return BRANDS.find(function (b) { return b.id === id; }); }
 function brandByAlias(merkN) {
@@ -793,6 +800,19 @@ addHighRule("XCMG", "^LW\\s?\\d{2,4}[A-Z]?\\b", "Wielladers");
 addHighRule("XCMG", "^ZL\\s?\\d{2,4}[A-Z]?\\b", "Wielladers");
 addExclusion("XCMG", "^X[CT]\\s?\\d{3,4}(\\-EV|E|EV)?\\b", "Lijkt op XCMG-heftruckcode (XC9xx-EV-patroon), nog niet bevestigd als grondverzetmaterieel");
 
+// --- Terex: TL/TW (compacte wielladers), SKL/SKS (Schaeff-erfenis wielladers),
+// AL (articulated loader), TELELIFT/GTH (verreikers), TC (mini-rupsgraafmachine) ---
+addHighRule("TEREX", "^TW\\s?\\d{2,3}(AS|SR)?\\b", "Wielladers");
+addHighRule("TEREX", "^TL\\s?\\d{2,3}(AS|SR)?\\b", "Wielladers");
+addHighRule("TEREX", "^SK[LS]\\s?\\d{2,3}\\b", "Wielladers");
+addMidRule("TEREX", "^AL\\s?\\d{2,3}\\b", "Wielladers"); // articulated loader
+addHighRule("TEREX", "^TELELIFT\\s?\\d{3,4}\\b", "Verreikers");
+addHighRule("TEREX", "^GTH\\s?\\d{3,4}\\b", "Verreikers");
+addMidRule("TEREX", "^TC\\s?\\d{2,3}\\b", "Rupsgraafmachines"); // mini-rupsgraafmachine, minder zeker
+// Terex AGRILIFT is een agrarische verreiker (zelfde overweging als Dieci's
+// AGRI-lijn) — bewust buiten scope van dit grondverzet-dashboard.
+addExclusion("TEREX", "^AGRILIFT\\s?\\d{2,4}\\b", "Agrarische verreiker, geen bouwmaterieel");
+
 /* ===========================================================================
    SECTIE 7 — Brandstof / elektrisch classificatie
    ===========================================================================
@@ -974,6 +994,7 @@ if (typeof module !== "undefined" && module.exports) {
 }
 
 })(typeof window !== "undefined" ? window : globalThis);
+
 
 
 
