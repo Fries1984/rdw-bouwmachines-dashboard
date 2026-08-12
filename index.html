@@ -1508,6 +1508,7 @@ const STATE = {
     devLegendOff: new Set(),
     marktontwName: "marktontwikkeling",
     marktontwGranularity: "kwartaal",
+    marktontwTop5: true, // standaard: alleen top 5 merken, laatste 12 maanden
     marktontwOffSeries: new Set(["DOOSAN","HYUNDAI","SANY","FUCHS","JCB","CASE","KOBELCO"]),
     marktaandeelGroep: "alle",
     concurrentieModel: "VOLVO L120",
@@ -1967,12 +1968,23 @@ function renderDashboard(filtered, all){
 function renderMarktontwikkeling(filtered){
   const ui = STATE.ui;
   const gran = ui.marktontwGranularity;
+  const top5 = ui.marktontwTop5;
   const keyFn = r=> gran==="jaar" ? String(r.jaar) : gran==="kwartaal" ? r.kwartaal : r.maand;
-  const withKey = filtered.filter(r=> r.eersteToelating);
+  let withKey = filtered.filter(r=> r.eersteToelating);
+  if(top5){
+    const cutoff = new Date(); cutoff.setUTCMonth(cutoff.getUTCMonth()-12);
+    withKey = withKey.filter(r=> r.eersteToelating>=cutoff);
+  }
   const allKeys = Array.from(new Set(withKey.map(keyFn))).filter(Boolean).sort();
-  const xLabels = allKeys.slice(-24);
-  const compareBrands = BRANDS.filter(b=> !ui.marktontwOffSeries.has(b.id) ? true : true); // all shown in legend, toggled via offSet
-  const series = BRANDS.map((b,i)=>{
+  const xLabels = top5 ? allKeys : allKeys.slice(-24);
+  // Top 5: rangschik merken op aantal registraties BINNEN de gekozen periode
+  // (laatste 12 maanden), niet op totale historie — anders zou een merk met
+  // veel oude registraties een recent actiever merk kunnen verdringen.
+  const brandsToShow = top5
+    ? BRANDS.map(b=>({ b, count: withKey.filter(r=>r.brandId===b.id).length }))
+        .filter(x=>x.count>0).sort((a,b)=>b.count-a.count).slice(0,5).map(x=>x.b)
+    : BRANDS;
+  const series = brandsToShow.map((b,i)=>{
     const recs = withKey.filter(r=>r.brandId===b.id);
     const byKey = groupBy(recs, keyFn);
     return { id:b.id, label:b.label, color:brandColor(b.id), values: xLabels.map(x=> (byKey.get(x)||[]).length) };
@@ -1982,11 +1994,19 @@ function renderMarktontwikkeling(filtered){
   const curCount = filtered.filter(r=>r.jaar===curYr).length;
   const prevCount = filtered.filter(r=>r.jaar===curYr-1).length;
   const delta = fmtDelta(curCount, prevCount);
-  return '<div class="page-head"><h2>Marktontwikkeling</h2><p>Registraties per '+gran+' met vergelijking tussen merken. Zet merken aan of uit via de legenda.</p></div>'+
+  return '<div class="page-head"><h2>Marktontwikkeling</h2><p>'+
+    (top5 ? 'Top 5 merken (op registraties, laatste 12 maanden) per '+gran+'.' : 'Registraties per '+gran+' met vergelijking tussen merken.')+
+    ' Zet merken aan of uit via de legenda.</p></div>'+
   '<div class="card section">'+
     '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;">'+
-      '<div class="pill-toggle" id="gran-toggle">'+
-        ["maand","kwartaal","jaar"].map(g=>'<button data-gran="'+g+'" class="'+(gran===g?"active":"")+'">'+g.charAt(0).toUpperCase()+g.slice(1)+'</button>').join("")+
+      '<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;">'+
+        '<div class="pill-toggle" id="gran-toggle">'+
+          ["maand","kwartaal","jaar"].map(g=>'<button data-gran="'+g+'" class="'+(gran===g?"active":"")+'">'+g.charAt(0).toUpperCase()+g.slice(1)+'</button>').join("")+
+        '</div>'+
+        '<div class="pill-toggle" id="top5-toggle">'+
+          '<button data-top5="1" class="'+(top5?"active":"")+'">Top 5 · 12 mnd</button>'+
+          '<button data-top5="0" class="'+(!top5?"active":"")+'">Alle merken</button>'+
+        '</div>'+
       '</div>'+
       '<div style="display:flex;gap:18px;font-size:12.5px;">'+
         '<div><span style="color:var(--text-muted)">Huidig jaar (‘'+String(curYr).slice(2)+'):</span> <b class="tabular">'+fmtNum(curCount)+'</b></div>'+
@@ -1994,7 +2014,7 @@ function renderMarktontwikkeling(filtered){
         '<div class="kpi-delta '+delta.dir+'" style="display:inline-flex;">'+delta.text+'</div>'+
       '</div>'+
     '</div>'+
-    lineChart({ xLabels, series, offSet: ui.marktontwOffSeries, toggleAttr:"toggle-mo-series" })+
+    (series.length ? lineChart({ xLabels, series, offSet: ui.marktontwOffSeries, toggleAttr:"toggle-mo-series" }) : '<div class="empty-state">Geen registraties binnen de laatste 12 maanden voor de huidige selectie.</div>')+
   '</div>'+
   disclaimerBlock();
 }
@@ -2633,6 +2653,7 @@ function wireEvents(){
 
   // marktontwikkeling
   app.querySelectorAll("[data-gran]").forEach(el=> el.addEventListener("click", ()=>{ STATE.ui.marktontwGranularity=el.getAttribute("data-gran"); render(); }));
+  app.querySelectorAll("[data-top5]").forEach(el=> el.addEventListener("click", ()=>{ STATE.ui.marktontwTop5=el.getAttribute("data-top5")==="1"; render(); }));
   app.querySelectorAll("[data-toggle-mo-series]").forEach(el=> el.addEventListener("click", ()=>{
     const id = el.getAttribute("data-toggle-mo-series");
     const set = STATE.ui.marktontwOffSeries;
