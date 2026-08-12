@@ -1,0 +1,2695 @@
+<!doctype html><html><head><!-- frame-runtime --><script>window.__FRAME_PREAMBLE={"capabilities":{"assets":"assets.hcOK0ALv.js","comments":"comments.BKZ3qutA.js","db":"db.C8ehi_0m.js","downloads":"downloads.BXsoAvg9.js","mcp":"mcp.D3B2EyQu.js","permissions":"permissions.DdITF2Mk.js","room":"room.BgXZkiYR.js","sample":"sample.DpdXn9di.js","self":"self.BN4be5De.js","user":"user.o5zdRedj.js"},"transforms":"_transforms.VaITkagF.js","comments":"_comments.CNSvmFji.js","translate":"_translate.BOzFH2D9.js"}</script><script>(function(){"use strict";var le=["light","dark","system"],ue=/^[A-Za-z0-9_-]{1,64}$/,H=/^[a-zA-Z_:][a-zA-Z0-9_:.-]{0,127}$/,fe=new Set(["class","hidden"]);function de(e){const t=e.toLowerCase();return t.startsWith("data-")||t.startsWith("aria-")||fe.has(t)}function me(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_patch;if(t===null||typeof t!="object")return!1;const{seq:n,elements:a}=t;if(typeof n!="number"||!Number.isSafeInteger(n)||!Array.isArray(a)||a.length===0||a.length>64)return!1;for(const s of a){if(s===null||typeof s!="object")return!1;const r=s;if(typeof r.target!="string"||!ue.test(r.target)||r.text!==void 0&&typeof r.text!="string")return!1;if(r.attrsSet!==void 0){if(r.attrsSet===null||typeof r.attrsSet!="object")return!1;for(const[o,i]of Object.entries(r.attrsSet))if(!H.test(o)||typeof i!="string")return!1}if(r.attrsRemoved!==void 0){if(!Array.isArray(r.attrsRemoved))return!1;for(const o of r.attrsRemoved)if(typeof o!="string"||!H.test(o))return!1}}return!0}function pe(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_init;return t!==null&&typeof t=="object"}function Y(e){return e!==null&&typeof e=="object"&&e.__frame_size_poke===!0}function ge(e){if(e===null||typeof e!="object")return!1;const t=e.__frame_theme;if(t===null||typeof t!="object")return!1;const n=t.theme;return typeof n=="string"&&le.includes(n)}function he(e){try{typeof reportError=="function"?reportError(e):setTimeout(()=>{throw e},0)}catch{}}var K=["#62744c","#b04e72","#5b7596","#a3651f","#7a6ba8","#3f7a75"],J=e=>{let t=0;for(let n=0;n<e.length;n++)t=t*31+e.charCodeAt(n)>>>0;return K[t%K.length]??"#788c5d"},V="#c7c9d1",X=e=>"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2 2'%3E%3Ccircle cx='1' cy='1' r='1' fill='"+encodeURIComponent(e)+"'/%3E%3C/svg%3E",ve=Object.freeze({id:null,name:"",avatarUrl:X(V),color:V,email:null,isOwner:!1,canEdit:!1}),_e=(...e)=>{const t=e[0],n=typeof t=="string"?[t]:Array.isArray(t)?t.filter(s=>typeof s=="string"):[],a=Object.create(null);for(const s of n)a[s]={id:s,name:"",avatarUrl:X(J(s)),color:J(s),email:null,isMe:!1};return a},Z=Object.freeze(Object.assign(Object.create(null),{user:Object.freeze(Object.assign(Object.create(null),{id:null,isOwner:!1,canEdit:!1,me:ve,profiles:_e,name:"",avatarUrl:null,search:Object.freeze([]),email:null}))})),ye={sample:"sample"};function G(){const e=new Uint8Array(20);try{crypto.getRandomValues(e)}catch{for(let n=0;n<e.length;n++)e[n]=Math.floor(Math.random()*256)}let t="";for(const n of e)t+=(n%36).toString(36);return t}function be(e,t){const n=r=>{const o={path:r},i=r.split("/");return{id:i[i.length-1],path:r,get:()=>t("get",[o]),set:g=>t("set",[o,g]),update:g=>t("update",[o,g]),delete:()=>t("delete",[o]),acquire:g=>t("acquire",[o,g]),onSnapshot:(g,y)=>t("subscribe",[o,g,y]),collection:g=>s(r+"/"+String(g))}},a=r=>({where:(o,i,g)=>a({...r,where:[...r.where??[],{f:String(o),op:String(i),v:g}]}),orderBy:(o,i)=>a({...r,orderBy:{f:String(o),dir:i===void 0?"asc":String(i)}}),limit:o=>a({...r,limit:Number(o)}),get:()=>t("query",[r]),onSnapshot:(o,i)=>t("subscribe",[r,o,i])}),s=r=>({...a({collection:r}),path:r,doc:o=>n(r+"/"+(o===void 0?G():String(o))),add:o=>{const i=n(r+"/"+G());return Promise.resolve(i.set(o)).then(()=>i)}});e.doc=r=>n(String(r)),e.collection=r=>s(String(r))}function Q(e){if(window===top||e.type==="auxclick"&&e.button!==1)return;const t=e.composedPath?e.composedPath():[e.target];let n=null;for(let o=0;o<t.length;o++){const i=t[o];if(i&&i.matches&&i.matches("a[href],area[href]")){n=i;break}}if(!n&&e.target&&e.target.closest&&(n=e.target.closest("a[href],area[href]")),!n)return;const a=n.getAttribute("href");if(!a)return;let s,r;try{s=new URL(a,document.baseURI),r=new URL(document.baseURI).origin}catch{return}if((s.protocol==="http:"||s.protocol==="https:")&&s.origin!==r){e.preventDefault();const o=(n.getAttribute("target")??document.querySelector("base[target]")?.getAttribute("target")??"").toLowerCase(),i=e.type==="auxclick"||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||!["","_self","_top","_parent"].includes(o);parent.postMessage({__frame_nav:!0,url:s.href,newTab:i},"*")}}var ee={};function I(e){if(window===top)return;const t=Date.now();t-(ee[e]||0)<500||(ee[e]=t,parent.postMessage({__frame_engaged:!0,kind:e},"*"))}var Ee=2e3,te=["wheel","touchstart","touchmove","keydown","pointerdown"],re=0;function we(e){e.isTrusted&&(re=Date.now())}function Ae(){addEventListener("click",Q,!0),addEventListener("auxclick",Q,!0)}function Se(){for(let e=0;e<te.length;e++)addEventListener(te[e],we,{capture:!0,passive:!0});addEventListener("scroll",e=>{e.isTrusted&&Date.now()-re<Ee&&I("scroll")},{capture:!0,passive:!0}),addEventListener("pointermove",e=>{e.isTrusted&&I("pointer")},{capture:!0,passive:!0}),addEventListener("click",e=>{e.isTrusted&&I("click")},{capture:!0,passive:!0})}var je=Object.freeze([]);function Oe(e,t){let n=null,a=null;const s=()=>e.__settled;e.peers=()=>je,e.connected=()=>!1,e.emit=()=>s()?.()??Promise.resolve(),e.presence=r=>{const o=s();if(o)return o();let i=null;if(r!==null&&typeof r=="object")try{Array.isArray(r)||(i={...r})}catch{}return i===null?Promise.reject({code:"invalid_argument",message:"presence takes an object"}):(n===null&&(n=Object.create(null),a=Promise.resolve(t("presence",[n]))),Object.assign(n,i),a)}}var U="__frame_scroll",Re=150,Pe=310,Me=160,Le=3e4;function Te(){let e=0,t=!1,n=!1,a=!1,s=0,r=null;const o=d=>{try{sessionStorage.setItem(U,JSON.stringify({y:d}))}catch{}},i=()=>{if(clearTimeout(e),r===null)return;const d=r;r=null,o(d)},g=()=>{if(t){t=!1;return}n=!0,r=scrollY,clearTimeout(e),e=setTimeout(i,Re)};try{addEventListener("scroll",g,{passive:!0}),addEventListener("pagehide",i)}catch{}const y=()=>{let d;try{d=sessionStorage.getItem(U)}catch{return null}if(d===null)return null;let u;try{u=JSON.parse(d)}catch{u=null}const p=u?.y;if(!(typeof p=="number"&&Number.isFinite(p)&&p>=0)){try{sessionStorage.removeItem(U)}catch{}return null}return p};let l=!1;const f=d=>{try{const u=scrollY;scrollTo({top:d,left:0,behavior:"instant"}),s=d,a=!0,clearTimeout(e),r=null,o(d);const p=scrollY;p!==u&&(t=!0),p!==d&&!l&&(l=!0,addEventListener("load",()=>{try{if(scrollY===p){const _=y();f(_!==null?_:s)}}catch{}},{once:!0}))}catch{}},m=()=>{try{return!!location.hash}catch{return!0}};let h=!1;const v=()=>{try{if(h||innerWidth>Pe||innerHeight>Me)return;h=!0;const d=Date.now(),u=()=>{try{removeEventListener("resize",u)}catch{}if(Date.now()-d>Le||n||m())return;const p=y();f(p!==null?p:s)};addEventListener("resize",u)}catch{}};let w=!1,A=!1;return{restore(){if(w||(w=!0,m()))return;const d=y();d!==null&&(f(d),v())},promoted(){if(A||(A=!0,m()))return;const d=y();d!==null?(f(d),v()):a&&f(s)}}}function Ce(e,t,n){const a=[...t.values()].filter(s=>s.targets.some(r=>r.startsWith(e+".")));return{wrap(s,r){const o=`${e}.${s}`,i=a.filter(g=>g.targets.includes(o));return i.length===0?(...g)=>{try{return r(...g)}catch(y){return Promise.reject(y)}}:(...g)=>{let y=g;for(const f of i){const m=f.module.parameters;if(m)try{y=m(y)}catch{return Promise.reject({code:"transform_error",id:f.id,scope:e,message:"parameters transform failed"})}}let l;try{l=r(...y)}catch(f){l=Promise.reject(f)}return l.then(f=>{for(let m=i.length-1;m>=0;m--){const h=i[m],v=h.module.returns;if(v)try{f=v(f)}catch{return n({id:h.id,scope:e,leg:"returns"}),f}}return f},f=>{for(let m=i.length-1;m>=0;m--){const h=i[m],v=h.module.throws;if(v)try{f=v(f)}catch{return n({id:h.id,scope:e,leg:"throws"}),Promise.reject(f)}}return Promise.reject(f)})}}}}function ke(e,t,n,a=()=>{}){const s=new Set(e.changes??[]),r=new Map;for(const o of s){const i=t[o];i&&r.set(o,i)}return{contract:e.contract,changes:s,flags:new Set(e.flags??[]),capabilities:e.capabilities??{},capBudgets:e.capBudgets??{},transforms:r,shellOrigin:n.shellOrigin,mount:n.mount,pipe:o=>Ce(o,r,a)}}var $e="modulepreload",Fe=function(e){return"/"+e},xe={},Ne=function(t,n,a){let s=Promise.resolve();function r(o){const i=new Event("vite:preloadError",{cancelable:!0});if(i.payload=o,window.dispatchEvent(i),!i.defaultPrevented)throw o}return s.then(o=>{for(const i of o||[])i.status==="rejected"&&r(i.reason);return t().catch(r)})};(function(){const e=Object.defineProperty,t=globalThis,n=["RTCPeerConnection","webkitRTCPeerConnection","RTCDataChannel","RTCIceCandidate","RTCSessionDescription","RTCRtpSender","RTCRtpReceiver"];let a=0;for(let s=0;s<n.length;s++){const r=n[s];try{e(t,r,{value:void 0,writable:!1,configurable:!1})}catch{try{delete t[r]}catch{}try{e(t,r,{value:void 0,writable:!1,configurable:!0})}catch{}}typeof t[r]=="function"&&a++}if(a&&window!==top)try{parent.postMessage({__frame_rtc_lockdown_failed:a},"*")}catch{}})();var qe=1e4,Ie=Object.freeze([...window.__FRAME_PREAMBLE?.origins??["https://claude.ai","https://preview.claude.ai"]]);function ne(e){for(const t of Ie)if(t.endsWith(":*"))try{const n=new URL(e);if(`${n.protocol}//${n.hostname}:*`===t)return!0}catch{}else if(e===t)return!0;return!1}var C=Object.freeze({...window.__FRAME_PREAMBLE?.capabilities}),D=window.__FRAME_PREAMBLE?.transforms,z=window.__FRAME_PREAMBLE?.comments,B=window.__FRAME_PREAMBLE?.translate,k=/^[\w.-]+\.js$/,Ue=/^[a-z][a-z0-9_-]{0,63}$/,se=null,P=null;function $(e,t,n){try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!1,enumerable:!0})}catch{try{Object.defineProperty(e,t,{value:n,writable:!1,configurable:!0,enumerable:!0})}catch{}}}var F=!1;function De(e,t){const n=[];for(const a of e.elements){const s=document.querySelector(`[data-id="${a.target}"]`);if(!s){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}if([...Object.keys(a.attrsSet??{}),...a.attrsRemoved??[]].some(r=>!de(r))){parent.postMessage({__frame_patch_miss:{seq:e.seq}},t);return}for(const[r,o]of Object.entries(a.attrsSet??{}))if(r.toLowerCase()!=="data-id")try{s.setAttribute(r,o)}catch{}for(const r of a.attrsRemoved??[])r.toLowerCase()!=="data-id"&&s.removeAttribute(r);typeof a.text=="string"&&(s.textContent=a.text),n.push(a.target)}try{document.dispatchEvent(new CustomEvent("claude:edit",{detail:{seq:e.seq,targets:n}}))}catch{}}function oe(e){const t=document.documentElement;e==="light"||e==="dark"?(t.dataset.theme=e,t.style.colorScheme=e,F=!0):F&&(delete t.dataset.theme,t.style.colorScheme="",F=!1)}var ae=256,M=Object.assign(Object.create(null),{mcp:Object.assign(Object.create(null),{watchTool:{handlerArg:3}}),db:Object.assign(Object.create(null),{subscribe:{handlerArg:1,errArg:2}}),room:Object.assign(Object.create(null),{on:{handlerArg:1,errArg:2},onPeers:{handlerArg:0,errArg:1},onConnection:{handlerArg:0,errArg:1}})}),ze=Object.assign(Object.create(null),{db:(e,t)=>be(e,t),room:(e,t,n)=>Oe(e,n)}),L=new Map;function ie(e,t){const n=L.get(e);if(!n)return;const a=Object.assign(Object.create(null),t);Object.assign(n.impl,a),n.impl.__settled=()=>Promise.reject({code:"capability_removed",message:`${e}: method not in this runtime`});const s=n.queue;n.queue=[];for(const r of s){const o=a[r.method];if(o)if(M[e]?.[r.method])try{r.resolve(o(...r.args))}catch{T(r,M[e][r.method],{code:"transform_error",message:`${e}.${r.method} rejected its arguments`})}else o(...r.args).then(r.resolve,r.reject);else{const i={code:"capability_removed",message:`${e}.${r.method} is not in this runtime`},g=M[e]?.[r.method];if(g){T(r,g,i);continue}r.reject(i)}}}function Be(e,t){const n=L.get(e);if(!n)return;n.impl.__settled=()=>Promise.reject(t);const a=n.queue;n.queue=[];for(const s of a){const r=M[e]?.[s.method];if(r){T(s,r,t);continue}s.reject(t)}}function ce(e,t){if(typeof e=="function")try{return e(...t)}catch{return Object.create(null)}return Array.isArray(e)?[...e]:e!==null&&typeof e=="object"?{...e}:e}function N(e,t){const n=Z[e];if(!n){Be(e,t);return}ie(e,Object.fromEntries(Object.entries(n).map(([a,s])=>[a,(...r)=>Promise.resolve(ce(s,r))])))}function T(e,t,n){if(e.syncState?.dead)return;const a=t.errArg===void 0?void 0:e.args[t.errArg],s=t.errArg===void 0?e.args[t.handlerArg]:a;typeof s=="function"&&queueMicrotask(()=>{if(!e.syncState?.dead)try{s(t.errArg===void 0?{type:"error",error:n}:n)}catch(r){he(r)}})}var x=Object.getOwnPropertyDescriptor(window,"claude");if(window!==top&&!(x&&x.writable===!1)){Ae(),Se();let e=null;try{e=Te()}catch{}const t=x?.value??{};$(window,"claude",t);const n=l=>{const f={impl:Object.create(null),queue:[]};L.set(l,f);const m=f.impl,h=d=>({code:"queue_overflow",message:`${l}.${d}: pre-init call queue is full`}),v=(d,u)=>{if(f.queue.length>=ae){const p=Z[l];return p&&d in p?Promise.resolve(ce(p[d],u)):Promise.reject(h(d))}return new Promise((p,_)=>{f.queue.push({method:d,args:u,resolve:p,reject:_})})},w=ye[l],A=new Proxy(w===void 0?m:(()=>{}),{apply:(d,u,p)=>{const _=w,E=m[_]??m.__settled;return E?E(...p):v(_,p)},get:(d,u)=>{if(typeof u!="string"||u==="then"||u==="toJSON"||u==="valueOf")return;if(u==="toString")return Object.prototype.toString;if(w!==void 0&&(u==="call"||u==="apply"||u==="bind"))return Function.prototype[u];const p=M[l]?.[u];return p?(..._)=>{if(typeof _[p.handlerArg]!="function")throw new TypeError(`${l}.${u} requires a handler function`);const E=m[u];if(E)return E(..._);if(m.__settled){const b={dead:!1},q={args:[..._],syncState:b};return m.__settled().catch(c=>T(q,p,c)),()=>{b.dead=!0}}if(f.queue.length>=ae){const b={dead:!1};return T({args:[..._],syncState:b},p,h(u)),()=>{b.dead=!0}}let S=null;const O={dead:!1};return f.queue.push({method:u,args:_,resolve:b=>{S=typeof b=="function"?b:null,O.dead&&S?.()},reject:()=>{},syncState:O}),()=>{O.dead=!0,S?.()}}:(..._)=>{const E=m[u]??m.__settled;return E?E(..._):v(u,_)}},set:()=>!1});ze[l]?.(m,(d,u)=>A[d](...u),v),$(t,l,A)};for(const l of Object.keys(C)){if(t[l]!==void 0){$(t,l,t[l]);continue}n(l)}let a=null,s=null,r=0;const o=l=>{l.source!==parent||!ne(l.origin)||pe(l.data)&&(a=l.data.__frame_init,P=l.origin,removeEventListener("message",o),clearTimeout(r),s?.())};addEventListener("message",o),parent.postMessage({__frame_connect:!0},"*");const i=new Promise(l=>{s=l,r=setTimeout(()=>{removeEventListener("message",o),l()},qe)}),g=document.readyState==="loading"?new Promise(l=>document.addEventListener("DOMContentLoaded",()=>l(),{once:!0})):Promise.resolve();g.then(()=>{try{e?.restore()}catch{}});const y=l=>{if(!(l.source!==parent||!ne(l.origin))&&Y(l.data)){removeEventListener("message",y);try{e?.promoted()}catch{}}};addEventListener("message",y),i.then(async()=>{if(!a||!P){for(const c of L.keys())N(c,{code:"not_granted",message:"frame initialization did not arrive - capability unavailable"});return}oe(a.theme);const l=P;let f=!1,m=!1;addEventListener("message",c=>{if(c.source!==parent||c.origin!==l)return;ge(c.data)&&oe(c.data.__frame_theme.theme),me(c.data)&&De(c.data.__frame_patch,l);const j=c.data?.__fc_mode;j&&typeof j=="object"&&!f&&z&&k.test(z)&&(f=!0,h(z).then(W=>W.install?.(l,j.on===!0)).catch(()=>{}));const R=c.data?.__ft_cmd;R&&typeof R=="object"&&!m&&B&&k.test(B)&&(m=!0,h(B).then(W=>W.install?.(l,R)).catch(()=>{}))});const h=c=>Ne(()=>import("/_runtime/"+c),void 0),v=Object.keys(a.capabilities??{});for(const c of v)Object.hasOwn(C,c)||Ue.test(c)&&t[c]===void 0&&(n(c),N(c,{code:"capability_disabled",message:"capability not in this runtime generation"}));const w=v.filter(c=>Object.hasOwn(C,c)).map(c=>[c,C[c]]).filter(c=>typeof c[1]=="string"&&k.test(c[1])),[A,...d]=await Promise.allSettled([D&&k.test(D)?h(D):Promise.resolve({}),...w.map(([,c])=>h(c))]),u=P;se=ke(a,A.status==="fulfilled"&&A.value?.TRANSFORMS||{},{shellOrigin:u,mount:ie},c=>parent.postMessage({__frame_cap_telemetry:c},u));const p=c=>parent.postMessage({__frame_cap_telemetry:{kind:"cap-load-error",cap:c}},u),_=se;d.forEach((c,j)=>{const R=w[j][0];if(c.status!=="fulfilled"){p(R);return}try{c.value?.install?.(_)}catch{p(R)}});for(const[c,j]of L)if(j.impl.__settled===void 0){if(v.includes(c)){N(c,{code:"capability_disabled",message:"capability not available in this session"});continue}N(c,{code:"not_granted",message:"capability not available in this session"})}await g,parent.postMessage({__frame_ready:!0},P);let E=-1,S=0;const O=()=>{S=0;const c=Math.max(document.documentElement.scrollHeight,document.body?document.body.scrollHeight:0);c!==E&&(E=c,parent.postMessage({__frame_size:!0,h:c},u))},b=()=>{S||(S=setTimeout(O,200))},q=new ResizeObserver(b);q.observe(document.documentElement),document.body&&q.observe(document.body),document.addEventListener("load",b,!0),document.fonts?.ready.then(b,()=>{}),addEventListener("beforeprint",()=>{E=-1,O()}),b(),addEventListener("message",c=>{if(!(c.source!==parent||c.origin!==u)&&Y(c.data)){try{e?.promoted()}catch{}E=-1,b()}})})}})();</script><!-- /frame-runtime --><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}</style></head><body>
+<title>SMT Market Intelligence</title>
+<style>
+/* ============ TOKENS ============ */
+:root{
+  color-scheme: light;
+  --bg:#F4F5FA; --surface:#FFFFFF; --surface-2:#F7F8FC; --surface-hover:#EEF0F9;
+  --border:#E1E3EE; --border-strong:#CBCFE3;
+  --text-primary:#1A1F36; --text-secondary:#545B75; --text-muted:#8A8FA3;
+  --brand:#263586; --brand-hover:#1D2966; --brand-tint:#EAECF9; --brand-tint-2:#DCDFF5;
+  --accent:#F15A31; --accent-hover:#D8471F; --accent-tint:#FDE7E0;
+  --good:#0ca30c; --warning:#b3790f; --serious:#c0602f; --critical:#d03b3b;
+  --good-tint:#E4F6E4; --warning-tint:#FBF1DC; --critical-tint:#FBE7E7;
+  --s1:#3454B4; --s2:#0F8F6B; --s3:#C98500; --s4:#6A4FC4; --s5:#C2478A; --s6:#1E8FC7; --s7:#B24A2E; --s-other:#767B94;
+  --grid:#E7E9F2; --shadow: 0 1px 2px rgba(26,31,54,0.06), 0 1px 8px rgba(26,31,54,0.04);
+  --radius:8px; --radius-sm:5px;
+  --font: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#0E1224; --surface:#161B33; --surface-2:#1B2140; --surface-hover:#212748;
+    --border:#2A3157; --border-strong:#3A4270;
+    --text-primary:#F2F3F8; --text-secondary:#B8BDD6; --text-muted:#7D84A8;
+    --brand:#5C7CE0; --brand-hover:#7995EA; --brand-tint:#1C2350; --brand-tint-2:#232C5E;
+    --accent:#FF7A52; --accent-hover:#FF9270; --accent-tint:#3A2318;
+    --good:#3FC33F; --warning:#E0AA3E; --serious:#E0895E; --critical:#E66767;
+    --good-tint:#122A16; --warning-tint:#2E2410; --critical-tint:#2E1414;
+    --s1:#6C8CE8; --s2:#2FA482; --s3:#B87F22; --s4:#8C7CE0; --s5:#D866A0; --s6:#3D93C9; --s7:#D2653F; --s-other:#9096B3;
+    --grid:#252B4C; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 1px 8px rgba(0,0,0,0.2);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#0E1224; --surface:#161B33; --surface-2:#1B2140; --surface-hover:#212748;
+  --border:#2A3157; --border-strong:#3A4270;
+  --text-primary:#F2F3F8; --text-secondary:#B8BDD6; --text-muted:#7D84A8;
+  --brand:#5C7CE0; --brand-hover:#7995EA; --brand-tint:#1C2350; --brand-tint-2:#232C5E;
+  --accent:#FF7A52; --accent-hover:#FF9270; --accent-tint:#3A2318;
+  --good:#3FC33F; --warning:#E0AA3E; --serious:#E0895E; --critical:#E66767;
+  --good-tint:#122A16; --warning-tint:#2E2410; --critical-tint:#2E1414;
+  --s1:#6C8CE8; --s2:#2FA482; --s3:#B87F22; --s4:#8C7CE0; --s5:#D866A0; --s6:#3D93C9; --s7:#D2653F; --s-other:#9096B3;
+  --grid:#252B4C; --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 1px 8px rgba(0,0,0,0.2);
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg); color:var(--text-primary); font-family:var(--font);
+  font-size:14px; line-height:1.5; -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--brand-tint-2);}
+a{color:var(--brand);}
+button, select, input{font-family:var(--font);}
+h1,h2,h3,h4{text-wrap:balance; margin:0;}
+.tabular{font-variant-numeric:tabular-nums;}
+::-webkit-scrollbar{width:10px;height:10px;}
+::-webkit-scrollbar-thumb{background:var(--border-strong);border-radius:6px;}
+::-webkit-scrollbar-track{background:transparent;}
+
+/* ============ SHELL ============ */
+#app{display:flex; min-height:100vh;}
+.sidebar{
+  width:238px; flex:none; background:var(--brand); color:#fff; display:flex; flex-direction:column;
+  position:sticky; top:0; height:100vh; overflow-y:auto;
+}
+.sidebar-brand{padding:20px 18px 14px; border-bottom:1px solid rgba(255,255,255,0.14);}
+.sidebar-brand .name{font-size:15px; font-weight:700; letter-spacing:0.2px;}
+.sidebar-brand .sub{font-size:11px; color:rgba(255,255,255,0.62); margin-top:3px; letter-spacing:0.3px; text-transform:uppercase;}
+.nav{list-style:none; margin:0; padding:10px 10px; flex:1;}
+.nav-item{display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:var(--radius-sm); cursor:pointer; color:rgba(255,255,255,0.82); font-size:13.5px; margin-bottom:2px; transition:background .12s;}
+.nav-item:hover{background:rgba(255,255,255,0.08); color:#fff;}
+.nav-item.active{background:rgba(255,255,255,0.16); color:#fff; font-weight:600;}
+.nav-item svg{flex:none; opacity:0.92;}
+.nav-icon{width:16px;height:16px;}
+.sidebar-foot{padding:14px 18px 18px; border-top:1px solid rgba(255,255,255,0.14); font-size:11px; color:rgba(255,255,255,0.55);}
+.sidebar-foot .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:6px;}
+
+.main{flex:1; min-width:0; display:flex; flex-direction:column;}
+.topbar{
+  position:sticky; top:0; z-index:20; background:var(--surface); border-bottom:1px solid var(--border);
+  padding:12px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+}
+.topbar h1{font-size:18px; font-weight:700;}
+.topbar-right{display:flex; align-items:center; gap:10px;}
+.mode-badge{display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:700; letter-spacing:0.4px; padding:6px 11px; border-radius:20px; cursor:pointer; border:1px solid transparent;}
+.mode-badge.live{background:var(--good-tint); color:var(--good); border-color:currentColor;}
+.mode-badge.demo{background:var(--warning-tint); color:var(--warning); border-color:currentColor;}
+.mode-badge .pulse{width:7px;height:7px;border-radius:50%;background:currentColor;}
+.btn{
+  font-family:var(--font); font-size:13px; font-weight:600; border-radius:var(--radius-sm); border:1px solid var(--border-strong);
+  background:var(--surface); color:var(--text-primary); padding:8px 13px; cursor:pointer; display:inline-flex; align-items:center; gap:6px;
+  transition:background .12s, border-color .12s;
+}
+.btn:hover{background:var(--surface-hover);}
+.btn:focus-visible, a:focus-visible, .nav-item:focus-visible, select:focus-visible, input:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+.btn-primary{background:var(--brand); border-color:var(--brand); color:#fff;}
+.btn-primary:hover{background:var(--brand-hover);}
+.btn-accent{background:var(--accent); border-color:var(--accent); color:#fff;}
+.btn-accent:hover{background:var(--accent-hover);}
+.btn-sm{padding:5px 10px; font-size:12px;}
+.btn[disabled]{opacity:0.5; cursor:not-allowed;}
+
+.filterbar{position:sticky; top:53px; z-index:19; background:var(--surface-2); border-bottom:1px solid var(--border); padding:10px 24px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;}
+.filterbar select, .filterbar input[type=text], .filterbar input[type=number]{
+  font-size:12.5px; padding:6px 9px; border-radius:var(--radius-sm); border:1px solid var(--border-strong); background:var(--surface); color:var(--text-primary);
+}
+.filterbar label.fgroup{display:flex; flex-direction:column; gap:3px; font-size:10.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.3px;}
+.filter-chip{font-size:11px; background:var(--brand-tint); color:var(--brand); padding:3px 9px; border-radius:20px; font-weight:600; display:inline-flex; align-items:center; gap:5px;}
+:root[data-theme="dark"] .filter-chip, @media (prefers-color-scheme:dark){.filter-chip{color:var(--brand);}}
+
+.content{padding:22px 24px 60px; max-width:1440px; width:100%; margin:0 auto;}
+.page-head{margin-bottom:18px;}
+.page-head h2{font-size:20px; font-weight:700;}
+.page-head p{margin:4px 0 0; color:var(--text-secondary); font-size:13px; max-width:70ch;}
+
+/* ============ GRID / CARDS ============ */
+.grid{display:grid; gap:14px;}
+.grid-kpi{grid-template-columns:repeat(auto-fit, minmax(190px,1fr));}
+.grid-2{grid-template-columns:1fr 1fr;}
+.grid-3{grid-template-columns:1fr 1fr 1fr;}
+@media (max-width:1000px){.grid-2,.grid-3{grid-template-columns:1fr;}}
+
+.card{background:var(--surface); border:1px solid var(--border); border-radius:var(--radius); padding:16px 18px; box-shadow:var(--shadow);}
+.card-title{font-size:12.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.4px; color:var(--text-secondary); margin-bottom:2px;}
+.card-sub{font-size:11.5px; color:var(--text-muted); margin-bottom:10px;}
+
+.kpi-card{display:flex; flex-direction:column; gap:5px;}
+.kpi-label{font-size:11.5px; color:var(--text-secondary); font-weight:600; text-transform:uppercase; letter-spacing:0.3px;}
+.kpi-value{font-size:26px; font-weight:700; color:var(--brand); line-height:1.1;}
+.kpi-delta{font-size:12px; font-weight:600; display:inline-flex; align-items:center; gap:3px; width:fit-content; padding:2px 7px; border-radius:20px;}
+.kpi-delta.up{color:var(--good); background:var(--good-tint);}
+.kpi-delta.down{color:var(--critical); background:var(--critical-tint);}
+.kpi-delta.flat{color:var(--text-muted); background:var(--surface-2);}
+.kpi-note{font-size:11px; color:var(--text-muted);}
+
+.section{margin-bottom:20px;}
+.section-title{font-size:15px; font-weight:700; margin-bottom:10px; display:flex; align-items:center; justify-content:space-between; gap:10px;}
+
+/* ============ TABLE ============ */
+.table-wrap{overflow-x:auto; border:1px solid var(--border); border-radius:var(--radius); background:var(--surface);}
+table{border-collapse:collapse; width:100%; font-size:12.8px; min-width:640px;}
+thead th{position:sticky; top:0; background:var(--surface-2); text-align:left; font-size:11px; text-transform:uppercase; letter-spacing:0.3px; color:var(--text-secondary); padding:9px 12px; border-bottom:1px solid var(--border); white-space:nowrap; cursor:pointer; user-select:none;}
+thead th:hover{color:var(--brand);}
+tbody td{padding:8px 12px; border-bottom:1px solid var(--border); white-space:nowrap; color:var(--text-primary);}
+tbody tr:hover{background:var(--surface-hover); cursor:pointer;}
+tbody tr:last-child td{border-bottom:none;}
+.badge{display:inline-flex; align-items:center; gap:4px; font-size:10.5px; font-weight:700; padding:2px 8px; border-radius:20px; text-transform:uppercase; letter-spacing:0.3px;}
+.badge-smt{background:var(--brand-tint); color:var(--brand);}
+.badge-comp{background:var(--surface-2); color:var(--text-secondary); border:1px solid var(--border);}
+.badge-good{background:var(--good-tint); color:var(--good);}
+.badge-warn{background:var(--warning-tint); color:var(--warning);}
+.badge-crit{background:var(--critical-tint); color:var(--critical);}
+.conf-dot{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:5px;}
+.conf-hoog{background:var(--good);} .conf-middel{background:var(--warning);} .conf-laag{background:var(--critical);}
+
+.pagination{display:flex; align-items:center; gap:8px; padding:10px 12px; font-size:12.5px; color:var(--text-secondary);}
+
+/* ============ CHART ============ */
+.chart-wrap{width:100%; overflow-x:auto;}
+.legend{display:flex; flex-wrap:wrap; gap:12px; margin-top:8px; font-size:12px;}
+.legend-item{display:flex; align-items:center; gap:6px; cursor:pointer; color:var(--text-secondary); user-select:none;}
+.legend-item.off{opacity:0.35;}
+.legend-swatch{width:10px;height:10px;border-radius:2px; flex:none;}
+.viz-tooltip{position:fixed; pointer-events:none; background:var(--text-primary); color:var(--bg); font-size:11.5px; padding:7px 10px; border-radius:6px; z-index:100; box-shadow:var(--shadow); max-width:230px; line-height:1.4; transition:opacity .06s;}
+:root[data-theme="dark"] .viz-tooltip, @media (prefers-color-scheme:dark){.viz-tooltip{background:#F2F3F8; color:#0E1224;}}
+
+/* ============ MISC ============ */
+.empty-state{padding:34px 20px; text-align:center; color:var(--text-muted); font-size:13px;}
+.loading{display:flex; align-items:center; gap:10px; padding:20px; color:var(--text-secondary); font-size:13px;}
+.spinner{width:16px;height:16px;border-radius:50%;border:2px solid var(--border-strong); border-top-color:var(--brand); animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+@media (prefers-reduced-motion: reduce){.spinner{animation-duration:2s;}}
+.info-block{background:var(--brand-tint); border:1px solid var(--brand-tint-2); border-radius:var(--radius); padding:14px 16px; font-size:12.5px; color:var(--text-secondary); display:flex; gap:10px;}
+.info-block b{color:var(--text-primary);}
+.disclaimer{font-size:11.5px; color:var(--text-muted); border-top:1px dashed var(--border); padding-top:10px; margin-top:14px; display:flex; gap:8px;}
+.insight-list{display:flex; flex-direction:column; gap:8px;}
+.insight{display:flex; gap:9px; align-items:flex-start; font-size:13px; padding:10px 12px; background:var(--surface-2); border-radius:var(--radius-sm); border-left:3px solid var(--accent);}
+.tag-icon-info{color:var(--text-muted); cursor:help; flex:none;}
+.pill-toggle{display:inline-flex; border:1px solid var(--border-strong); border-radius:20px; overflow:hidden;}
+.pill-toggle button{border:none; background:var(--surface); color:var(--text-secondary); font-size:12px; font-weight:600; padding:6px 12px; cursor:pointer;}
+.pill-toggle button.active{background:var(--brand); color:#fff;}
+.search-input{position:relative;}
+.search-input input{width:100%; padding:9px 12px 9px 34px; border-radius:var(--radius-sm); border:1px solid var(--border-strong); background:var(--surface); font-size:13px; color:var(--text-primary);}
+.search-input svg{position:absolute; left:11px; top:50%; transform:translateY(-50%); color:var(--text-muted);}
+.modal-overlay{position:fixed; inset:0; background:rgba(14,18,36,0.45); z-index:50; display:flex; justify-content:flex-end;}
+.modal-panel{width:min(480px, 100%); background:var(--surface); height:100%; overflow-y:auto; box-shadow:-8px 0 30px rgba(0,0,0,0.18); animation:slidein .18s ease-out;}
+@keyframes slidein{from{transform:translateX(24px); opacity:0;} to{transform:translateX(0); opacity:1;}}
+.modal-head{padding:18px 20px; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:flex-start; position:sticky; top:0; background:var(--surface);}
+.modal-body{padding:18px 20px;}
+.detail-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 14px; font-size:12.8px; margin-bottom:16px;}
+.detail-grid dt{color:var(--text-muted); font-size:11px; text-transform:uppercase; letter-spacing:0.3px;}
+.detail-grid dd{margin:2px 0 0; font-weight:600; color:var(--text-primary);}
+.detail-section-title{font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:0.4px; color:var(--brand); margin:16px 0 8px; padding-top:10px; border-top:1px solid var(--border);}
+.notavail{color:var(--text-muted); font-style:italic; font-weight:500 !important;}
+.na-note{background:var(--surface-2); border:1px solid var(--border); border-radius:var(--radius-sm); padding:10px 12px; font-size:11.5px; color:var(--text-muted); margin-top:6px;}
+.stat-row{display:flex; justify-content:space-between; font-size:12.5px; padding:6px 0; border-bottom:1px solid var(--border);}
+.stat-row:last-child{border-bottom:none;}
+.checkbox-row{display:flex; align-items:center; gap:8px; padding:7px 0; font-size:13px;}
+.switch{position:relative; width:34px; height:19px; flex:none;}
+.switch input{opacity:0; width:0; height:0;}
+.switch .track{position:absolute; inset:0; background:var(--border-strong); border-radius:20px; transition:.15s; cursor:pointer;}
+.switch .track:before{content:"";position:absolute;width:14px;height:14px;left:2.5px;top:2.5px;background:#fff;border-radius:50%;transition:.15s;}
+.switch input:checked + .track{background:var(--good);}
+.switch input:checked + .track:before{transform:translateX(15px);}
+.settings-table input[type=text]{padding:5px 8px; font-size:12px; border-radius:4px; border:1px solid var(--border-strong); background:var(--surface); color:var(--text-primary); width:100%;}
+code, .mono{font-family:ui-monospace,Consolas,Menlo,monospace; font-size:11.6px; background:var(--surface-2); padding:1px 5px; border-radius:4px; color:var(--text-primary);}
+.diag-log{background:var(--surface-2); border-radius:var(--radius-sm); padding:10px 12px; font-size:11.5px; font-family:ui-monospace,Consolas,monospace; white-space:pre-wrap; max-height:180px; overflow-y:auto; color:var(--text-secondary);}
+@media (max-width:880px){
+  .sidebar{position:fixed; left:-238px; z-index:40; transition:left .18s;} .sidebar.open{left:0;}
+  .detail-grid{grid-template-columns:1fr;}
+}
+</style>
+<div id="app"></div>
+<div id="tooltip-root"></div>
+<script>
+"use strict";
+const RDW_DATASET_ID = "m9d7-ebf2";
+const RDW_BASE = "https://opendata.rdw.nl/resource/" + RDW_DATASET_ID + ".json";
+const RDW_FUEL_BASE = "https://opendata.rdw.nl/resource/8ys7-d773.json"; // Gekentekende_voertuigen_brandstof
+
+/* =====================================================================
+   Sectie 1b: classificatie-engine (machine-classification.js embedded)
+   Bronbestand: classification/machine-classification.js — dat bestand is
+   de canonieke bron (Node-testbaar, CSV-regressietestbaar buiten de app);
+   hier ingesloten zodat de dashboard-app zelfstandig blijft werken (ook als
+   losstaande Artifact-preview, die geen externe <script src> toestaat).
+   Bij wijzigingen: eerst classification/machine-classification.js aanpassen
+   en testen (node classification/machine-classification.test.js), dan
+   opnieuw hier embedden.
+   ===================================================================== */
+"use strict";
+/* =============================================================================
+   MACHINE CLASSIFICATION ENGINE — RDW bouwmachine-classificatie
+   =============================================================================
+   Centrale, onderhoudbare classificatielaag voor het SMT Market Intelligence
+   dashboard. Draait zowel in de browser (window.MachineClassification) als in
+   Node (module.exports) — zelfde bestand, geen build-stap, geen dependencies.
+
+   Waarom één bestand i.p.v. een map met losse modules: de rest van de
+   applicatie (smt-market-intelligence.html) is bewust een enkel zelfstandig
+   HTML-bestand zonder build-tooling (o.a. omdat het ook als losstaande
+   Artifact-preview gepubliceerd moet kunnen worden, wat externe <script src>
+   niet toestaat). Een map met 6+ los-geladen bestanden zou die aanpak breken.
+   In plaats daarvan is dit ÉÉN module met de door de opdracht gevraagde
+   conceptuele scheiding (aliases / model-patterns / exclusions / product-
+   groups / fuel-types) als duidelijk gemarkeerde secties hieronder, en wordt
+   de HTML-app opgebouwd door dit bestand te embedden (zie "Sectie X: sync"
+   in smt-market-intelligence.html voor de exacte procedure).
+
+   Regelselectie: elke regel heeft een expliciete numerieke "priority". Bij
+   meerdere matchende regels voor hetzelfde merk wint de HOOGSTE priority
+   (bij gelijke priority: de regel die het EERST is geregistreerd). Dit is
+   een bewuste fix t.o.v. een eerdere versie van dit dashboard die de
+   "langste regex-broncode" liet winnen — daardoor won een generieke
+   \d{2,3}-vangnetregel per ongeluk vaak van een specifiek uitgeschreven
+   modelnummer, puur omdat "\\d{2,3}" als tekst langer is dan een letterlijk
+   getal als "230". Alle regels in dit bestand zijn hierdoor voorzien van een
+   priority die correspondeert met hun specificiteit:
+     100  expliciete uitsluiting (altijd eerst gecheckt, wint altijd)
+      20  exact bekend modelnummer/serie, hoge betrouwbaarheid ("Hoog")
+      10  bredere prefix-herkenning, middelmatige betrouwbaarheid ("Middel")
+   ========================================================================== */
+
+(function (root) {
+
+/* ===========================================================================
+   SECTIE 1 — Tekstnormalisatie
+   =========================================================================== */
+function normalizeText(s) {
+  if (s == null) return "";
+  return String(s)
+    .toUpperCase()
+    .normalize("NFKD").replace(/[̀-ͯ]/g, "") // Ä/Ö/Ü etc -> A/O/U (Schäffer -> SCHAFFER)
+    .replace(/[‐-―]/g, "-")                  // en/em-dash varianten -> gewone hyphen
+    .replace(/[.·]/g, ".")                        // varianten van een punt normaliseren
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+// RDW slaat handelsbenaming soms mét herhaald merk op (bv. "SENNEBOGEN 340G",
+// "WEIDEMANN 1280", "KRAMER 5035", "LIUGONG 820TE") — patronen zijn met ^
+// verankerd op het modelnummer, dus dat voorvoegsel moet eerst weg.
+function stripBrandPrefix(canonicalLabelN, aliasesN, modelN) {
+  const candidates = [canonicalLabelN].concat(aliasesN || []);
+  for (const c of candidates) {
+    const esc = c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const stripped = modelN.replace(new RegExp("^" + esc + "\\s+"), "");
+    if (stripped !== modelN) return stripped;
+  }
+  return modelN;
+}
+
+/* ===========================================================================
+   SECTIE 2 — Canonieke merken + aliases (RDW "merk"-schrijfwijzen)
+   ===========================================================================
+   group: "SMT" (Volvo CE, Sennebogen) of "Concurrent".
+   strictModelMatch: merken waarvan de RDW "merk"-waarde OOK niet-relevante
+   voertuigen omvat (auto's, trucks, landbouwtractoren) — bij zulke merken
+   telt een record NOOIT mee als er geen enkel modelpatroon matcht (in
+   plaats van als laag-vertrouwen "Overig"), om te voorkomen dat bv. Volvo
+   personenauto's of Kubota-landbouwtractoren de SMT-cijfers vervuilen.
+   brandGroupKey: optionele groepering voor trendanalyse (bv. Develon en
+   Doosan blijven los vindbaar, maar kunnen samen als "DEVELON_DOOSAN"-lijn
+   getoond worden; Mecalac/Ahlmann analoog).
+   ========================================================================= */
+const BRANDS = [
+  // --- bestaande SMT-merken ---
+  { id:"VOLVO_CE",   label:"Volvo CE",     group:"SMT",       aliases:["VOLVO"],                                   colorVar:"--s1", active:true, strictModelMatch:true },
+  { id:"SENNEBOGEN", label:"Sennebogen",   group:"SMT",       aliases:["SENNEBOGEN"],                              colorVar:"--s2", active:true },
+
+  // --- bestaande concurrenten ---
+  { id:"CAT",       label:"Caterpillar", group:"Concurrent", aliases:["CATERPILLAR"],                              colorVar:"--s3", active:true },
+  { id:"LIEBHERR",  label:"Liebherr",    group:"Concurrent", aliases:["LIEBHERR"],                                 colorVar:"--s4", active:true },
+  { id:"HITACHI",   label:"Hitachi",     group:"Concurrent", aliases:["HITACHI"],                                  colorVar:"--s5", active:true },
+  { id:"KOMATSU",   label:"Komatsu",     group:"Concurrent", aliases:["KOMATSU"],                                  colorVar:"--s6", active:true },
+  { id:"DEVELON",   label:"Develon",     group:"Concurrent", aliases:["DEVELON"],                                  colorVar:"--s7", active:true, brandGroupKey:"DEVELON_DOOSAN" },
+  // Doosan/Hyundai: GEEN strictModelMatch. In tegenstelling tot Volvo (waar
+  // "VOLVO" in RDW overwegend auto's/trucks is) is het RDW-merk DOOSAN/HYUNDAI
+  // binnen de al voertuigsoort-gefilterde scope overwegend écht construction-
+  // materieel; strictModelMatch bleek bij regressietest tegen de live CSV
+  // honderden reëele, alleen-nog-niet-herkende machines te laten verdwijnen
+  // (i.p.v. als laag-vertrouwen Overig te blijven staan) — expliciete
+  // uitsluitingen (vorkheftruck-codes) volstaan hier.
+  { id:"DOOSAN",    label:"Doosan",      group:"Concurrent", aliases:["DOOSAN","DAEWOO"],  colorVar:"--s-other", active:true, brandGroupKey:"DEVELON_DOOSAN" },
+  { id:"HYUNDAI",   label:"Hyundai",     group:"Concurrent", aliases:["HYUNDAI"],          colorVar:"--s-other", active:true },
+  { id:"SANY",      label:"Sany",        group:"Concurrent", aliases:["SANY"],                                     colorVar:"--s-other", active:true },
+  { id:"FUCHS",     label:"Fuchs",       group:"Concurrent", aliases:["FUCHS","TEREX-FUCHS","TEREX FUCHS"],        colorVar:"--s-other", active:true },
+  { id:"JCB",       label:"JCB",         group:"Concurrent", aliases:["JCB"],                                      colorVar:"--s-other", active:true },
+  { id:"CASE",      label:"Case",        group:"Concurrent", aliases:["CASE"],                                     colorVar:"--s-other", active:true },
+  { id:"KOBELCO",   label:"Kobelco",     group:"Concurrent", aliases:["KOBELCO"],                                  colorVar:"--s-other", active:true },
+
+  // --- nieuwe concurrenten: hoge prioriteit ---
+  { id:"ATLAS",         label:"Atlas",          group:"Concurrent", aliases:["ATLAS"],                                          colorVar:"--s-other", active:true },
+  { id:"TAKEUCHI",      label:"Takeuchi",       group:"Concurrent", aliases:["TAKEUCHI"],                                       colorVar:"--s-other", active:true },
+  { id:"WACKERNEUSON",  label:"Wacker Neuson",  group:"Concurrent", aliases:["WACKER NEUSON","NEUSON"],                         colorVar:"--s-other", active:true },
+  { id:"BOBCAT",        label:"Bobcat",         group:"Concurrent", aliases:["BOBCAT","MELROE"],                                colorVar:"--s-other", active:true },
+  // Kubota's RDW-merk omvat vooral landbouwtractoren (B/BX-serie) en utility-
+  // voertuigen (RTV/STV) — géén bouwmachines. strictModelMatch voorkomt dat
+  // die de cijfers vervuilen; alleen KX/U/R/KC/KTH-modellen tellen mee.
+  { id:"KUBOTA",        label:"Kubota",         group:"Concurrent", aliases:["KUBOTA"],           strictModelMatch:true,       colorVar:"--s-other", active:true },
+  { id:"GIANT",         label:"Giant",          group:"Concurrent", aliases:["GIANT","TOBROCO","TOBROCO-GIANT","GIANT TOBROCO"], colorVar:"--s-other", active:true },
+  { id:"MANITOU",       label:"Manitou",        group:"Concurrent", aliases:["MANITOU"],                                        colorVar:"--s-other", active:true },
+  { id:"MERLO",         label:"Merlo",          group:"Concurrent", aliases:["MERLO"],                                          colorVar:"--s-other", active:true },
+
+  // --- nieuwe concurrenten: overig ---
+  // Yanmar's RDW-merk is overwegend landbouwtractoren (SA/YM/BX-serie) —
+  // strictModelMatch, alleen de V-wielladerserie (en evt. VIO-rupsserie)
+  // wordt herkend.
+  { id:"YANMAR",    label:"Yanmar",    group:"Concurrent", aliases:["YANMAR"],           strictModelMatch:true, colorVar:"--s-other", active:true },
+  { id:"MECALAC",   label:"Mecalac",   group:"Concurrent", aliases:["MECALAC","AHLMANN"],                        colorVar:"--s-other", active:true },
+  { id:"KRAMER",    label:"Kramer",    group:"Concurrent", aliases:["KRAMER","KRAMER ALLRAD"],                   colorVar:"--s-other", active:true },
+  { id:"WEIDEMANN", label:"Weidemann", group:"Concurrent", aliases:["WEIDEMANN"],                                colorVar:"--s-other", active:true },
+  { id:"SCHAFFER",  label:"Schäffer",  group:"Concurrent", aliases:["SCHAFFER","SCHAEFFER","SCHÄFFER"],          colorVar:"--s-other", active:true },
+  { id:"MAGNI",     label:"Magni",     group:"Concurrent", aliases:["MAGNI"],                                    colorVar:"--s-other", active:true },
+  { id:"DIECI",      label:"Dieci",     group:"Concurrent", aliases:["DIECI"],           strictModelMatch:true, colorVar:"--s-other", active:true },
+  { id:"LIUGONG",    label:"LiuGong",   group:"Concurrent", aliases:["LIUGONG","LIU GONG","GUANGXI LIUGONG"],    colorVar:"--s-other", active:true },
+  // XCMG's zichtbare RDW-modellen zijn overwegend XC9xx-EV-codes die op
+  // elektrische heftrucks lijken (zelfde patroon als Cat Lift Trucks
+  // EP/DP/GP) — strictModelMatch, alleen bevestigde wiellader-prefixen
+  // (LW/ZL) tellen mee totdat er meer zekerheid is over de rest.
+  { id:"XCMG",       label:"XCMG",      group:"Concurrent", aliases:["XCMG"],            strictModelMatch:true, colorVar:"--s-other", active:true },
+];
+function brandById(id) { return BRANDS.find(function (b) { return b.id === id; }); }
+function brandByAlias(merkN) {
+  return BRANDS.find(function (b) { return b.aliases.indexOf(merkN) !== -1; });
+}
+
+/* ===========================================================================
+   SECTIE 3 — Productgroepen
+   =========================================================================== */
+const PRODUCT_GROUPS = [
+  "Wielladers", "Mobiele graafmachines", "Rupsgraafmachines", "Overslagmachines",
+  "Knikdumpers", "Dumpers", "Verreikers", "Roterende verreikers",
+  "Compact materieel", "Rupsdozers", "Overig", "Onbekend",
+];
+
+/* ===========================================================================
+   SECTIE 4 — Regel-engine
+   =========================================================================== */
+const RULES = [];     // { brandId, regex, source, productGroup, status, confidence, priority }
+const EXCLUSIONS = []; // { brandId, regex, source, reason }
+
+function addRule(brandId, pattern, groep, confidence, priority) {
+  const brand = brandById(brandId);
+  RULES.push({
+    brandId: brandId,
+    regex: new RegExp(pattern, "i"),
+    source: pattern,
+    productGroup: groep,
+    status: brand ? brand.group : "Concurrent",
+    confidence: confidence || "Middel",
+    priority: priority == null ? 10 : priority,
+  });
+}
+function addHighRule(brandId, pattern, groep) { addRule(brandId, pattern, groep, "Hoog", 20); }
+function addMidRule(brandId, pattern, groep) { addRule(brandId, pattern, groep, "Middel", 10); }
+function addExclusion(brandId, pattern, reason) {
+  EXCLUSIONS.push({ brandId: brandId, regex: new RegExp(pattern, "i"), source: pattern, reason: reason });
+}
+// Helper voor reeksen met generatie/aandrijvingssuffix-tolerantie (optioneel
+// 1 letter + tot 3 alfanumeriek, met of zonder spatie/koppelteken ervoor) —
+// dekt bv. Caterpillar 906M, Liebherr A916 LITRONIC (via bredere variant),
+// Sennebogen 835M, Volvo L120H2.
+function suffixPattern(prefix, num) {
+  return "^" + prefix + "\\s?" + num + "(\\s?[A-Z][A-Z0-9\\-]{0,3})?\\b";
+}
+// Bredere suffix-tolerantie voor merken met langere tekstuele suffixen
+// (Liebherr "LITRONIC", "COMPACT LITRONIC"; Mecalac "-NG"): staat een los
+// woord van letters/cijfers/koppeltekens toe, evt. met spatie ervoor.
+function wideSuffixPattern(prefix, num) {
+  return "^" + prefix + "\\s?" + num + "(\\s?[A-Z][A-Z0-9\\- ]{0,20})?\\b";
+}
+function addRangeHigh(brandId, prefix, nums, groep) {
+  nums.forEach(function (n) { addHighRule(brandId, suffixPattern(prefix, n), groep); });
+}
+function addRangeWideHigh(brandId, prefix, nums, groep) {
+  nums.forEach(function (n) { addHighRule(brandId, wideSuffixPattern(prefix, n), groep); });
+}
+
+/* ===========================================================================
+   SECTIE 5 — Merkregels: Volvo CE (SMT)
+   =========================================================================== */
+["20","25","30","35","45","50","60","70","90","110","120","150","180","200","220","250","260","350"].forEach(function (n) {
+  addHighRule("VOLVO_CE", "^L\\s?" + n + "(\\s?(H2|H3|H4|HS|H|K|F|GZ|ELECTRIC|EL|HL))?\\b", "Wielladers");
+});
+// Elektrische compacte wielladers (L20/L25/L120 Electric-lijn) staan in RDW
+// regelmatig met een "J"-voorvoegsel geregistreerd (JL25H, JL20H, JYL120),
+// soms zelfs met verwisselde letters (LJ120H) — ontdekt via de elektrisch-
+// detectie-audit (48 live registraties, ALLEMAAL elektrisch, geen enkele
+// tegenvoorbeeld). Zonder dit patroon vielen deze volledig buiten Volvo CE
+// (strictModelMatch sluit niet-matchende modellen hard uit i.p.v. Overig).
+["20","25","120"].forEach(function (n) {
+  addHighRule("VOLVO_CE", "^(JL|LJ|JYL)\\s?" + n + "(\\s?[A-Z][A-Z0-9]{0,3})?\\b", "Wielladers");
+});
+addMidRule("VOLVO_CE", "^(JL|LJ|JYL)\\s?\\d{2,3}([A-Z0-9]{0,3})?\\b", "Wielladers");
+["EW55","EW60","EW80","EW100","EW140","EW145","EW160","EW170","EW180","EW190","EW210",
+ "EWR80","EWR100","EWR130","EWR145","EWR150","EWR170","EWR200","EWR230","EWR260"].forEach(function (m) {
+  addHighRule("VOLVO_CE", "^" + m + "(\\s?[A-Z])?\\b", "Mobiele graafmachines");
+});
+["15","18","20","25","35","40","50","55","60","80","130","140","160","180","200","210","220","230","250","300","350","380","400","480","500","550","700","750","950"].forEach(function (n) {
+  addHighRule("VOLVO_CE", "^EC\\s?" + n + "(\\s?[A-Z0-9]{0,3})?\\b", "Rupsgraafmachines");
+});
+["15","18","20","25","28","35","40","50","58","88","145","235","305","355"].forEach(function (n) {
+  addHighRule("VOLVO_CE", "^ECR\\s?" + n + "(\\s?[A-Z0-9]{0,3})?\\b", "Rupsgraafmachines");
+});
+["20","25","30","35","40","45","50","60"].forEach(function (n) {
+  addHighRule("VOLVO_CE", "^A\\s?" + n + "(\\s?[FGHJ])?\\b", "Knikdumpers");
+});
+addMidRule("VOLVO_CE", "^L\\s?\\d{2,3}([A-Z0-9]{0,3})?\\b", "Wielladers");
+addMidRule("VOLVO_CE", "^ECR\\s?\\d{2,3}([A-Z0-9]{0,3})?\\b", "Rupsgraafmachines");
+addMidRule("VOLVO_CE", "^EC\\s?\\d{2,3}([A-Z0-9]{0,3})?\\b", "Rupsgraafmachines");
+addMidRule("VOLVO_CE", "^EWR?\\s?\\d{2,3}([A-Z0-9]{0,2})?\\b", "Mobiele graafmachines");
+addMidRule("VOLVO_CE", "^A\\s?\\d{2}([A-Z]{0,2})?\\b", "Knikdumpers");
+
+/* ===========================================================================
+   SECTIE 5 — Merkregels: Sennebogen (SMT) + kraan-uitsluiting
+   ===========================================================================
+   Sennebogen wordt gebruikt voor overslagmachines. Kranen (telescoop/rups/
+   duty-cycle/haven) delen soms nummerruimte met materieel qua CIJFER, maar
+   niet als volledige reeks — expliciete uitsluiting per bekende kraanserie
+   i.p.v. één simpele "8xx = overslag"-regel (die bv. een 613 of 683 kraan
+   ten onrechte als overslagmachine zou tellen).
+   ========================================================================= */
+["817","818","821","822","825","830","835","840","850","855","860","870","875","880","895"].forEach(function (n) {
+  addHighRule("SENNEBOGEN", "^" + n + "(\\s?(E|G|R|M|EQ|HYBRID|ELECTRIC))?\\b", "Overslagmachines");
+});
+[
+  "613","643","653","673","683","6103","6113","6133","6203",  // telescoopkranen
+  "1100","2200","4400","5500","7700",                          // rupskranen
+  "630","640","655","670","6100","6140","6220","6300",         // duty-cycle kranen
+  "9300",                                                      // havenkranen (2200 HMC valt onder "2200")
+].forEach(function (n) {
+  addExclusion("SENNEBOGEN", "^" + n + "(\\s?[A-Z][A-Z0-9\\-]{0,5})?\\b", "Sennebogen Crane Line (geen overslagmachine)");
+});
+addExclusion("SENNEBOGEN", "FENDT", "RDW-datafout: Fendt is geen Sennebogen-product");
+addMidRule("SENNEBOGEN", ".*", "Overslagmachines"); // merk is vrijwel uitsluitend materieel
+
+/* ===========================================================================
+   SECTIE 5 — Merkregels: bestaande concurrenten, gecorrigeerd
+   =========================================================================== */
+// --- Caterpillar ---
+["902","906","908","910","914","916","918","920","922","924","926","928","930","938","950","962","966","972","980","986","988"].forEach(function (n) {
+  addHighRule("CAT", suffixPattern("", n), "Wielladers");
+});
+["308","311","313","315","320","323","325","330","336","340","349","352","374"].forEach(function (n) {
+  addHighRule("CAT", suffixPattern("", n), "Rupsgraafmachines");
+});
+["312","313","314","315","316","317","318","319","320","322"].forEach(function (n) {
+  addHighRule("CAT", suffixPattern("M\\s?", n), "Mobiele graafmachines");
+});
+["725","730","735","740","745","750"].forEach(function (n) {
+  addHighRule("CAT", suffixPattern("", n), "Dumpers");
+});
+addHighRule("CAT", "MH\\d{2,3}", "Overslagmachines");
+addHighRule("CAT", "^TH\\s?\\d{2,3}[A-Z0-9]{0,3}\\b", "Verreikers");
+addHighRule("CAT", "^IT\\s?\\d{1,3}[A-Z0-9]{0,3}\\b", "Wielladers");
+["201","203","204","206","209","210","211","212","213"].forEach(function (n) {
+  addHighRule("CAT", suffixPattern("", n), "Rupsgraafmachines");
+});
+addHighRule("CAT", "^30[0-9]\\.\\d{1,2}[A-Z0-9]{0,4}\\b", "Rupsgraafmachines");
+addHighRule("CAT", "^D\\s?\\d{1,2}[A-Z0-9]{0,3}\\b", "Rupsdozers");
+// Cat Lift Trucks: EP (elektrisch)/DP (diesel)/GP (LPG) vorkheftrucks — andere
+// divisie dan grondverzet, bevestigd via RDW-steekproef (~255/2000 records).
+["EP","DP","GP"].forEach(function (p) {
+  addExclusion("CAT", "^" + p + "\\s?\\d{1,3}[A-Z0-9]{0,4}\\b", "Cat Lift Trucks vorkheftruck, geen grondverzetmaterieel");
+});
+
+// --- Liebherr --- (audit: A9xx/A3xx mobiele graafmachines, L5xx wielladers;
+// real-data toont zware "LITRONIC"/"COMPACT LITRONIC"-suffixen en spaties
+// tussen letter en nummer, bv. "A 914 LITRONIC" — wideSuffixPattern dekt dit)
+["312","314","900","901","902","910","912","914","916","918","920","922","924","926","928"].forEach(function (n) {
+  addRangeWideHigh("LIEBHERR", "A", [n], "Mobiele graafmachines");
+});
+["506","507","508","509","514","522","526","538","542","546","550","556","566","576","580","586"].forEach(function (n) {
+  addRangeWideHigh("LIEBHERR", "L", [n], "Wielladers");
+});
+["9","913","914","917","920","922","926","930","936","943","950","960","970","980"].forEach(function (n) {
+  addRangeWideHigh("LIEBHERR", "R", [n], "Rupsgraafmachines");
+});
+["230","235","240"].forEach(function (n) { addRangeWideHigh("LIEBHERR", "TA", [n], "Dumpers"); });
+addHighRule("LIEBHERR", "^LH\\s?\\d{2,3}", "Overslagmachines");
+addHighRule("LIEBHERR", "^MH\\s?\\d{2,3}", "Overslagmachines");
+addMidRule("LIEBHERR", "^A\\s?\\d{3}([A-Z ][A-Z0-9\\- ]{0,20})?\\b", "Mobiele graafmachines");
+addMidRule("LIEBHERR", "^L\\s?5\\d\\d([A-Z ][A-Z0-9\\- ]{0,20})?\\b", "Wielladers");
+
+// --- Hitachi --- (audit: ZX...W mobiele graafmachine, ZW... wiellader)
+["17","26","38","48","55","85","130","135","160","190","210","225","250","290","330","350","470","670","870"].forEach(function (n) {
+  addHighRule("HITACHI", "^ZX\\s?" + n + "\\s?W([A-Z0-9\\-]{0,6})?\\b", "Mobiele graafmachines");
+});
+["100","120","140","150","180","220","250","310","320","330"].forEach(function (n) {
+  addHighRule("HITACHI", suffixPattern("ZW", n), "Wielladers");
+});
+addMidRule("HITACHI", "^ZX\\s?\\d{2,3}\\s?W([A-Z0-9\\-]{0,6})?\\b", "Mobiele graafmachines");
+addMidRule("HITACHI", "^ZX\\s?\\d{2,3}([A-Z0-9\\-]{0,6})?\\b", "Rupsgraafmachines"); // zonder W-suffix = rups
+
+// --- Komatsu --- (audit: PW... mobiele graafmachine, WA... wiellader)
+["100","150","200","270","320","380","430","470","480","500","600","70"].forEach(function (n) {
+  addHighRule("KOMATSU", "^WA\\s?" + n + "(\\-[0-9]{1,2})?([A-Z0-9]{0,3})?\\b", "Wielladers");
+});
+["148","158","180"].forEach(function (n) {
+  addHighRule("KOMATSU", suffixPattern("PW", n), "Mobiele graafmachines");
+});
+["30","55","88","138","160","210","240","290","350","360","390","450","490","530","650","800","1250"].forEach(function (n) {
+  addHighRule("KOMATSU", suffixPattern("PC", n), "Rupsgraafmachines");
+});
+["300","400"].forEach(function (n) { addHighRule("KOMATSU", suffixPattern("HM", n), "Dumpers"); });
+addMidRule("KOMATSU", "^WA\\s?\\d{2,3}(\\-[0-9]{1,2})?([A-Z0-9]{0,3})?\\b", "Wielladers");
+addMidRule("KOMATSU", "^PW\\s?\\d{2,3}([A-Z0-9]{0,3})?\\b", "Mobiele graafmachines");
+addMidRule("KOMATSU", "^PC\\s?\\d{2,4}([A-Z0-9]{0,3})?\\b", "Rupsgraafmachines");
+// Komatsu Forklift/UniCarriers: FD (diesel)/FG (LPG)/FB (elektrisch) vorkheftrucks.
+// FB toegevoegd na regressietest tegen 91.008 live RDW-registraties (elektrisch-
+// detectie-audit): FB18M/FB15M/FB25H-codes zijn overwegend Elektriciteit — dus
+// juist HIER extra belangrijk om uit te sluiten, anders vervuilen heftrucks de
+// "elektrisch aandeel"-cijfers van Komatsu se échte grondverzetmaterieel.
+["FD","FG","FB"].forEach(function (p) {
+  addExclusion("KOMATSU", "^" + p + "\\s?\\d{1,3}[A-Z0-9\\- ]{0,8}\\b", "Komatsu Forklift vorkheftruck, geen grondverzetmaterieel");
+});
+
+// --- Develon / Doosan --- (audit: DX...W mobiele graafmachine, DL... wiellader)
+["DEVELON","DOOSAN"].forEach(function (brandId) {
+  ["57","62","85","100","140","160","170","190","210","225","235","300","350","380","420","480","530","700"].forEach(function (n) {
+    addHighRule(brandId, "^DX\\s?" + n + "\\s?W(E)?(\\-[0-9]{1,2})?([A-Z0-9]{0,3})?\\b", "Mobiele graafmachines");
+  });
+  ["17","35","62","85","140","160","180","225","235","300","350","380","420","480","530","700"].forEach(function (n) {
+    addHighRule(brandId, "^DX\\s?" + n + "(\\-[0-9]{1,2})?([A-Z0-9]{0,3})?\\b", "Rupsgraafmachines");
+  });
+  ["65","200","220","250","280","300","330","350","380","420","450","550"].forEach(function (n) {
+    addHighRule(brandId, suffixPattern("DL", n), "Wielladers");
+  });
+  addMidRule(brandId, "^DX\\s?\\d{2,3}\\s?W(E)?(\\-[0-9]{1,2})?([A-Z0-9]{0,3})?\\b", "Mobiele graafmachines");
+  addMidRule(brandId, "^DX\\s?\\d{2,3}(\\-[0-9]{1,2})?([A-Z0-9]{0,3})?\\b", "Rupsgraafmachines");
+  addMidRule(brandId, "^DL\\s?\\d{2,3}([A-Z0-9]{0,3})?\\b", "Wielladers");
+});
+addMidRule("DEVELON", "(DEVELON|DOOSAN)\\s?DL\\d{2,3}", "Wielladers");
+// Wiel-skidsteer/compact loader B-serie (bv. "B50X-7")
+["30","35","40","50","60","70"].forEach(function (n) {
+  addMidRule("DOOSAN", "^B" + n + "X(C)?(\\-[0-9]{1,2})?\\b", "Compact materieel");
+});
+// Historisch: Daewoo. RDW-merk DAEWOO is overwegend personenauto's (via de
+// voertuigsoort-filter in de live-fetchlaag al uitgesloten, buiten scope van
+// deze module) én Daewoo/Doosan-vorkheftrucks (D../G..-codes: D25S, D30GP,
+// "D30 G", G25GP — zelfde D/G-forklift-conventie als Cat/Komatsu, maar met
+// meer suffixvarianten dan alleen "S"). Alleen de MEGA-wielladerserie is
+// relevant grondverzetmaterieel. Regressietest tegen de live CSV-export
+// bevestigde dat deze vorkheftruck-codes ook ONDER merk "DOOSAN" zelf
+// voorkomen (niet alleen historisch via Daewoo) — vandaar dat de uitsluiting
+// op het hele merk (incl. de Daewoo-alias) van toepassing is, niet alleen op
+// de Daewoo-alias.
+addHighRule("DOOSAN", "^MEGA\\s?\\d{2,4}\\b", "Wielladers");
+addExclusion("DOOSAN", "^[DG]\\s?\\d{2}(S|GP|G)?(C)?(\\-[0-9]{1,2})?\\b", "Daewoo/Doosan vorkheftruck-serie, geen grondverzetmaterieel");
+
+// --- Hyundai --- (audit: HW.../ROBEX ...W mobiele graafmachine)
+["140","180","210","220","235","250","300","330","380","480","500","800"].forEach(function (n) {
+  addHighRule("HYUNDAI", "^R\\s?" + n + "\\s?W(\\-[0-9])?([A-Z0-9]{0,3})?\\b", "Mobiele graafmachines");
+  addHighRule("HYUNDAI", "^ROBEX\\s?" + n + "\\s?W(\\-[0-9])?([A-Z0-9]{0,3})?\\b", "Mobiele graafmachines");
+});
+["30","33","35","55","60","62","70","75","80","85","95","140","145","160"].forEach(function (n) {
+  addHighRule("HYUNDAI", suffixPattern("HW", n), "Mobiele graafmachines");
+});
+["730","740","757","770","940","955","960","970","975","980"].forEach(function (n) { addHighRule("HYUNDAI", suffixPattern("HL", n), "Wielladers"); });
+// Nieuwere generatie rupsgraafmachines (HX-serie, verving R-serie)
+["30","55","85","140","145","160","220","235","260","300","330","380","480","520"].forEach(function (n) {
+  addHighRule("HYUNDAI", suffixPattern("HX", n), "Rupsgraafmachines");
+});
+// Mini-rupsgraafmachines: XXD/XXBH/XXDA/XXL-generatiecode (bv. 30D-9, 33D-7E,
+// 30BH-9, 50DA-9, 30L-7) — géén W-suffix, dus per definitie rups i.p.v. wiel.
+addMidRule("HYUNDAI", "^\\d{2,3}(D|BH|DA|L)(A)?\\-\\d{1,2}[A-Z]?\\b", "Rupsgraafmachines");
+// RDW laat de R/ROBEX-prefix soms weg (bv. "140W-9" i.p.v. "R140W-9" of
+// "ROBEX 140W-9") — bevestigd via live CSV-steekproef.
+addMidRule("HYUNDAI", "^\\d{2,3}\\s?W(\\-[0-9]{1,2})?[A-Z]{0,2}\\b", "Mobiele graafmachines");
+addMidRule("HYUNDAI", "^HW\\s?\\d{2,3}([A-Z0-9]{0,3})?\\b", "Mobiele graafmachines");
+addMidRule("HYUNDAI", "^R\\s?\\d{2,3}\\s?W([A-Z0-9\\-]{0,4})?\\b", "Mobiele graafmachines");
+// Hyundai-heftrucks (HDF-serie diesel) — andere divisie, geen grondverzet.
+addExclusion("HYUNDAI", "^H[DL]F\\s?\\d{2,3}", "Hyundai heftruck-serie (diesel/LPG), geen grondverzetmaterieel");
+// Hyundai heftrucks hebben ook een kale nummer+B/BT-notatie (bv. "50B-9",
+// "18BT-9U", "20BT-9U") — ontdekt via de elektrisch-detectie-audit: deze
+// codes zijn overwegend Elektriciteit. Anker op B/BT direct na het nummer
+// zodat dit NIET overlapt met de mini-graafmachine-notatie hierboven, die
+// altijd D/BH/DA/L als suffix gebruikt (nooit kale B/BT).
+addExclusion("HYUNDAI", "^\\d{2,3}BT?\\-?\\d{1,2}[A-Z]{0,3}\\b", "Hyundai heftruck-serie (elektrisch), geen grondverzetmaterieel");
+// Historische personenauto-modellen die soms binnen de gefilterde
+// voertuigsoort-categorieën opduiken (bv. Galloper) blijven bewust
+// ongeclassificeerd zolang er geen modelpatroon voor bestaat — géén
+// strictModelMatch nodig, ze vallen simpelweg terug op "Overig"/laag
+// vertrouwen, net als elk ander niet-herkend Hyundai-model.
+
+// --- Sany --- (audit: SY...W mobiele graafmachine, STH... verreiker)
+["16","35","50","75","135","155","215","235","305","365","500"].forEach(function (n) {
+  addHighRule("SANY", "^SY\\s?" + n + "\\s?W([A-Z0-9\\-]{0,4})?\\b", "Mobiele graafmachines");
+  addHighRule("SANY", suffixPattern("SY", n), "Rupsgraafmachines");
+});
+["405","408","409","413"].forEach(function (n) { addHighRule("SANY", suffixPattern("SW", n), "Wielladers"); });
+addHighRule("SANY", "^STH\\s?\\d{3,4}\\b", "Verreikers");
+addMidRule("SANY", "^SY\\s?\\d{2,3}\\s?W([A-Z0-9\\-]{0,4})?\\b", "Mobiele graafmachines");
+
+// --- Fuchs ---
+addHighRule("FUCHS", "^MHL\\s?\\d{2,3}\\b", "Overslagmachines");
+addHighRule("FUCHS", "^F\\s?\\d{3,4}[A-Z]?\\b", "Overslagmachines"); // eigen F-serie (bv. F950H)
+addMidRule("FUCHS", "(TEREX\\s?)?FUCHS", "Overslagmachines");
+
+// --- JCB --- (audit: HYDRADIG/HD110W/110W mobiele graafmachine, SITEDUMPER)
+addHighRule("JCB", "^HYDRADIG(\\s?PLUS)?(\\s?110\\s?W)?\\b", "Mobiele graafmachines");
+addHighRule("JCB", "^HD\\s?110\\s?W[A-Z0-9 ]{0,6}\\b", "Mobiele graafmachines");
+addHighRule("JCB", "^110\\s?W\\b", "Mobiele graafmachines");
+addHighRule("JCB", "SITEDUMPER", "Dumpers");
+["403","409","411","414","417","419","437","457"].forEach(function (n) {
+  addHighRule("JCB", suffixPattern("", n), "Wielladers");
+});
+addHighRule("JCB", "JS\\s?\\d{2,3}", "Rupsgraafmachines");
+addHighRule("JCB", "(3CX|4CX|5CX|1CX)", "Compact materieel");
+addHighRule("JCB", "^\\d{3}\\s?T?(-70|-60)?\\b", "Verreikers"); // bv. 542-70, 531-70, 536-60
+addHighRule("JCB", "TM\\s?\\d{3}[A-Z]?( SV)?\\b", "Verreikers"); // TM320S, TM320S SV
+
+// --- Case --- (audit: 321/521/621/721/821/921 wiellader)
+["321","521","621","721","821","921","1021"].forEach(function (n) {
+  addHighRule("CASE", suffixPattern("", n), "Wielladers");
+});
+addHighRule("CASE", "CX\\s?\\d{2,3}", "Rupsgraafmachines");
+// Case skid steer/compact ("XL"-serie: 445XL/1394 etc.) en verreikers ("585 XL"
+// e.d. worden bij Case ook als telehandler verkocht) blijven bewust Overig
+// (te generiek om zonder verdere validatie hard te classificeren) — zie
+// twijfelgevallen in eindrapport.
+
+// --- Kobelco ---
+["17","55","85","140","210","220","260","300","350","500"].forEach(function (n) {
+  addHighRule("KOBELCO", suffixPattern("SK", n), "Rupsgraafmachines");
+});
+
+/* ===========================================================================
+   SECTIE 6 — Merkregels: nieuwe concurrenten
+   ===========================================================================
+   Patronen hieronder zijn gebouwd op basis van live RDW-steekproeven (echte
+   handelsbenaming-samples per merk), niet alleen op de audit-hints — zie
+   sessie-analyse voor de brondata. Waar de data ambigu is (mogelijk andere
+   productlijn, te weinig voorbeelden) is dat expliciet als commentaar
+   vermeld i.p.v. geraden.
+   ========================================================================= */
+
+// --- ATLAS: wheeled excavators (1xxx/xxxW) + material handlers (AR-serie) ---
+["1004","1104","1204","1304","1404","1504","1604"].forEach(function (n) {
+  addHighRule("ATLAS", suffixPattern("", n), "Mobiele graafmachines");
+});
+["140","150","160","180","200"].forEach(function (n) {
+  addHighRule("ATLAS", suffixPattern("", n + "W"), "Mobiele graafmachines");
+});
+addHighRule("ATLAS", "^AR\\s?\\d{2,3}[A-Z]?\\b", "Overslagmachines"); // material handler
+addHighRule("ATLAS", "^AB\\s?\\d{3,4}\\s?[A-Z]?\\b", "Mobiele graafmachines"); // bv. AB 1302 D
+addMidRule("ATLAS", "^\\d{3,4}\\s?W?\\b", "Mobiele graafmachines");
+
+// --- Takeuchi: TB-serie, W-suffix = wiel, zonder = rups ---
+addHighRule("TAKEUCHI", "^TB\\s?\\d{2,3}\\s?W\\b", "Mobiele graafmachines");
+addHighRule("TAKEUCHI", "^TB\\s?\\d{2,3}\\b", "Rupsgraafmachines");
+addHighRule("TAKEUCHI", "^TCR\\s?\\d{2,3}(\\-[0-9])?\\b", "Compact materieel"); // compact track loader
+
+// --- Wacker Neuson: ET/EZ (rups)/EW (wiel)/WL (wiellader)/DW,DV (dumper)/TH (verreiker) ---
+addHighRule("WACKERNEUSON", "^E[TZ]\\s?\\d{1,3}\\b", "Rupsgraafmachines");
+addHighRule("WACKERNEUSON", "^EW\\s?\\d{1,3}(\\-[0-9])?\\b", "Mobiele graafmachines");
+addHighRule("WACKERNEUSON", "^WL\\s?\\d{1,3}[A-Z]?\\b", "Wielladers");
+addHighRule("WACKERNEUSON", "^D[WV]\\s?\\d{1,3}[A-Z]?(\\-[0-9])?\\b", "Dumpers");
+addHighRule("WACKERNEUSON", "^TH\\s?\\d{2,4}\\b", "Verreikers");
+// Historische Neuson-modelnummering vóór de EW/EZ-rebrand (bv. "6503-2") —
+// vrijwel altijd compacte rupsgraafmachines.
+addMidRule("WACKERNEUSON", "^\\d{4}(\\-[0-9])?(\\s?WD)?\\b", "Rupsgraafmachines");
+
+// --- Bobcat: E (rups mini-excavator)/S (skid steer)/T (compact track loader)/L (wiellader)/TL (verreiker) ---
+addHighRule("BOBCAT", "^E\\s?\\d{1,3}\\s?W\\b", "Mobiele graafmachines");
+addHighRule("BOBCAT", "^E\\s?\\d{1,3}\\b", "Rupsgraafmachines");
+addHighRule("BOBCAT", "^S\\s?\\d{2,3}\\b", "Compact materieel"); // skid steer loader
+addHighRule("BOBCAT", "^TL\\s?\\d{2}[.\\-]?\\d{0,3}\\b", "Verreikers");
+addHighRule("BOBCAT", "^T\\s?\\d{2,5}\\b", "Compact materieel"); // compact track loader
+addHighRule("BOBCAT", "^L\\s?\\d{2,3}\\b", "Wielladers");
+// Klassieke skid steer modelnummers zonder letterprefix (bv. "753", "553", "463")
+addMidRule("BOBCAT", "^[3-9]\\d\\d\\b", "Compact materieel");
+
+// --- Kubota: KX (mini-excavator)/U (compact excavator)/R (wiellader)/KC (compact track loader)/KTH (verreiker) ---
+addHighRule("KUBOTA", "^KX\\s?\\d{1,3}[A-Z0-9\\-]{0,4}\\b", "Rupsgraafmachines");
+addHighRule("KUBOTA", "^U\\s?\\d{1,3}[A-Z0-9\\-]{0,4}\\b", "Rupsgraafmachines");
+addHighRule("KUBOTA", "^R\\s?\\d{2,3}[A-Z0-9\\-]{0,4}\\b", "Wielladers");
+addHighRule("KUBOTA", "^KC\\s?\\d{2,3}[A-Z0-9\\-]{0,4}\\b", "Compact materieel");
+addHighRule("KUBOTA", "^KTH\\s?\\d{2,4}\\b", "Verreikers");
+
+// --- Giant / Tobroco: G (wiellader)/V (compacte/telescopische wiellader)/D (dumper) ---
+addHighRule("GIANT", "^G\\s?\\d{3,4}[A-Z]{0,2}(\\s?X-TRA(\\s?HD)?)?\\b", "Wielladers");
+addHighRule("GIANT", "^V\\s?\\d{3,4}[A-Z]{0,2}(\\s?X-TRA(\\s?HD)?)?\\b", "Wielladers");
+addHighRule("GIANT", "^D\\s?\\d{3}[A-Z]{0,3}\\d?[A-Z]?(\\s?X-TRA(\\s?HD)?)?\\b", "Dumpers");
+
+// --- Manitou: MT/MHT/MLT/MC/MH (verreiker), MRT (roterende verreiker), ULM (compact) ---
+addHighRule("MANITOU", "^MRT\\s?\\d{3,4}([A-Z0-9 +]{0,15})?\\b", "Roterende verreikers");
+["MT","MHT","MLT","MC","MH"].forEach(function (p) {
+  addHighRule("MANITOU", "^" + p + "\\s?\\d{2,3}[\\-A-Z0-9 ]{0,20}\\b", "Verreikers");
+});
+addHighRule("MANITOU", "^M\\s?\\d{2}\\-\\d\\b", "Verreikers"); // bv. "M 30-4"
+addHighRule("MANITOU", "^ULM\\s?\\d{2,3}\\b", "Compact materieel");
+
+// --- Merlo: P/Panoramic + TF (fixed telehandler), ROTO (roterende verreiker) ---
+addHighRule("MERLO", "^ROTO\\s?\\d{2,3}[.\\-][0-9A-Z ]{0,10}\\b", "Roterende verreikers");
+addHighRule("MERLO", "^(P|TF|PANORAMIC)\\s?\\d{2,3}[.\\-][0-9A-Z \\-]{0,10}\\b", "Verreikers");
+
+// --- Yanmar: V-serie wielladers (VIO-rupsserie indien aangetroffen) ---
+addHighRule("YANMAR", "^V\\s?\\d{2,3}(\\-[0-9])?\\b", "Wielladers");
+addHighRule("YANMAR", "^VIO\\s?\\d{2,3}[A-Z0-9\\-]{0,4}\\b", "Rupsgraafmachines");
+
+// --- Mecalac (incl. Ahlmann-erfenis): MCR/MTX/MWR (mobiele graafmachine), CX (rups), AZ (wiellader, Ahlmann-erfenis), AS (dumper) ---
+addHighRule("MECALAC", "^\\d{1,2}\\s?M[CWX][RTX](\\-NG)?\\b", "Mobiele graafmachines"); // 8 MCR, 12 MTX, 9 MWR(-NG)
+addHighRule("MECALAC", "^\\d{2,3}\\s?MW[E]?\\b", "Mobiele graafmachines"); // 714 MW / 714 MWE
+addHighRule("MECALAC", "^\\d{1,2}\\s?CX\\b", "Rupsgraafmachines");
+addHighRule("MECALAC", "^AZ\\s?\\d{1,3}\\s?[A-Z]?\\b", "Wielladers"); // Ahlmann-erfenis wiellader
+addHighRule("MECALAC", "^AS\\s?\\d{1,4}\\b", "Dumpers"); // Ahlmann/Mecalac site dumper
+
+// --- Kramer: KL (wiellader)/KA (compacte wiellader)/KT (telescopische wiellader/verreiker) ---
+addHighRule("KRAMER", "^KL\\s?\\d{2,3}\\b", "Wielladers");
+addHighRule("KRAMER", "^KA\\s?\\d{2,3}\\b", "Wielladers");
+addHighRule("KRAMER", "^KT\\s?\\d{2,3}\\b", "Verreikers");
+addHighRule("KRAMER", "^KB\\s?\\d{2,3}\\b", "Verreikers"); // telescopische wiellader-variant
+// Kale nummerreeksen (5xxx wiellader, 8xxx telescopisch/verreiker) — per audit
+addMidRule("KRAMER", "^5\\d{3}\\b", "Wielladers");
+addMidRule("KRAMER", "^8\\d{3}\\b", "Verreikers");
+addMidRule("KRAMER", "^3\\d{2}(\\s?SL)?\\b", "Wielladers"); // bv. 312, 312 SL, 320, 348
+
+// --- Weidemann: 1xxx (Hoftrac wiellader), T-serie (verreiker) ---
+addHighRule("WEIDEMANN", "^1\\d{3}(\\s?CX\\d{0,2})?(\\s?(DELUXE|SPECIAL))?\\b", "Wielladers");
+addHighRule("WEIDEMANN", "^T\\s?\\d{3,4}\\b", "Verreikers");
+
+// --- Schäffer: 2xxx-9xxx compacte wiellader, T-serie telescopische wiellader ---
+addHighRule("SCHAFFER", "^[2-9]\\d{3}(\\s?S)?\\b", "Wielladers");
+addHighRule("SCHAFFER", "^T\\s?\\d{2,3}\\b", "Verreikers");
+addMidRule("SCHAFFER", "^[2-4]\\d\\d(\\s?S)?\\b", "Wielladers"); // 3-cijferige varianten, bv. 336, 222 S
+
+// --- Magni: TH (fixed verreiker), RTH (roterende verreiker) ---
+addHighRule("MAGNI", "^RTH\\s?\\d(\\.\\d{1,2})?[\\-A-Z0-9/ ]{0,15}\\b", "Roterende verreikers");
+addHighRule("MAGNI", "^(TH|HTH)\\s?\\d(\\.\\d{1,2})?[\\-A-Z0-9/ ]{0,15}\\b", "Verreikers");
+
+// --- Dieci: alleen de bevestigde bouw-telehandlerfamilies (AGRI-lijn blijft
+// bewust buiten scope, dat is landbouwmaterieel) ---
+addHighRule("DIECI", "^(APOLLO|DEDALUS|ICARUS|ZEUS|PEGASUS|HERCULES)\\s?\\d{2}\\.\\d{1,2}\\b", "Verreikers");
+
+// --- LiuGong: 8xx wielladers, 9xx graafmachines (audit); CLG-prefix-varianten ---
+["842","848","856","865","877","890"].forEach(function (n) {
+  addHighRule("LIUGONG", suffixPattern("", n), "Wielladers");
+  addHighRule("LIUGONG", suffixPattern("CLG", n), "Wielladers");
+});
+addMidRule("LIUGONG", "^8\\d\\d([\\-A-Z0-9]{0,6})?\\b", "Wielladers");
+addMidRule("LIUGONG", "^9\\d\\d([\\-A-Z0-9]{0,6})?\\b", "Rupsgraafmachines");
+
+// --- XCMG: alleen bevestigde wiellader-prefixen (LW/ZL); XC-serie lijkt op
+// elektrische heftrucks (XC9xx-EV) en blijft daarom bewust ongeclassificeerd
+// totdat dat met zekerheid is uitgesloten. ---
+addHighRule("XCMG", "^LW\\s?\\d{2,4}[A-Z]?\\b", "Wielladers");
+addHighRule("XCMG", "^ZL\\s?\\d{2,4}[A-Z]?\\b", "Wielladers");
+addExclusion("XCMG", "^X[CT]\\s?\\d{3,4}(\\-EV|E|EV)?\\b", "Lijkt op XCMG-heftruckcode (XC9xx-EV-patroon), nog niet bevestigd als grondverzetmaterieel");
+
+/* ===========================================================================
+   SECTIE 7 — Brandstof / elektrisch classificatie
+   ===========================================================================
+   Prioriteit: (1) echte RDW-brandstofdata per kenteken (brandstofTypes,
+   via een losse koppel-dataset — zie fetchFuelTypes in de hoofdapplicatie),
+   (2) bekende elektrische modelnamen als aanvullende validatie, (3) generieke
+   tekstheuristiek als laatste redmiddel. Een kale "E" in het typenummer is
+   NOOIT genoeg — dat matcht te veel toevallige modelcodes (bv. "318E" is
+   een dieselmodel-generatie bij meerdere merken).
+   ========================================================================= */
+// Bekende, bevestigde elektrische modellen — SECUNDAIRE laag, nooit gebruikt
+// als real fuel data (brandstofTypesArr) beschikbaar is (zie detectFuelType
+// hieronder: die controleert eerst rdw-brandstofdata, en valt hier alleen op
+// terug bij ontbrekende koppeling — bv. demodata, of een kenteken zonder
+// brandstofregel). Elk record heeft: canonicalBrand, modelPattern (regex-
+// bron als string, leesbaar), electric, confidence ("Hoog"/"Middel"),
+// source (waar de aanname op gebaseerd is + bekende beperkingen).
+//
+// Regressietest tegen 91.008 live RDW-registraties (alle 26 merken, echte
+// brandstofdata per kenteken) leverde een BELANGRIJKE correctie op: een
+// eerdere versie van deze lijst bevatte Caterpillar se "XE"-suffix
+// (966M XE, 972M XE, ...) als "elektrisch" — dat bleek bij 100% van de 127
+// gevonden registraties gewoon Diesel te zijn ("XE" is Cat se efficiency-
+// pakket, geen elektrische aanduiding). Precies het scenario waar de
+// opdracht voor waarschuwde ("CAT 950 GC zonder Electric mag niet
+// automatisch elektrisch worden genoemd") — verwijderd. Elke regel hieronder
+// is nu individueel tegen echte RDW-brandstofdata gecontroleerd vóór
+// opname; het exacte trefpercentage staat in "source".
+const KNOWN_ELECTRIC_MODELS = [
+  {
+    canonicalBrand: "VOLVO_CE", modelPattern: "^(L20|L25|L90|L120)\\s?ELECTRIC\\b",
+    electric: true, confidence: "Hoog",
+    source: "Volvo CE gebruikt \"Electric\" uitsluitend als expliciete modelnaam-suffix voor de volledig elektrische uitvoering (geen dieselmodel deelt deze exacte naam). Bevestigd tegen live RDW-data: L120 ELECTRIC en L25 ELECTRIC 100% Elektriciteit (2/2 registraties op moment van controle, laag volume — bij toekomstige groei blijft rdw-brandstofdata leidend).",
+  },
+  {
+    canonicalBrand: "VOLVO_CE", modelPattern: "^(EC18|EC230|ECR18|ECR25)\\s?ELECTRIC\\b",
+    electric: true, confidence: "Hoog",
+    source: "Zelfde Volvo-conventie als L-serie; nog 0 registraties in RDW op moment van controle (te nieuw/te weinig verkocht in NL) — patroon staat klaar voor als/wanneer die er komen.",
+  },
+  {
+    canonicalBrand: "VOLVO_CE", modelPattern: "^EWR?150\\s?ELECTRIC\\b",
+    electric: true, confidence: "Hoog",
+    source: "Zelfde Volvo-conventie; nog 0 registraties in RDW op moment van controle.",
+  },
+  {
+    canonicalBrand: "VOLVO_CE", modelPattern: "^(A30|A40)\\s?ELECTRIC\\b",
+    electric: true, confidence: "Hoog",
+    source: "Zelfde Volvo-conventie; nog 0 registraties in RDW op moment van controle.",
+  },
+  {
+    canonicalBrand: "GIANT", modelPattern: "^G2700E\\b",
+    electric: true, confidence: "Hoog",
+    source: "Live RDW-steekproef: 364/364 (100%) van alle G2700E-registraties zijn Elektriciteit.",
+  },
+  {
+    canonicalBrand: "GIANT", modelPattern: "^G2200E(\\s?X-TRA)?\\b",
+    electric: true, confidence: "Middel",
+    source: "Live RDW-steekproef: G2200E 464/467 (99,4%) en G2200E X-TRA 179/188 (95,2%) Elektriciteit — overtuigend maar NIET 100% zuiver (enkele Diesel-registraties onder exact dezelfde handelsbenaming, vermoedelijk RDW-invoerfouten of een uitzonderlijke dieselvariant). Daarom \"Middel\" i.p.v. \"Hoog\": bij een kenteken MET rdw-brandstofdata wint die data altijd; dit label geldt alleen als terugval zonder brandstofdata.",
+  },
+  {
+    canonicalBrand: "VOLVO_CE", modelPattern: "^(JL|LJ|JYL)\\s?\\d{2,3}",
+    electric: true, confidence: "Hoog",
+    source: "Live RDW-steekproef: alle 48 gevonden J/LJ/JYL-voorvoegsel-registraties (JL25H, JL20H, JYL120, JL25 ELEKTRIC/ELECTRIC, JL25HZ, LJ120H ELEKTRIC, ...) zijn Elektriciteit — 48/48 (100%), geen enkel tegenvoorbeeld. Kennelijk hoe RDW/dealers Volvo se elektrische compacte-wielladerlijn (L20/L25/L120 Electric) noteren.",
+  },
+];
+function isKnownElectricModel(brandId, modelN) {
+  return KNOWN_ELECTRIC_MODELS.some(function (r) {
+    return r.canonicalBrand === brandId && r.electric && new RegExp(r.modelPattern, "i").test(modelN);
+  });
+}
+// Tekstheuristiek als laatste redmiddel — bewust EXPLICIET op volledige
+// woorden (ELEKTR.., ELECTRIC, BEV, BATTERY, E-DRIVE), nooit op een losse
+// letter "E" in het typenummer, om vals-positieven te voorkomen.
+function textElectricGuess(modelN, brandstofOmsN) {
+  const s = modelN + " " + (brandstofOmsN || "");
+  if (/\bELEKTR|\bELECTRIC\b|E-DRIVE|\bEQ\b|BATTERY|\bBEV\b/.test(s)) return "Ja";
+  if (/\bHYBRID/.test(s)) return "Hybride";
+  return null;
+}
+function detectFuelType(brandId, modelN, brandstofOmsText, brandstofTypesArr) {
+  if (Array.isArray(brandstofTypesArr) && brandstofTypesArr.length) {
+    const heeftElektrisch = brandstofTypesArr.some(function (f) { return /elektr/i.test(f); });
+    const heeftVerbranding = brandstofTypesArr.some(function (f) { return !/elektr/i.test(f); });
+    if (heeftElektrisch && heeftVerbranding) return { elektrisch: "Hybride", brandstof: brandstofTypesArr.join(" + "), bron: "rdw-brandstofdata" };
+    if (heeftElektrisch) return { elektrisch: "Ja", brandstof: brandstofTypesArr.join(" + "), bron: "rdw-brandstofdata" };
+    return { elektrisch: "Nee", brandstof: brandstofTypesArr.join(" + "), bron: "rdw-brandstofdata" };
+  }
+  if (isKnownElectricModel(brandId, modelN)) {
+    return { elektrisch: "Ja", brandstof: brandstofOmsText || "Onbekend", bron: "bekend-elektrisch-model" };
+  }
+  const guess = textElectricGuess(modelN, brandstofOmsText);
+  if (guess) return { elektrisch: guess, brandstof: brandstofOmsText || "Onbekend", bron: "tekstheuristiek" };
+  return { elektrisch: brandstofOmsText ? "Nee" : "Onbekend", brandstof: brandstofOmsText || "Onbekend", bron: brandstofOmsText ? "brandstoftekst" : "geen-data" };
+}
+
+/* ===========================================================================
+   SECTIE 8 — Hoofd classify-functie
+   =========================================================================== */
+function classify(rdwMerk, handelsbenaming) {
+  const merkN = normalizeText(rdwMerk);
+  const rawModelN = normalizeText(handelsbenaming);
+  const brand = brandByAlias(merkN);
+  if (!brand) {
+    return { brandId: null, canonicalBrand: null, productGroup: "Onbekend", status: "Onbekend", confidence: "Laag", matchedRule: null, reason: "RDW-merk niet in merkenlijst" };
+  }
+  const aliasesN = brand.aliases.map(normalizeText);
+  const modelN = stripBrandPrefix(normalizeText(brand.label), aliasesN, rawModelN);
+
+  // 1) expliciete uitsluitingen winnen altijd
+  const excl = EXCLUSIONS.find(function (e) { return e.brandId === brand.id && e.regex.test(modelN); });
+  if (excl) {
+    return { brandId: null, canonicalBrand: brand.id, productGroup: "Onbekend", status: "Onbekend", confidence: "Hoog", matchedRule: excl.source, reason: excl.reason };
+  }
+
+  // 2) hoogste-priority matchende regel wint (bij gelijke priority: eerst geregistreerd)
+  let best = null;
+  for (let i = 0; i < RULES.length; i++) {
+    const r = RULES[i];
+    if (r.brandId !== brand.id) continue;
+    if (!r.regex.test(modelN)) continue;
+    if (!best || r.priority > best.priority) best = r;
+  }
+  if (best) {
+    return { brandId: brand.id, canonicalBrand: brand.id, productGroup: best.productGroup, status: best.status, confidence: best.confidence, matchedRule: best.source, reason: null };
+  }
+
+  // 3) geen regel gematcht
+  if (brand.strictModelMatch) {
+    return { brandId: null, canonicalBrand: brand.id, productGroup: "Onbekend", status: "Onbekend", confidence: "Laag", matchedRule: null, reason: "strict-match merk, geen modelpatroon gevonden (mogelijk niet-relevant voertuig van dit merk)" };
+  }
+  if (modelN) {
+    return { brandId: brand.id, canonicalBrand: brand.id, productGroup: "Overig", status: brand.group, confidence: "Laag", matchedRule: null, reason: "merk herkend, geen specifiek modelpatroon" };
+  }
+  return { brandId: brand.id, canonicalBrand: brand.id, productGroup: "Onbekend", status: brand.group, confidence: "Laag", matchedRule: null, reason: "geen handelsbenaming beschikbaar" };
+}
+
+/* ===========================================================================
+   SECTIE 9 — Debug / audit
+   =========================================================================== */
+// Legt exact uit waarom een record niet (specifiek) is geclassificeerd.
+function explainRecord(rdwMerk, handelsbenaming) {
+  const cls = classify(rdwMerk, handelsbenaming);
+  return {
+    merk: rdwMerk, handelsbenaming: handelsbenaming,
+    canonicalBrand: cls.canonicalBrand ? brandById(cls.canonicalBrand).label : null,
+    productGroup: cls.productGroup, status: cls.status, confidence: cls.confidence,
+    matchedRule: cls.matchedRule, reason: cls.reason,
+  };
+}
+// records: array van {merk, handelsbenaming}. Retourneert top-N merk+model
+// combinaties die (nog) als Overig/Onbekend eindigen, aflopend op aantal.
+function topUnclassifiedCombos(records, limit) {
+  const tally = new Map();
+  records.forEach(function (r) {
+    const cls = classify(r.merk, r.handelsbenaming);
+    if (cls.productGroup !== "Overig" && cls.brandId !== null) return; // alleen echte Overig/uitgesloten
+    const key = r.merk + "|" + r.handelsbenaming;
+    if (!tally.has(key)) tally.set(key, { merk: r.merk, handelsbenaming: r.handelsbenaming, aantal: 0, reason: cls.reason });
+    tally.get(key).aantal++;
+  });
+  return Array.from(tally.values()).sort(function (a, b) { return b.aantal - a.aantal; }).slice(0, limit || 50);
+}
+
+/* ===========================================================================
+   Export (Node + browser)
+   ========================================================================= */
+const API = {
+  normalizeText: normalizeText,
+  BRANDS: BRANDS, PRODUCT_GROUPS: PRODUCT_GROUPS,
+  RULES: RULES, EXCLUSIONS: EXCLUSIONS,
+  brandById: brandById, brandByAlias: brandByAlias,
+  classify: classify, explainRecord: explainRecord, topUnclassifiedCombos: topUnclassifiedCombos,
+  detectFuelType: detectFuelType, isKnownElectricModel: isKnownElectricModel,
+};
+if (typeof module !== "undefined" && module.exports) {
+  module.exports = API;
+} else {
+  root.MachineClassification = API;
+}
+
+})(typeof window !== "undefined" ? window : globalThis);
+
+
+
+
+// Kleuren per merk voor grafieken — vaste volgorde, categorisch, gevalideerd
+// tegen CVD-toegankelijkheid (zie dataviz-methodiek). Nooit hergebruiken
+// voor status/alerts.
+const SERIES_COLORS = ["s1","s2","s3","s4","s5","s6","s7"];
+
+const BRANDS = MachineClassification.BRANDS;
+const PRODUCT_GROUPS = MachineClassification.PRODUCT_GROUPS;
+function brandById(id){ return MachineClassification.brandById(id); }
+function brandColor(id){ const b=brandById(id); return b ? ("var("+b.colorVar+")") : "var(--s-other)"; }
+
+// ---- Concurrentiematrix (handmatig samengesteld, sectie 12) ----------
+const COMPETITIVE_MATRIX = {
+  "VOLVO L60":  ["CATERPILLAR 926","CATERPILLAR 930","LIEBHERR L526","KOMATSU WA270","DEVELON DL250"],
+  "VOLVO L90":  ["CATERPILLAR 938","LIEBHERR L538","KOMATSU WA320","DEVELON DL280","HITACHI ZW180"],
+  "VOLVO L120": ["CATERPILLAR 950","CATERPILLAR 962","LIEBHERR L556","LIEBHERR L566","KOMATSU WA380","KOMATSU WA470","DEVELON DL420","HITACHI ZW310"],
+  "VOLVO L150": ["CATERPILLAR 966","LIEBHERR L566","KOMATSU WA470","DEVELON DL450","HYUNDAI HL960"],
+  "VOLVO L180": ["CATERPILLAR 972","LIEBHERR L576","KOMATSU WA480","DEVELON DL550","HYUNDAI HL970"],
+  "VOLVO L220": ["CATERPILLAR 980","LIEBHERR L580","KOMATSU WA500","HYUNDAI HL975"],
+  "VOLVO EC140":["CATERPILLAR 313","LIEBHERR R914","KOMATSU PC138","HITACHI ZX130","DEVELON DX140"],
+  "VOLVO EC160":["CATERPILLAR 315","LIEBHERR R917","KOMATSU PC160","HITACHI ZX160","DEVELON DX160"],
+  "VOLVO EC210":["CATERPILLAR 320","LIEBHERR R920","KOMATSU PC210","HITACHI ZX210","DEVELON DX225","SANY SY215"],
+  "VOLVO EC220":["CATERPILLAR 323","LIEBHERR R922","KOMATSU PC210LC","HITACHI ZX225","DEVELON DX235"],
+  "VOLVO EC250":["CATERPILLAR 325","LIEBHERR R926","KOMATSU PC240","HITACHI ZX250","DEVELON DX300"],
+  "VOLVO EC300":["CATERPILLAR 330","LIEBHERR R930","KOMATSU PC290","HITACHI ZX290","DEVELON DX350","SANY SY305"],
+  "VOLVO EC350":["CATERPILLAR 336","LIEBHERR R936","KOMATSU PC350","HITACHI ZX330","DEVELON DX380"],
+  "VOLVO EC380":["CATERPILLAR 340","LIEBHERR R943","KOMATSU PC360","DEVELON DX420"],
+  "VOLVO EC480":["CATERPILLAR 349","LIEBHERR R950","KOMATSU PC490","DEVELON DX480","HYUNDAI R480"],
+  "VOLVO EC950":["CATERPILLAR 6015","LIEBHERR R9150","KOMATSU PC1250"],
+  "VOLVO A25":  ["CATERPILLAR 725","KOMATSU HM300","HYUNDAI HA30"],
+  "VOLVO A30":  ["CATERPILLAR 730","KOMATSU HM300","DOOSAN DA30"],
+  "VOLVO A40":  ["CATERPILLAR 740","KOMATSU HM400","LIEBHERR TA230"],
+  "SENNEBOGEN 825": ["FUCHS MHL340","LIEBHERR LH22","CATERPILLAR MH20"],
+  "SENNEBOGEN 830": ["FUCHS MHL350","LIEBHERR LH26","CATERPILLAR MH30"],
+  "SENNEBOGEN 835": ["FUCHS MHL360","LIEBHERR LH30"],
+  "SENNEBOGEN 850": ["FUCHS MHL380","LIEBHERR MH36","CATERPILLAR MH3037"],
+  "SENNEBOGEN 875": ["FUCHS MHL450","LIEBHERR MH56"],
+};
+
+// ---- Leeftijdscategorieën ----------------------------------------------
+const AGE_BUCKETS = [
+  { id:"0-3",  label:"0 tot 3 jaar",  min:0,  max:3 },
+  { id:"4-6",  label:"4 tot 6 jaar",  min:4,  max:6 },
+  { id:"7-9",  label:"7 tot 9 jaar",  min:7,  max:9 },
+  { id:"10-12",label:"10 tot 12 jaar",min:10, max:12 },
+  { id:"13-15",label:"13 tot 15 jaar",min:13, max:15 },
+  { id:"15+",  label:"Ouder dan 15 jaar", min:16, max:999 },
+];
+function ageBucketOf(age){
+  if(age==null) return null;
+  return (AGE_BUCKETS.find(b=> age>=b.min && age<=b.max) || AGE_BUCKETS[AGE_BUCKETS.length-1]).id;
+}
+
+// ---- Whitelist van query-parameters (voorkomt SoQL-injectie) -----------
+const ALLOWED_QUERY_FIELDS = new Set([
+  "merk","handelsbenaming","datum_eerste_toelating","datum_tenaamstelling",
+  "voertuigsoort","kenteken","europese_voertuigcategorie"
+]);
+
+/* =====================================================================
+   Sectie 2: datumhelpers
+   RDW levert datums als YYYYMMDD (getal of string). Alle parsing loopt
+   centraal via onderstaande helpers.
+   ===================================================================== */
+const MAANDEN_NL = ["januari","februari","maart","april","mei","juni","juli","augustus","september","oktober","november","december"];
+function parseRdwDate(v){
+  if(v==null || v==="") return null;
+  const s = String(v).replace(/[^0-9]/g,"");
+  if(s.length<8) return null;
+  const y=+s.slice(0,4), m=+s.slice(4,6), d=+s.slice(6,8);
+  if(!y||y<1950||y>2100||m<1||m>12||d<1||d>31) return null;
+  const dt = new Date(Date.UTC(y,m-1,d));
+  return isNaN(dt.getTime()) ? null : dt;
+}
+function formatDateNL(dt, compact){
+  if(!dt) return "Onbekend";
+  if(compact){
+    const dd=String(dt.getUTCDate()).padStart(2,"0"), mm=String(dt.getUTCMonth()+1).padStart(2,"0");
+    return dd+"-"+mm+"-"+dt.getUTCFullYear();
+  }
+  return dt.getUTCDate()+" "+MAANDEN_NL[dt.getUTCMonth()]+" "+dt.getUTCFullYear();
+}
+function ageFromDate(dt, ref){
+  if(!dt) return null;
+  ref = ref || new Date();
+  let age = ref.getUTCFullYear() - dt.getUTCFullYear();
+  const m = ref.getUTCMonth() - dt.getUTCMonth();
+  if(m<0 || (m===0 && ref.getUTCDate()<dt.getUTCDate())) age--;
+  return Math.max(0,age);
+}
+function monthsBetween(a,b){
+  if(!a||!b) return null;
+  return (b.getUTCFullYear()-a.getUTCFullYear())*12 + (b.getUTCMonth()-a.getUTCMonth());
+}
+function yearOf(dt){ return dt ? dt.getUTCFullYear() : null; }
+function quarterOf(dt){ return dt ? Math.floor(dt.getUTCMonth()/3)+1 : null; }
+function monthKey(dt){ return dt ? dt.getUTCFullYear()+"-"+String(dt.getUTCMonth()+1).padStart(2,"0") : null; }
+
+/* =====================================================================
+   Sectie 3: classificatie-engine
+   Herkent per RDW-record (merk + handelsbenaming) de productgroep, of het
+   een SMT- of concurrentmerk is, en met welke betrouwbaarheid.
+   ===================================================================== */
+function normalizeText(s){ return MachineClassification.normalizeText(s); }
+
+// Dunne adapter rond de centrale classificatiemodule (classification/machine-
+// classification.js, hierboven ingesloten). Bewaart daarnaast de bestaande
+// "handmatig een model toevoegen"-functionaliteit uit Instellingen
+// (STATE.settings.extraModels): die wordt ALLEEN geraadpleegd als de centrale
+// module een record niet (specifiek) herkent, zodat een gebruiker een Overig-
+// geval kan verbijzonderen zonder de module zelf te wijzigen.
+function classifyByModel(rdwMerk, handelsbenaming){
+  const cls = MachineClassification.classify(rdwMerk, handelsbenaming);
+  if((cls.productGroup==="Overig" || cls.brandId===null) && STATE.settings.extraModels.length){
+    const merkN = MachineClassification.normalizeText(rdwMerk);
+    const modelN = MachineClassification.normalizeText(handelsbenaming);
+    const extra = STATE.settings.extraModels.find(function(m){
+      return MachineClassification.normalizeText(m.merk)===merkN && new RegExp(m.pattern,"i").test(modelN);
+    });
+    if(extra){
+      const brand = MachineClassification.brandByAlias(merkN);
+      return { productgroep:extra.groep, status:extra.status, confidence:"Middel", matched:extra.pattern, brandId: brand?brand.id:null, canonicalBrand: cls.canonicalBrand };
+    }
+  }
+  return { productgroep:cls.productGroup, status:cls.status, confidence:cls.confidence, matched:cls.matchedRule, brandId:cls.brandId, canonicalBrand:cls.canonicalBrand };
+}
+
+// Elektrisch-detectie. Bij live data hebben we de ECHTE RDW-brandstoftypes (gekoppeld via
+// kenteken, zie fetchFuelTypes) — die zijn altijd leidend. Bekende elektrische modelnamen
+// dienen als aanvullende validatie; een kale tekstheuristiek is het laatste redmiddel.
+// Zie classification/machine-classification.js sectie 7 voor de volledige logica.
+function detectElectric(canonicalBrandId, handelsbenaming, brandstofOms, brandstofTypes){
+  const modelN = MachineClassification.normalizeText(handelsbenaming);
+  return MachineClassification.detectFuelType(canonicalBrandId, modelN, brandstofOms, brandstofTypes).elektrisch;
+}
+
+function classifyVehicle(raw){
+  // raw: {kenteken, merk, handelsbenaming, datum_eerste_toelating, datum_tenaamstelling,
+  //       datum_eerste_afgifte_nederland, brandstof_omschrijving, brandstofTypes, massa_rijklaar,
+  //       voertuigsoort}. brandstofTypes (array, live-only) = echte RDW-brandstofregels per
+  //       kenteken; brandstof_omschrijving (string, demodata-only) is de oude tekst-fallback.
+  const cls = classifyByModel(raw.merk, raw.handelsbenaming);
+  const eersteToelating = parseRdwDate(raw.datum_eerste_toelating);
+  const tenaamstelling = parseRdwDate(raw.datum_tenaamstelling);
+  const eersteAfgifteNL = parseRdwDate(raw.datum_eerste_afgifte_nederland) || tenaamstelling;
+  const age = ageFromDate(eersteToelating);
+  const electric = detectElectric(cls.canonicalBrand, raw.handelsbenaming, raw.brandstof_omschrijving, raw.brandstofTypes);
+  // mogelijke gebruikte import: eerste toelating ligt >12 mnd vóór eerste registratie NL
+  let possibleImport = false;
+  if(eersteToelating && eersteAfgifteNL){
+    const gap = monthsBetween(eersteToelating, eersteAfgifteNL);
+    if(gap!=null && gap >= 12) possibleImport = true;
+  }
+  return {
+    kenteken: (raw.kenteken||"").toUpperCase(),
+    merkRdw: normalizeText(raw.merk),
+    brandId: cls.brandId,
+    handelsbenaming: raw.handelsbenaming || "",
+    model: raw.handelsbenaming || "",
+    productgroep: cls.productgroep,
+    subcategorie: cls.matched || "",
+    status: cls.status, // "SMT" | "Concurrent" | "Onbekend"
+    confidence: cls.confidence, // "Hoog" | "Middel" | "Laag"
+    eersteToelating, tenaamstelling, eersteAfgifteNL,
+    leeftijd: age,
+    leeftijdscategorie: ageBucketOf(age),
+    brandstof: (Array.isArray(raw.brandstofTypes) && raw.brandstofTypes.length) ? raw.brandstofTypes.join(" + ") : (raw.brandstof_omschrijving || "Onbekend"),
+    elektrisch: electric,
+    // RDW vult "massa_rijklaar" (bedoeld voor auto's/trucks) bij zelfrijdend
+    // materieel vaak niet in — voor voertuigcategorie "U" (mobiele machines)
+    // gebruikt RDW in plaats daarvan "massa_bedrijfsklaar_maximaal" (bevestigd:
+    // 194/194 anders-lege Volvo-mobiele-machines hadden dit veld wél gevuld).
+    // Dat is ook wat de RDW-kentekencheck-website toont als "massa rijklaar
+    // (technische massa)" wanneer het primaire veld ontbreekt.
+    massa: raw.massa_rijklaar ? +raw.massa_rijklaar : (raw.massa_bedrijfsklaar_maximaal ? +raw.massa_bedrijfsklaar_maximaal : null),
+    massaBron: raw.massa_rijklaar ? "massa_rijklaar" : (raw.massa_bedrijfsklaar_maximaal ? "massa_bedrijfsklaar_maximaal" : null),
+    voertuigsoort: raw.voertuigsoort || "",
+    possibleImport,
+    jaar: yearOf(eersteToelating),
+    maand: monthKey(eersteToelating),
+    kwartaal: eersteToelating ? (yearOf(eersteToelating)+" K"+quarterOf(eersteToelating)) : null,
+  };
+}
+
+/* =====================================================================
+   Sectie 4: DEMO-datagenerator
+   Deterministische pseudo-random generator zodat de demo bij elke
+   sessie hetzelfde (herkenbare) beeld toont. Nooit gebruikt zonder het
+   DEMODATA-label zichtbaar te tonen in de UI.
+   ===================================================================== */
+function mulberry32(seed){
+  return function(){
+    seed |= 0; seed = (seed + 0x6D2B79F5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+const DEMO_MODELS = {
+  VOLVO_CE: { groups:{
+    "Wielladers":["L60H","L90H","L110H","L120H","L150H","L180H Electric","L220H"],
+    "Rupsgraafmachines":["EC160E","EC210E","EC220E","EC250E","EC300E","EC380E","EC480E"],
+    "Mobiele graafmachines":["EW160E","EW180E","EWR150E"],
+    "Knikdumpers":["A25G","A30G","A40G Electric","A45G"],
+  }},
+  SENNEBOGEN: { groups:{ "Overslagmachines":["821E","825E","830E G","835 R-HD","850 E-Series","875 R","895"] }},
+  CAT: { groups:{
+    "Wielladers":["926M","938M","950M","962M","966M"],
+    "Rupsgraafmachines":["313","320","330","336","349"],
+  }},
+  LIEBHERR: { groups:{
+    "Wielladers":["L538","L556","L566","L580"],
+    "Rupsgraafmachines":["R920","R926","R936","R950"],
+    "Overslagmachines":["LH26 M","MH36"],
+  }},
+  HITACHI: { groups:{ "Rupsgraafmachines":["ZX210","ZX225","ZX290","ZX350"], "Wielladers":["ZW180","ZW220","ZW310"] }},
+  KOMATSU: { groups:{ "Wielladers":["WA270","WA320","WA380","WA470"], "Rupsgraafmachines":["PC210","PC240","PC290","PC490"] }},
+  DEVELON: { groups:{ "Rupsgraafmachines":["DX140","DX225","DX300","DX380"], "Wielladers":["DL250","DL350","DL420"] }},
+  DOOSAN: { groups:{ "Rupsgraafmachines":["DX140","DX225","DX300"] }},
+  HYUNDAI: { groups:{ "Rupsgraafmachines":["R210","R250","R330"], "Wielladers":["HL955","HL970"] }},
+  SANY: { groups:{ "Rupsgraafmachines":["SY135","SY215","SY305","SY365"] }},
+  FUCHS: { groups:{ "Overslagmachines":["MHL340","MHL350","MHL380"] }},
+  JCB: { groups:{ "Wielladers":["409","437"], "Compact materieel":["3CX","4CX"], "Verreikers":["540-170","542-70"] }},
+  CASE: { groups:{ "Wielladers":["621","821","921"], "Rupsgraafmachines":["CX245","CX350"] }},
+  KOBELCO: { groups:{ "Rupsgraafmachines":["SK140","SK210","SK260"] }},
+};
+// marktgewicht per merk (relatieve registratie-omvang in NL demo) — Volvo/CAT/Liebherr groter
+const BRAND_WEIGHT = { VOLVO_CE:22, SENNEBOGEN:6, CAT:20, LIEBHERR:14, HITACHI:8, KOMATSU:10, DEVELON:7, DOOSAN:3, HYUNDAI:4, SANY:3, FUCHS:2, JCB:5, CASE:4, KOBELCO:3 };
+const KENTEKEN_LETTERS = "BCDFGHJKLMNPRSTVWXZ";
+function demoKenteken(rnd, i){
+  const pick = (n)=> Array.from({length:n},()=> KENTEKEN_LETTERS[Math.floor(rnd()*KENTEKEN_LETTERS.length)]).join("");
+  const digits = ()=> String(Math.floor(rnd()*90)+10);
+  const formats = [
+    ()=> pick(2)+"-"+digits()+"-"+pick(2),
+    ()=> digits()+"-"+pick(2)+"-"+digits(),
+    ()=> pick(3)+"-"+digits()+"-"+pick(1),
+  ];
+  return formats[i%formats.length]();
+}
+let DEMO_CACHE = null;
+function generateDemoDataset(){
+  if(DEMO_CACHE) return DEMO_CACHE;
+  const rnd = mulberry32(20260812);
+  const records = [];
+  const now = new Date();
+  let idx = 0;
+  BRANDS.forEach(brand=>{
+    const cfg = DEMO_MODELS[brand.id];
+    if(!cfg) return;
+    const groupNames = Object.keys(cfg.groups);
+    const total = Math.round((BRAND_WEIGHT[brand.id]||3) * 9 * (0.85+rnd()*0.3));
+    for(let i=0;i<total;i++){
+      const groep = groupNames[Math.floor(rnd()*groupNames.length)];
+      const models = cfg.groups[groep];
+      const model = models[Math.floor(rnd()*models.length)];
+      // leeftijdsverdeling: meer recente jaren, langstaart naar oud (realistisch machinepark)
+      const ageRoll = rnd();
+      let ageYears;
+      if(ageRoll<0.30) ageYears = rnd()*3;
+      else if(ageRoll<0.55) ageYears = 3+rnd()*3;
+      else if(ageRoll<0.75) ageYears = 6+rnd()*3;
+      else if(ageRoll<0.88) ageYears = 9+rnd()*3;
+      else if(ageRoll<0.95) ageYears = 12+rnd()*3;
+      else ageYears = 15+rnd()*8;
+      const eersteToelating = new Date(now.getTime() - ageYears*365.25*86400000 - rnd()*30*86400000);
+      // tenaamstelling meestal vlak na toelating; ~9% duidelijke import-vertraging
+      let tenaamDelayDays = rnd()*40;
+      const isImport = rnd()<0.09;
+      if(isImport) tenaamDelayDays = 380 + rnd()*900;
+      const tenaamstelling = new Date(eersteToelating.getTime() + tenaamDelayDays*86400000);
+      const isElecModel = /ELECTRIC|E-SERIES|EQ\b/i.test(model);
+      let elektrisch = "Nee", brandstof = "Diesel";
+      const elecBoost = (brand.id==="VOLVO_CE"||brand.id==="SENNEBOGEN") ? 0.02 : 0.008;
+      const elecChance = isElecModel ? 0.9 : elecBoost * Math.max(0,(now.getFullYear()-eersteToelating.getFullYear()<3?2.4:0.4));
+      const er = rnd();
+      if(er < elecChance){ elektrisch="Ja"; brandstof="Elektrisch"; }
+      else if(er < elecChance+0.02){ elektrisch="Hybride"; brandstof="Hybride (Diesel/Elektrisch)"; }
+      else if(rnd()<0.05){ elektrisch="Onbekend"; brandstof="Onbekend"; }
+      const massa = Math.round((3500 + rnd()*38000)/50)*50;
+      records.push(classifyVehicle({
+        kenteken: demoKenteken(rnd, idx++),
+        merk: brand.aliases[0],
+        handelsbenaming: model,
+        datum_eerste_toelating: eersteToelating.toISOString().slice(0,10).replace(/-/g,""),
+        datum_tenaamstelling: tenaamstelling.toISOString().slice(0,10).replace(/-/g,""),
+        datum_eerste_afgifte_nederland: isImport ? tenaamstelling.toISOString().slice(0,10).replace(/-/g,"") : eersteToelating.toISOString().slice(0,10).replace(/-/g,""),
+        brandstof_omschrijving: brandstof,
+        massa_rijklaar: rnd()<0.12 ? null : massa,
+        voertuigsoort: "Motorrijtuig met beperkte snelheid",
+      }));
+    }
+  });
+  // enkele "nog niet in bibliotheek" modellen injecteren t.b.v. sectie 17 (nieuw gesignaleerd)
+  const ghostBrands = [["CATERPILLAR","M323F"],["LIEBHERR","R9100"],["KOMATSU","PC128"]];
+  ghostBrands.forEach(([merk,model],gi)=>{
+    for(let i=0;i<(2+gi);i++){
+      const eersteToelating = new Date(now.getTime() - rnd()*400*86400000);
+      records.push(classifyVehicle({
+        kenteken: demoKenteken(rnd, idx++),
+        merk, handelsbenaming: model,
+        datum_eerste_toelating: eersteToelating.toISOString().slice(0,10).replace(/-/g,""),
+        datum_tenaamstelling: eersteToelating.toISOString().slice(0,10).replace(/-/g,""),
+        brandstof_omschrijving:"Diesel", massa_rijklaar: 9000, voertuigsoort:"Motorrijtuig met beperkte snelheid",
+      }));
+    }
+  });
+  // dubbele registratie simuleren + dedupe-test (wordt door dedupeRecords opgeruimd)
+  if(records.length){ records.push(Object.assign({},records[0])); }
+  DEMO_CACHE = dedupeRecords(records);
+  return DEMO_CACHE;
+}
+function dedupeRecords(records){
+  const seen = new Set(); const out = [];
+  for(const r of records){
+    const key = r.kenteken || (r.merkRdw+"|"+r.handelsbenaming+"|"+ (r.eersteToelating? r.eersteToelating.getTime():""));
+    if(seen.has(key)) continue;
+    seen.add(key); out.push(r);
+  }
+  return out;
+}
+
+/* =====================================================================
+   Sectie 5: RDW live API-laag
+   Gerichte queries per merk (nooit alle voertuigen tegelijk). Bouwt
+   SoQL-parameters op basis van een whitelist, met limiet, timeout,
+   dedupe en foutafhandeling.
+   ===================================================================== */
+// RDW's "merk"-filter omvat bij fabrikanten die ook auto's/trucks bouwen (Volvo, Hyundai,
+// Liebherr, Case, JCB e.a.) het VOLLEDIGE wagenpark van dat merk. Personenauto's/bedrijfsauto's
+// registreren véél vaker dan bouwmachines, dus "nieuwste 1000" bestaat bijna uitsluitend uit
+// auto's — bouwmachines komen er nooit doorheen. Daarom filteren we server-side op de RDW
+// voertuigsoort-categorieën waarin materieel daadwerkelijk voorkomt. Let op: "Land- of
+// bosbouwtrekker" klinkt als landbouwtractor, maar RDW plaatst hier ook een groot deel van de
+// wielladers, verreikers, kniklaadschoppen en mobiele kranen onder — bevestigd via steekproef
+// (o.a. Liebherr L506-L514/A312-A916, Komatsu WA-serie, JCB verreikers/graaflaadmachines, Case
+// shovels, Volvo L180H/L220H kwamen hier ALLEEN onder deze categorie voorbij, niet onder Mobiele
+// machine). Zonder deze categorie werd materieel van bijna elk concurrentmerk stelselmatig
+// onderschat (bij Caterpillar bv. 535 registraties, +17,5%). Personenauto/Bedrijfsauto/Bus/
+// aanhangwagens blijven wél uitgesloten (dat zijn bij Volvo/Hyundai/Liebherr echt auto's/trucks/
+// mobiele kranen buiten de scope van de classificatiemodule).
+const RELEVANT_VOERTUIGSOORTEN = ["Mobiele machine","Motorrijtuig met beperkte snelheid","Land- of bosbouwtrekker"];
+
+function buildRdwQuery(opts){
+  opts = opts || {};
+  const params = new URLSearchParams();
+  if(opts.merk && ALLOWED_QUERY_FIELDS.has("merk")){
+    // SoQL: enkel toegestane, ge-escapete waarde — geen vrije user-SoQL
+    const safe = String(opts.merk).toUpperCase().replace(/[^A-Z0-9 \-]/g,"");
+    params.set("merk", safe);
+  }
+  if(opts.voertuigsoorten && opts.voertuigsoorten.length && ALLOWED_QUERY_FIELDS.has("voertuigsoort")){
+    // Waarden komen altijd uit de vaste RELEVANT_VOERTUIGSOORTEN-constante, nooit uit vrije
+    // tekstinvoer — apostrofs worden alsnog verwijderd als extra voorzorg tegen SoQL-injectie.
+    const clause = opts.voertuigsoorten.map(v=> "'"+String(v).replace(/'/g,"")+"'").join(",");
+    params.set("$where", "voertuigsoort in("+clause+")");
+  }
+  params.set("$limit", String(Math.min(opts.limit||1000, 2000)));
+  if(opts.offset) params.set("$offset", String(opts.offset|0));
+  const order = opts.order && /^[a-z_]+ (ASC|DESC)$/i.test(opts.order) ? opts.order : "datum_eerste_toelating DESC";
+  params.set("$order", order);
+  return RDW_BASE + "?" + params.toString();
+}
+async function fetchRdwPage(rdwMerk, limit, offset, timeoutMs){
+  const url = buildRdwQuery({ merk: rdwMerk, voertuigsoorten: RELEVANT_VOERTUIGSOORTEN, limit, offset, order:"datum_eerste_toelating DESC" });
+  const controller = new AbortController();
+  const timeout = setTimeout(()=>controller.abort(), timeoutMs||9000);
+  const startedAt = performance.now();
+  try{
+    const res = await fetch(url, { signal: controller.signal, headers:{ "Accept":"application/json" } });
+    clearTimeout(timeout);
+    const ms = Math.round(performance.now()-startedAt);
+    if(!res.ok) return { ok:false, url, ms, error: "HTTP "+res.status+" "+res.statusText, json:null };
+    const json = await res.json();
+    if(!Array.isArray(json)) return { ok:false, url, ms, error:"Onverwacht antwoordformaat", json:null };
+    return { ok:true, url, ms, error:null, json };
+  }catch(e){
+    clearTimeout(timeout);
+    const ms = Math.round(performance.now()-startedAt);
+    let msg = e && e.name==="AbortError" ? "Timeout — geen antwoord binnen "+(timeoutMs||9000)+"ms" : (e && e.message ? e.message : "Onbekende netwerkfout");
+    if(/Failed to fetch|NetworkError|CORS|blocked/i.test(msg)) msg += " (mogelijk geblokkeerd door CORS/CSP binnen deze omgeving)";
+    return { ok:false, url, ms, error: msg, json:null };
+  }
+}
+// RDW's hoofddataset (m9d7-ebf2) heeft GEEN brandstof-kolom — brandstoftype leeft in een
+// los dataset (Gekentekende_voertuigen_brandstof, 8ys7-d773) en moet per kenteken gekoppeld
+// worden. Zonder deze koppeling is elektrisch/hybride-detectie giswerk op de modelnaam-tekst.
+// Eén kenteken kan meerdere brandstofregels hebben (brandstof_volgnummer 1,2,...) — bv. bij
+// hybrides — dus we bewaren alle gevonden brandstoftypes per kenteken, niet slechts één.
+async function fetchFuelTypes(kentekens){
+  const map = new Map();
+  const chunkSize = 500;
+  for(let i=0;i<kentekens.length;i+=chunkSize){
+    const batch = kentekens.slice(i, i+chunkSize);
+    const clause = batch.map(k=> "'"+String(k).toUpperCase().replace(/[^A-Z0-9]/g,"")+"'").join(",");
+    const url = RDW_FUEL_BASE + "?" + new URLSearchParams({
+      "$where": "kenteken in("+clause+")",
+      "$select": "kenteken,brandstof_omschrijving",
+      "$limit": String(batch.length*3),
+    }).toString();
+    try{
+      const res = await fetch(url, { headers:{ "Accept":"application/json" } });
+      if(!res.ok) continue; // brandstofdata is aanvullend — bij falen valt classificatie terug op tekstheuristiek
+      const rows = await res.json();
+      if(!Array.isArray(rows)) continue;
+      for(const row of rows){
+        if(!row.kenteken || !row.brandstof_omschrijving) continue;
+        const k = row.kenteken.toUpperCase();
+        if(!map.has(k)) map.set(k, []);
+        map.get(k).push(row.brandstof_omschrijving);
+      }
+    }catch(e){ /* aanvullende data — brand-fetch mag hier niet op stranden */ }
+  }
+  return map;
+}
+async function fetchRdwBrand(rdwMerk, opts){
+  opts = opts || {};
+  const pageSize = 1000;
+  const maxRecords = opts.maxRecords || 20000; // veiligheidslimiet, ruim boven elk merk se werkelijke aantal
+  let offset = 0, totalMs = 0, firstUrl = null, raw10 = null, allJson = [];
+  while(true){
+    const page = await fetchRdwPage(rdwMerk, pageSize, offset, opts.timeoutMs);
+    if(firstUrl===null) firstUrl = page.url;
+    totalMs += page.ms;
+    if(!page.ok){
+      if(allJson.length) break; // toon wat al binnen is; latere pagina's mislukten
+      return { ok:false, url:page.url, ms:totalMs, error:page.error, records:[] };
+    }
+    if(raw10===null) raw10 = page.json.slice(0,10).map(r=>r.handelsbenaming||"—");
+    if(page.json.length===0) break;
+    allJson = allJson.concat(page.json);
+    if(page.json.length < pageSize) break; // laatste pagina bereikt
+    offset += pageSize;
+    if(offset >= maxRecords) break;
+  }
+  if(allJson.length===0) return { ok:true, url:firstUrl, ms:totalMs, error:null, records:[], empty:true };
+  const fuelMap = await fetchFuelTypes(allJson.map(r=>r.kenteken).filter(Boolean));
+  const classified = dedupeRecords(allJson.map(r=> classifyVehicle({
+    kenteken:r.kenteken, merk:r.merk, handelsbenaming:r.handelsbenaming,
+    datum_eerste_toelating:r.datum_eerste_toelating, datum_tenaamstelling:r.datum_tenaamstelling,
+    datum_eerste_afgifte_nederland:r.datum_eerste_afgifte_nederland,
+    brandstofTypes: r.kenteken ? fuelMap.get(String(r.kenteken).toUpperCase()) : undefined,
+    massa_rijklaar:r.massa_rijklaar, massa_bedrijfsklaar_maximaal:r.massa_bedrijfsklaar_maximaal, voertuigsoort:r.voertuigsoort,
+  })));
+  return { ok:true, url:firstUrl, ms:totalMs, error:null, records:classified, raw10, count:allJson.length };
+}
+// Sommige merken hebben meerdere RDW-schrijfwijzen (bv. Fuchs: FUCHS +
+// TEREX-FUCHS + "TEREX FUCHS"; Giant: GIANT + TOBROCO) — elke alias moet
+// afzonderlijk bij RDW opgevraagd worden (SoQL "merk="-filter is exact),
+// resultaten worden hier samengevoegd onder het ene canonieke merk.
+async function fetchRdwBrandAllAliases(brand, opts){
+  const perAlias = [];
+  for(const alias of brand.aliases){
+    perAlias.push(Object.assign({ alias }, await fetchRdwBrand(alias, opts)));
+  }
+  const ok = perAlias.filter(r=>r.ok);
+  if(ok.length===0){
+    return { ok:false, url:perAlias[0].url, ms:perAlias.reduce((a,r)=>a+r.ms,0), error:perAlias[0].error, records:[] };
+  }
+  let combined = [];
+  ok.forEach(r=>{ if(r.records) combined = combined.concat(r.records); });
+  const raw10 = perAlias.find(r=>r.raw10 && r.raw10.length)?.raw10 || [];
+  return {
+    ok:true,
+    url: perAlias.map(r=>r.url).join(" | "),
+    ms: perAlias.reduce((a,r)=>a+r.ms,0),
+    error: ok.length<perAlias.length ? "Sommige merk-aliases konden niet worden opgehaald ("+ok.length+"/"+perAlias.length+" gelukt)." : null,
+    records: dedupeRecords(combined),
+    raw10,
+    count: perAlias.reduce((a,r)=>a+(r.count||0),0),
+  };
+}
+async function fetchAllActiveLive(activeBrands, onProgress){
+  const results = [];
+  for(const brand of activeBrands){
+    const r = await fetchRdwBrandAllAliases(brand, {});
+    results.push(Object.assign({ brand }, r));
+    if(onProgress) onProgress(brand, r);
+  }
+  return results;
+}
+
+/* =====================================================================
+   Sectie 6: globale state
+   ===================================================================== */
+const STATE = {
+  mode: "demo", // "demo" | "live"
+  data: [],
+  loading: false,
+  page: "dashboard",
+  sidebarOpen: false,
+  theme: localStorage_get("smt_theme","system"),
+  filters: {
+    periodePreset:"alle", jaar:"alle", merkIds:[], smtConcurrent:"alle",
+    productgroep:"alle", modelQuery:"", brandstof:"alle", elektrisch:"alle",
+    leeftijdscategorie:"alle", betrouwbaarheid:"alle",
+  },
+  liveDiag: {}, // per rdwMerk -> {ok,ms,error,url,raw10,count}
+  liveError: null,
+  detailRecord: null,
+  settings: {
+    replacementAge: 10,
+    competitorActive: Object.fromEntries(BRANDS.filter(b=>b.group==="Concurrent").map(b=>[b.id,true])),
+    extraModels: [], // { merk, pattern, groep, status }
+  },
+  newDetectedAdded: new Set(), // handelsbenaming keys toegevoegd aan classificatie (lokaal)
+  ui: {
+    devLegendOff: new Set(),
+    marktontwName: "marktontwikkeling",
+    marktontwGranularity: "kwartaal",
+    marktontwOffSeries: new Set(["DOOSAN","HYUNDAI","SANY","FUCHS","JCB","CASE","KOBELCO"]),
+    marktaandeelGroep: "alle",
+    concurrentieModel: "VOLVO L120",
+    machineparkGrensLeeftijd: 10,
+    nieuweRegPeriode: "30",
+    nieuweRegPage: 1,
+    voertuigenSearch: "",
+    voertuigenSort: { col:"eersteToelating", dir:"desc" },
+    voertuigenPage: 1,
+    diagLog: [],
+    diagRunning: false,
+  },
+};
+function localStorage_get(k,fallback){ try{ const v=localStorage.getItem(k); return v==null?fallback:v; }catch(e){ return fallback; } }
+function localStorage_set(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+function applyTheme(){
+  const root = document.documentElement;
+  if(STATE.theme==="light") root.setAttribute("data-theme","light");
+  else if(STATE.theme==="dark") root.setAttribute("data-theme","dark");
+  else root.removeAttribute("data-theme");
+}
+
+/* =====================================================================
+   Sectie 7: filter-engine — centraal toegepast op elke pagina/KPI
+   ===================================================================== */
+function activeBrandList(){
+  return BRANDS.filter(b=> b.group==="SMT" || STATE.settings.competitorActive[b.id]!==false);
+}
+function inPeriode(rec, preset){
+  if(!rec.eersteToelating) return preset==="alle";
+  const now = new Date();
+  if(preset==="alle") return true;
+  if(preset==="1m"){ const d=new Date(now); d.setUTCMonth(d.getUTCMonth()-1); return rec.eersteToelating>=d; }
+  if(preset==="12m"){ const d=new Date(now); d.setUTCMonth(d.getUTCMonth()-12); return rec.eersteToelating>=d; }
+  if(preset==="ytd"){ return rec.eersteToelating.getUTCFullYear()===now.getUTCFullYear(); }
+  if(preset==="vorigjaar"){ return rec.eersteToelating.getUTCFullYear()===now.getUTCFullYear()-1; }
+  return true;
+}
+function applyFilters(records, f){
+  f = f || STATE.filters;
+  const activeIds = new Set(activeBrandList().map(b=>b.id));
+  return records.filter(r=>{
+    if(!r.brandId || !activeIds.has(r.brandId)) return false;
+    if(f.periodePreset && f.periodePreset!=="alle" && !inPeriode(r, f.periodePreset)) return false;
+    if(f.jaar && f.jaar!=="alle" && String(r.jaar)!==String(f.jaar)) return false;
+    if(f.merkIds && f.merkIds.length && !f.merkIds.includes(r.brandId)) return false;
+    if(f.smtConcurrent && f.smtConcurrent!=="alle" && r.status!==f.smtConcurrent) return false;
+    if(f.productgroep && f.productgroep!=="alle" && r.productgroep!==f.productgroep) return false;
+    if(f.modelQuery){
+      const q = f.modelQuery.toUpperCase();
+      if(!(r.handelsbenaming||"").toUpperCase().includes(q)) return false;
+    }
+    if(f.brandstof && f.brandstof!=="alle" && r.brandstof!==f.brandstof) return false;
+    if(f.elektrisch && f.elektrisch!=="alle" && r.elektrisch!==f.elektrisch) return false;
+    if(f.leeftijdscategorie && f.leeftijdscategorie!=="alle" && r.leeftijdscategorie!==f.leeftijdscategorie) return false;
+    if(f.betrouwbaarheid && f.betrouwbaarheid!=="alle" && r.confidence!==f.betrouwbaarheid) return false;
+    return true;
+  });
+}
+function clearFilters(){
+  STATE.filters = { periodePreset:"alle", jaar:"alle", merkIds:[], smtConcurrent:"alle", productgroep:"alle", modelQuery:"", brandstof:"alle", elektrisch:"alle", leeftijdscategorie:"alle", betrouwbaarheid:"alle" };
+}
+function activeFilterCount(){
+  const f = STATE.filters; let n=0;
+  if(f.periodePreset!=="alle") n++;
+  if(f.jaar!=="alle") n++;
+  if(f.merkIds.length) n++;
+  if(f.smtConcurrent!=="alle") n++;
+  if(f.productgroep!=="alle") n++;
+  if(f.modelQuery) n++;
+  if(f.brandstof!=="alle") n++;
+  if(f.elektrisch!=="alle") n++;
+  if(f.leeftijdscategorie!=="alle") n++;
+  if(f.betrouwbaarheid!=="alle") n++;
+  return n;
+}
+
+/* =====================================================================
+   Sectie 8: format helpers
+   ===================================================================== */
+function esc(s){ return String(s==null?"":s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function fmtNum(n){ return n==null || isNaN(n) ? "—" : Math.round(n).toLocaleString("nl-NL"); }
+function fmtDec(n,d){ return n==null || isNaN(n) ? "—" : n.toLocaleString("nl-NL",{minimumFractionDigits:d||1,maximumFractionDigits:d||1}); }
+function fmtPct(n,d){ return n==null || isNaN(n) ? "—" : n.toLocaleString("nl-NL",{minimumFractionDigits:d==null?1:d,maximumFractionDigits:d==null?1:d})+"%"; }
+function fmtDelta(cur, prev){
+  if(prev==null || cur==null || prev===0) return { text:"—", dir:"flat" };
+  // te kleine datasets leveren geen betrouwbare conclusie op (sectie 33)
+  if(cur+prev < 10) return { text:"Te weinig data", dir:"flat" };
+  const pct = ((cur-prev)/prev)*100;
+  const dir = pct>0.5?"up":pct<-0.5?"down":"flat";
+  const arrow = dir==="up"?"↑":dir==="down"?"↓":"→";
+  return { text: arrow+" "+fmtPct(Math.abs(pct),1), dir, pct };
+}
+function avg(arr){ return arr.length ? arr.reduce((a,b)=>a+b,0)/arr.length : null; }
+function groupBy(arr, fn){
+  const m = new Map();
+  for(const item of arr){ const k = fn(item); if(!m.has(k)) m.set(k,[]); m.get(k).push(item); }
+  return m;
+}
+function downloadBlob(filename, content, mime){
+  const blob = new Blob([content], { type: mime||"text/csv;charset=utf-8;" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = filename;
+  document.body.appendChild(a); a.click(); document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url), 2000);
+}
+function exportCSV(records, filename){
+  const cols = ["Kenteken","Merk","Model","Productgroep","Eerste toelating","Leeftijd","Brandstof","Elektrisch","SMT/concurrent"];
+  const rows = records.map(r=>[
+    r.kenteken, brandById(r.brandId)?brandById(r.brandId).label:r.merkRdw, r.handelsbenaming, r.productgroep,
+    r.eersteToelating?formatDateNL(r.eersteToelating,true):"", r.leeftijd==null?"":r.leeftijd, r.brandstof, r.elektrisch, r.status
+  ]);
+  const esc2 = v => { const s=String(v==null?"":v); return /[";\n]/.test(s) ? '"'+s.replace(/"/g,'""')+'"' : s; };
+  const csv = [cols.join(";")].concat(rows.map(r=>r.map(esc2).join(";"))).join("\r\n");
+  downloadBlob(filename||"smt-export.csv", "﻿"+csv);
+}
+
+/* =====================================================================
+   Sectie 9: chart-primitieven (inline SVG, geen externe libs)
+   Mark-specs: 2px lijnen, afgeronde datauiteinden, 8px markers, hairline
+   grid, 2px witruimte tussen gestapelde segmenten, legenda altijd bij
+   ≥2 reeksen, tooltip bij hover.
+   ===================================================================== */
+let TOOLTIP_WIRED = false;
+function wireTooltips(){
+  if(TOOLTIP_WIRED) return; TOOLTIP_WIRED = true;
+  const root = document.getElementById("tooltip-root");
+  document.addEventListener("mousemove", e=>{
+    const el = e.target.closest && e.target.closest("[data-tip]");
+    if(!el){ root.innerHTML=""; return; }
+    const tip = el.getAttribute("data-tip");
+    root.innerHTML = '<div class="viz-tooltip" style="left:'+(e.clientX+14)+'px; top:'+(e.clientY+14)+'px;">'+tip+'</div>';
+  });
+  document.addEventListener("mouseleave", ()=>{ root.innerHTML=""; }, true);
+}
+function chartColorVar(id){
+  const idx = SERIES_COLORS_ORDER.indexOf(id);
+  return idx>=0 ? "var(--"+SERIES_COLORS[idx]+")" : "var(--s-other)";
+}
+const SERIES_COLORS_ORDER = []; // wordt per chart lokaal ingevuld
+
+function legendHtml(items, offSet, toggleAttr){
+  return '<div class="legend">'+items.map(it=>{
+    const off = offSet && offSet.has(it.id);
+    return '<div class="legend-item'+(off?' off':'')+'" data-'+toggleAttr+'="'+esc(it.id)+'">'+
+      '<span class="legend-swatch" style="background:'+it.color+'"></span>'+esc(it.label)+'</div>';
+  }).join("")+'</div>';
+}
+
+// ---- Lijngrafiek (meerdere reeksen, hover crosshair via per-punt tooltip) ----
+function lineChart(opts){
+  const { xLabels, series, height, valueFmt } = opts; // series: [{id,label,color,values:[num|null]}]
+  const W = 720, H = height||260, padL=44, padR=16, padT=14, padB=30;
+  const plotW = W-padL-padR, plotW_ = plotW, plotH = H-padT-padB;
+  const visible = series.filter(s=>!opts.offSet || !opts.offSet.has(s.id));
+  let maxV = 0;
+  visible.forEach(s=> s.values.forEach(v=>{ if(v!=null) maxV = Math.max(maxV, v); }));
+  maxV = maxV<=0 ? 1 : maxV*1.15;
+  const n = xLabels.length;
+  const xAt = i => padL + (n<=1?0:(i/(n-1))*plotW_);
+  const yAt = v => padT + plotH - (v/maxV)*plotH;
+  const gridN = 4;
+  let gridLines = "";
+  for(let g=0; g<=gridN; g++){
+    const v = (maxV/gridN)*g; const y = yAt(v);
+    gridLines += '<line x1="'+padL+'" x2="'+(W-padR)+'" y1="'+y+'" y2="'+y+'" stroke="var(--grid)" stroke-width="1"/>';
+    gridLines += '<text x="'+(padL-8)+'" y="'+(y+3)+'" text-anchor="end" font-size="10" fill="var(--text-muted)">'+fmtNum(v)+'</text>';
+  }
+  const xTickEvery = Math.max(1, Math.ceil(n/8));
+  let xTicks = "";
+  xLabels.forEach((lb,i)=>{ if(i%xTickEvery===0 || i===n-1) xTicks += '<text x="'+xAt(i)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" fill="var(--text-muted)">'+esc(lb)+'</text>'; });
+  let paths = "";
+  visible.forEach(s=>{
+    let d = ""; let dots = "";
+    s.values.forEach((v,i)=>{
+      if(v==null) return;
+      const x=xAt(i), y=yAt(v);
+      d += (d===""?"M":"L")+x.toFixed(1)+","+y.toFixed(1)+" ";
+      dots += '<circle cx="'+x.toFixed(1)+'" cy="'+y.toFixed(1)+'" r="3.5" fill="'+s.color+'" stroke="var(--surface)" stroke-width="1.5" data-tip="<b>'+esc(s.label)+'</b><br>'+esc(xLabels[i])+': '+(valueFmt?valueFmt(v):fmtNum(v))+'" style="cursor:pointer"/>';
+    });
+    paths += '<path d="'+d+'" fill="none" stroke="'+s.color+'" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' + dots;
+  });
+  const svg = '<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="min-width:520px;display:block" role="img" aria-label="Lijngrafiek">'+
+    gridLines + '<line x1="'+padL+'" x2="'+(W-padR)+'" y1="'+(H-padB)+'" y2="'+(H-padB)+'" stroke="var(--border-strong)" stroke-width="1"/>' +
+    xTicks + paths + '</svg>';
+  const legend = legendHtml(series.map(s=>({id:s.id,label:s.label,color:s.color})), opts.offSet, opts.toggleAttr||"toggle-series");
+  return '<div class="chart-wrap">'+svg+'</div>'+(series.length>1?legend:"");
+}
+
+// ---- Horizontale staafgrafiek ----
+function barChartH(items, opts){
+  opts = opts||{};
+  const max = Math.max(1, ...items.map(i=>i.value));
+  const rows = items.map(it=>{
+    const pct = (it.value/max)*100;
+    return '<div style="display:flex;align-items:center;gap:10px;margin-bottom:9px;" data-tip="<b>'+esc(it.label)+'</b><br>'+fmtNum(it.value)+(opts.showShare?(' · '+fmtPct(it.share,1)):'')+'">'+
+      '<div style="width:118px;font-size:12px;color:var(--text-secondary);flex:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">'+esc(it.label)+'</div>'+
+      '<div style="flex:1;background:var(--grid);border-radius:4px;height:16px;position:relative;overflow:hidden;">'+
+        '<div style="width:'+pct.toFixed(1)+'%;background:'+it.color+';height:100%;border-radius:4px;"></div></div>'+
+      '<div style="width:64px;flex:none;text-align:right;font-size:12px;font-weight:700;color:var(--text-primary);" class="tabular">'+fmtNum(it.value)+'</div>'+
+    '</div>';
+  }).join("");
+  return '<div>'+rows+'</div>';
+}
+
+// ---- Donutgrafiek ----
+function donutChart(items, opts){
+  opts = opts||{};
+  const total = items.reduce((a,b)=>a+b.value,0) || 1;
+  const R=60, CX=74, CY=74, STROKE=22;
+  const circ = 2*Math.PI*R;
+  let offset = 0, arcs = "";
+  items.forEach(it=>{
+    const frac = it.value/total;
+    const len = frac*circ;
+    const gap = items.length>1 ? 2 : 0;
+    arcs += '<circle cx="'+CX+'" cy="'+CY+'" r="'+R+'" fill="none" stroke="'+it.color+'" stroke-width="'+STROKE+'" '+
+      'stroke-dasharray="'+Math.max(0,len-gap)+' '+(circ-Math.max(0,len-gap))+'" stroke-dashoffset="'+(-offset)+'" '+
+      'transform="rotate(-90 '+CX+' '+CY+')" data-tip="<b>'+esc(it.label)+'</b><br>'+fmtNum(it.value)+' · '+fmtPct(frac*100,1)+'" style="cursor:pointer"/>';
+    offset += len;
+  });
+  const svg = '<svg viewBox="0 0 148 148" width="148" height="148" role="img" aria-label="Donutgrafiek">'+arcs+
+    '<text x="74" y="70" text-anchor="middle" font-size="18" font-weight="700" fill="var(--text-primary)">'+fmtNum(total)+'</text>'+
+    '<text x="74" y="86" text-anchor="middle" font-size="9.5" fill="var(--text-muted)">totaal</text></svg>';
+  return '<div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">'+svg+
+    '<div class="legend" style="margin-top:0;flex-direction:column;align-items:flex-start;gap:7px;">'+
+    items.map(it=>'<div class="legend-item" data-tip="<b>'+esc(it.label)+'</b><br>'+fmtNum(it.value)+' · '+fmtPct((it.value/total)*100,1)+'"><span class="legend-swatch" style="background:'+it.color+'"></span>'+esc(it.label)+' <b class="tabular" style="color:var(--text-primary)">'+fmtPct((it.value/total)*100,1)+'</b></div>').join("")+
+    '</div></div>';
+}
+
+// ---- Gestapelde staafgrafiek (leeftijdsopbouw per merk) ----
+function stackedBarChart(categories, series, opts){
+  // categories: [labels]; series: [{id,label,color,values:[per categorie]}]
+  opts = opts||{};
+  const totals = categories.map((_,ci)=> series.reduce((a,s)=>a+(s.values[ci]||0),0));
+  const max = Math.max(1,...totals);
+  const W=720, H=opts.height||220, padL=40, padR=16, padT=10, padB=26;
+  const plotW=W-padL-padR, plotH=H-padT-padB;
+  const bw = plotW/categories.length;
+  let bars="";
+  categories.forEach((cat,ci)=>{
+    let y = H-padB;
+    const total = totals[ci];
+    series.forEach(s=>{
+      const v = s.values[ci]||0;
+      if(v<=0) return;
+      const h = (v/max)*plotH;
+      const x = padL + ci*bw + bw*0.14;
+      y -= h;
+      bars += '<rect x="'+x.toFixed(1)+'" y="'+(y+1).toFixed(1)+'" width="'+(bw*0.72).toFixed(1)+'" height="'+Math.max(0,h-1.5).toFixed(1)+'" fill="'+s.color+'" rx="2" data-tip="<b>'+esc(s.label)+'</b><br>'+esc(cat)+': '+fmtNum(v)+'"/>';
+    });
+    bars += '<text x="'+(padL+ci*bw+bw/2)+'" y="'+(H-8)+'" text-anchor="middle" font-size="10" fill="var(--text-muted)">'+esc(cat)+'</text>';
+    bars += '<text x="'+(padL+ci*bw+bw/2)+'" y="'+(H-padB-((total/max)*plotH)-6)+'" text-anchor="middle" font-size="10" font-weight="700" fill="var(--text-secondary)">'+(total>0?fmtNum(total):"")+'</text>';
+  });
+  const gridN=4; let grid="";
+  for(let g=0; g<=gridN; g++){ const v=(max/gridN)*g; const y=H-padB-(v/max)*plotH;
+    grid += '<line x1="'+padL+'" x2="'+(W-padR)+'" y1="'+y+'" y2="'+y+'" stroke="var(--grid)"/>'+
+      '<text x="'+(padL-8)+'" y="'+(y+3)+'" text-anchor="end" font-size="10" fill="var(--text-muted)">'+fmtNum(v)+'</text>'; }
+  const svg = '<svg viewBox="0 0 '+W+' '+H+'" width="100%" style="min-width:520px;display:block">'+grid+
+    '<line x1="'+padL+'" x2="'+(W-padR)+'" y1="'+(H-padB)+'" y2="'+(H-padB)+'" stroke="var(--border-strong)"/>'+bars+'</svg>';
+  return '<div class="chart-wrap">'+svg+'</div>'+(series.length>1?legendHtml(series,opts.offSet,opts.toggleAttr||"toggle-series"):"");
+}
+
+/* =====================================================================
+   Sectie 10: gedeelde UI-fragmenten
+   ===================================================================== */
+function modeBanner(){
+  const isLive = STATE.mode==="live";
+  return '<div class="mode-badge '+(isLive?"live":"demo")+'" id="mode-toggle" title="Klik om te wisselen tussen LIVE RDW en DEMODATA">'+
+    '<span class="pulse"></span>'+(isLive?"LIVE RDW":"DEMODATA")+'</div>';
+}
+function disclaimerBlock(){
+  return '<div class="disclaimer"><span class="tag-icon-info">ⓘ</span><span>RDW-registratiegegevens geven inzicht in geregistreerde voertuigen en ontwikkelingen binnen deze populatie. De cijfers vertegenwoordigen niet automatisch de volledige Nederlandse markt voor bouwmachines.</span></div>';
+}
+function aboutDataBlock(){
+  return '<div class="info-block"><span style="flex:none;">ⓘ</span><div><b>Over deze gegevens.</b> De analyses zijn gebaseerd op openbare voertuiggegevens van de RDW. Niet iedere bouwmachine is kentekenplichtig of op dezelfde wijze geregistreerd. Daarom zijn de resultaten vooral geschikt om trends, registraties en onderlinge ontwikkelingen te analyseren. De cijfers mogen niet zonder aanvullende marktdata worden beschouwd als volledig marktaandeel.</div></div>';
+}
+function notAvailNote(label){
+  return '<div class="na-note">ⓘ '+esc(label||"Niet beschikbaar via openbare RDW-data.")+'</div>';
+}
+function importInfoIcon(rec){
+  if(!rec.possibleImport) return "";
+  return ' <span class="tag-icon-info" data-tip="<b>Mogelijke gebruikte import</b><br>Eerste toelating ligt aanzienlijk vóór Nederlandse registratie. Dit kan duiden op gebruikte import.">ⓘ</span>';
+}
+function massaBronIcon(rec){
+  if(rec.massaBron!=="massa_bedrijfsklaar_maximaal") return "";
+  return ' <span class="tag-icon-info" data-tip="<b>Afgeleide massa</b><br>RDW-veld \'massa rijklaar\' is bij dit voertuig leeg (gebruikelijk bij mobiele machines) — dit is de maximale bedrijfsklare massa (massa_bedrijfsklaar_maximaal), hetzelfde wat de RDW-kentekencheck toont als \'massa rijklaar (technische massa)\'.">ⓘ</span>';
+}
+function kpiCard(label, value, note, delta, deltaLabel){
+  return '<div class="card kpi-card"><div class="kpi-label">'+esc(label)+'</div>'+
+    '<div class="kpi-value tabular">'+value+'</div>'+
+    (delta ? '<div class="kpi-delta '+delta.dir+'">'+delta.text+' '+esc(deltaLabel||"vs vorig jaar")+'</div>' : '') +
+    (note ? '<div class="kpi-note">'+note+'</div>' : '') +
+  '</div>';
+}
+function confBadge(conf){
+  const cls = conf==="Hoog"?"conf-hoog":conf==="Middel"?"conf-middel":"conf-laag";
+  return '<span><span class="conf-dot '+cls+'"></span>'+esc(conf)+'</span>';
+}
+function statusBadge(status){
+  if(status==="SMT") return '<span class="badge badge-smt">SMT</span>';
+  if(status==="Concurrent") return '<span class="badge badge-comp">Concurrent</span>';
+  return '<span class="badge badge-comp">Onbekend</span>';
+}
+function elekBadge(e){
+  if(e==="Ja") return '<span class="badge badge-good">Elektrisch</span>';
+  if(e==="Hybride") return '<span class="badge badge-warn">Hybride</span>';
+  if(e==="Nee") return '<span class="badge badge-comp">Diesel</span>';
+  return '<span class="badge badge-comp">Onbekend</span>';
+}
+
+/* =====================================================================
+   Sectie 11: KPI- en inzicht-berekeningen
+   ===================================================================== */
+function computeKpis(filtered){
+  const now = new Date();
+  const yearStart = new Date(Date.UTC(now.getUTCFullYear(),0,1));
+  const last12 = new Date(now); last12.setUTCMonth(last12.getUTCMonth()-12);
+  const prev12Start = new Date(now); prev12Start.setUTCMonth(prev12Start.getUTCMonth()-24);
+  const monthStart = new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth(),1));
+  const prevMonthStart = new Date(Date.UTC(now.getUTCFullYear(),now.getUTCMonth()-1,1));
+  const quarterStart = new Date(Date.UTC(now.getUTCFullYear(), Math.floor(now.getUTCMonth()/3)*3, 1));
+  const prevQuarterStart = new Date(Date.UTC(now.getUTCFullYear(), Math.floor(now.getUTCMonth()/3)*3-3, 1));
+  const dataYTDprevYear = filtered.filter(r=> r.eersteToelating && r.eersteToelating.getUTCFullYear()===now.getUTCFullYear()-1 && r.eersteToelating <= new Date(Date.UTC(now.getUTCFullYear()-1, now.getUTCMonth(), now.getUTCDate())));
+  const dataYTDthisYear = filtered.filter(r=> r.eersteToelating && r.eersteToelating>=yearStart);
+  const laatste12mData = filtered.filter(r=> r.eersteToelating && r.eersteToelating>=last12);
+  const vorige12mData = filtered.filter(r=> r.eersteToelating && r.eersteToelating>=prev12Start && r.eersteToelating<last12);
+  const dezeMaand = filtered.filter(r=> r.eersteToelating && r.eersteToelating>=monthStart);
+  const vorigeMaand = filtered.filter(r=> r.eersteToelating && r.eersteToelating>=prevMonthStart && r.eersteToelating<monthStart);
+  const ditKwartaal = filtered.filter(r=> r.eersteToelating && r.eersteToelating>=quarterStart);
+  const vorigKwartaal = filtered.filter(r=> r.eersteToelating && r.eersteToelating>=prevQuarterStart && r.eersteToelating<quarterStart);
+  const uniqModels = new Set(filtered.map(r=> (r.brandId||"")+"|"+r.handelsbenaming.toUpperCase())).size;
+  const withAge = filtered.filter(r=>r.leeftijd!=null);
+  return {
+    totaal: filtered.length,
+    nieuwDitJaar: dataYTDthisYear.length,
+    nieuwDitJaarDelta: fmtDelta(dataYTDthisYear.length, dataYTDprevYear.length),
+    laatste12m: laatste12mData.length,
+    laatste12mDelta: fmtDelta(laatste12mData.length, vorige12mData.length),
+    dezeMaandDelta: fmtDelta(dezeMaand.length, vorigeMaand.length),
+    ditKwartaalDelta: fmtDelta(ditKwartaal.length, vorigKwartaal.length),
+    volvoCE: filtered.filter(r=>r.brandId==="VOLVO_CE").length,
+    sennebogen: filtered.filter(r=>r.brandId==="SENNEBOGEN").length,
+    concurrent: filtered.filter(r=>r.status==="Concurrent").length,
+    elektrisch: filtered.filter(r=>r.elektrisch==="Ja").length,
+    gemLeeftijd: avg(withAge.map(r=>r.leeftijd)),
+    ouder10: filtered.filter(r=>r.leeftijd!=null && r.leeftijd>=STATE.settings.replacementAge).length,
+    uniekeModellen: uniqModels,
+  };
+}
+function generateInsights(filtered){
+  const insights = [];
+  const wielladers = filtered.filter(r=>r.productgroep==="Wielladers");
+  if(wielladers.length>=8){
+    const byBrand = groupBy(wielladers, r=>r.brandId);
+    const volvo = (byBrand.get("VOLVO_CE")||[]).length;
+    if(volvo>0){ insights.push("Volvo vertegenwoordigt "+fmtPct((volvo/wielladers.length)*100,1)+" van de geselecteerde RDW-registraties binnen wielladers in de gekozen periode."); }
+  }
+  const now = new Date();
+  ["CAT","VOLVO_CE","SENNEBOGEN","LIEBHERR"].forEach(bid=>{
+    const brand = brandById(bid); if(!brand) return;
+    const thisYr = filtered.filter(r=>r.brandId===bid && r.jaar===now.getUTCFullYear()).length;
+    const prevYr = filtered.filter(r=>r.brandId===bid && r.jaar===now.getUTCFullYear()-1).length;
+    if(thisYr>=5 && prevYr>=5){
+      const d = fmtDelta(thisYr, prevYr);
+      if(d.dir!=="flat") insights.push("Het aantal registraties van "+brand.label+" ligt "+fmtPct(Math.abs(d.pct),0)+" "+(d.dir==="up"?"hoger":"lager")+" dan in dezelfde periode vorig jaar.");
+    }
+  });
+  const senneb = filtered.filter(r=>r.brandId==="SENNEBOGEN");
+  if(senneb.length>=8){
+    const oud = senneb.filter(r=>r.leeftijd!=null && r.leeftijd>=STATE.settings.replacementAge).length;
+    insights.push(fmtPct((oud/senneb.length)*100,0)+" van het geselecteerde Sennebogen-machinepark is ouder dan "+STATE.settings.replacementAge+" jaar.");
+  }
+  const thisYrAll = filtered.filter(r=>r.jaar===now.getUTCFullYear());
+  const prevYrAll = filtered.filter(r=>r.jaar===now.getUTCFullYear()-1);
+  if(thisYrAll.length>=15 && prevYrAll.length>=15){
+    const pElecThis = (thisYrAll.filter(r=>r.elektrisch==="Ja").length/thisYrAll.length)*100;
+    const pElecPrev = (prevYrAll.filter(r=>r.elektrisch==="Ja").length/prevYrAll.length)*100;
+    insights.push("Het aandeel elektrische registraties is "+(pElecThis>=pElecPrev?"gestegen":"gedaald")+" van "+fmtPct(pElecPrev,1)+" naar "+fmtPct(pElecThis,1)+".");
+  }
+  if(insights.length===0) insights.push("Onvoldoende data binnen de huidige filterselectie voor betrouwbare inzichten. Verruim de selectie voor meer resultaten.");
+  return insights.slice(0,4);
+}
+
+/* =====================================================================
+   Sectie 12: Nieuwe modellen gesignaleerd (widget, sectie 17)
+   ===================================================================== */
+function detectUnknownModels(allRecords){
+  const groups = groupBy(allRecords.filter(r=> r.confidence==="Laag" && r.brandId && !STATE.newDetectedAdded.has(r.merkRdw+"|"+r.handelsbenaming.toUpperCase())), r=> r.merkRdw+"|"+r.handelsbenaming.toUpperCase());
+  const out = [];
+  groups.forEach((recs, key)=>{
+    if(recs.length<1) return;
+    const [merk, model] = key.split("|");
+    out.push({ merk, model: recs[0].handelsbenaming, count: recs.length, brandId: recs[0].brandId });
+  });
+  return out.sort((a,b)=>b.count-a.count).slice(0,6);
+}
+function renderNewModelsWidget(allRecords){
+  const found = detectUnknownModels(allRecords);
+  if(found.length===0) return "";
+  return '<div class="card section">'+
+    '<div class="card-title">Nieuwe modellen gesignaleerd</div>'+
+    '<div class="card-sub">Handelsbenamingen die nog niet met hoge betrouwbaarheid in de modellenbibliotheek staan.</div>'+
+    found.map(f=>{
+      const brand = brandById(f.brandId);
+      return '<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0;border-top:1px solid var(--border);">'+
+        '<div><div style="font-weight:700;font-size:13px;">'+(brand?esc(brand.label)+" — ":"")+'nieuw mogelijk model</div>'+
+        '<div style="font-size:12px;color:var(--text-secondary);">Handelsbenaming: <b>'+esc(f.model)+'</b> · '+f.count+' registratie'+(f.count===1?"":"s")+' gevonden</div></div>'+
+        '<button class="btn btn-sm btn-accent" data-add-model="'+esc(f.merk)+"|"+esc(f.model)+'">Toevoegen aan classificatie</button>'+
+      '</div>';
+    }).join("")+
+  '</div>';
+}
+
+/* =====================================================================
+   Sectie 13: PAGINA — Dashboard
+   ===================================================================== */
+function renderDashboard(filtered, all){
+  const k = computeKpis(filtered);
+  const insights = generateInsights(filtered);
+  return '<div class="page-head"><h2>Dashboard</h2><p>Overzicht van SMT- en concurrentmerken binnen de Nederlandse markt voor bouw-, overslag- en recyclingmachines, op basis van openbare RDW-registraties.</p></div>'+
+  (STATE.mode==="demo" ? '<div class="info-block" style="margin-bottom:16px;"><span>ⓘ</span><div><b>Demonstratie-inzichten.</b> Onderstaande cijfers en inzichten zijn gebaseerd op DEMODATA, niet op live RDW-registraties.</div></div>' : '')+
+  '<div class="grid grid-kpi section">'+
+    kpiCard("Totaal relevante registraties", fmtNum(k.totaal), "Binnen actieve filters")+
+    kpiCard("Nieuw dit jaar", fmtNum(k.nieuwDitJaar), null, k.nieuwDitJaarDelta)+
+    kpiCard("Nieuw laatste 12 maanden", fmtNum(k.laatste12m), null, k.laatste12mDelta, "vs voorgaande 12 mnd")+
+    kpiCard("Volvo CE", fmtNum(k.volvoCE), k.totaal?fmtPct((k.volvoCE/k.totaal)*100,1)+" van selectie":null)+
+    kpiCard("Sennebogen", fmtNum(k.sennebogen), k.totaal?fmtPct((k.sennebogen/k.totaal)*100,1)+" van selectie":null)+
+    kpiCard("Concurrentmachines", fmtNum(k.concurrent))+
+    kpiCard("Elektrische machines", fmtNum(k.elektrisch), k.totaal?fmtPct((k.elektrisch/k.totaal)*100,1)+" van selectie":null)+
+    kpiCard("Gemiddelde leeftijd", k.gemLeeftijd!=null?fmtDec(k.gemLeeftijd,1)+" jaar":"—")+
+    kpiCard("Ouder dan "+STATE.settings.replacementAge+" jaar", fmtNum(k.ouder10), "Indicatief vervangingspotentieel")+
+    kpiCard("Unieke modellen", fmtNum(k.uniekeModellen))+
+  '</div>'+
+  '<div class="card section"><div class="card-title">Vergelijk periode</div><div class="card-sub">Ontwikkeling van het aantal nieuwe registraties binnen de huidige selectie.</div>'+
+    '<div style="display:flex;gap:28px;flex-wrap:wrap;">'+
+      '<div><div class="kpi-note" style="margin-bottom:4px;">Deze maand vs vorige maand</div><div class="kpi-delta '+k.dezeMaandDelta.dir+'">'+k.dezeMaandDelta.text+'</div></div>'+
+      '<div><div class="kpi-note" style="margin-bottom:4px;">Dit kwartaal vs vorig kwartaal</div><div class="kpi-delta '+k.ditKwartaalDelta.dir+'">'+k.ditKwartaalDelta.text+'</div></div>'+
+      '<div><div class="kpi-note" style="margin-bottom:4px;">Dit jaar vs vorig jaar</div><div class="kpi-delta '+k.nieuwDitJaarDelta.dir+'">'+k.nieuwDitJaarDelta.text+'</div></div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="grid grid-2 section">'+
+    '<div class="card"><div class="card-title">Managementinzichten</div><div class="card-sub">Automatisch berekend uit de huidige selectie'+(STATE.mode==="demo"?" (demodata)":"")+'.</div>'+
+      '<div class="insight-list">'+insights.map(t=>'<div class="insight"><span>▸</span><span>'+esc(t)+'</span></div>').join("")+'</div>'+
+      disclaimerBlock()+
+    '</div>'+
+    renderNewModelsWidget(all)+
+  '</div>'+
+  aboutDataBlock();
+}
+
+/* =====================================================================
+   Sectie 14: PAGINA — Marktontwikkeling
+   ===================================================================== */
+function renderMarktontwikkeling(filtered){
+  const ui = STATE.ui;
+  const gran = ui.marktontwGranularity;
+  const keyFn = r=> gran==="jaar" ? String(r.jaar) : gran==="kwartaal" ? r.kwartaal : r.maand;
+  const withKey = filtered.filter(r=> r.eersteToelating);
+  const allKeys = Array.from(new Set(withKey.map(keyFn))).filter(Boolean).sort();
+  const xLabels = allKeys.slice(-24);
+  const compareBrands = BRANDS.filter(b=> !ui.marktontwOffSeries.has(b.id) ? true : true); // all shown in legend, toggled via offSet
+  const series = BRANDS.map((b,i)=>{
+    const recs = withKey.filter(r=>r.brandId===b.id);
+    const byKey = groupBy(recs, keyFn);
+    return { id:b.id, label:b.label, color:brandColor(b.id), values: xLabels.map(x=> (byKey.get(x)||[]).length) };
+  });
+  const now = new Date();
+  const curYr = now.getUTCFullYear();
+  const curCount = filtered.filter(r=>r.jaar===curYr).length;
+  const prevCount = filtered.filter(r=>r.jaar===curYr-1).length;
+  const delta = fmtDelta(curCount, prevCount);
+  return '<div class="page-head"><h2>Marktontwikkeling</h2><p>Registraties per '+gran+' met vergelijking tussen merken. Zet merken aan of uit via de legenda.</p></div>'+
+  '<div class="card section">'+
+    '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:12px;">'+
+      '<div class="pill-toggle" id="gran-toggle">'+
+        ["maand","kwartaal","jaar"].map(g=>'<button data-gran="'+g+'" class="'+(gran===g?"active":"")+'">'+g.charAt(0).toUpperCase()+g.slice(1)+'</button>').join("")+
+      '</div>'+
+      '<div style="display:flex;gap:18px;font-size:12.5px;">'+
+        '<div><span style="color:var(--text-muted)">Huidig jaar (‘'+String(curYr).slice(2)+'):</span> <b class="tabular">'+fmtNum(curCount)+'</b></div>'+
+        '<div><span style="color:var(--text-muted)">Vorig jaar:</span> <b class="tabular">'+fmtNum(prevCount)+'</b></div>'+
+        '<div class="kpi-delta '+delta.dir+'" style="display:inline-flex;">'+delta.text+'</div>'+
+      '</div>'+
+    '</div>'+
+    lineChart({ xLabels, series, offSet: ui.marktontwOffSeries, toggleAttr:"toggle-mo-series" })+
+  '</div>'+
+  disclaimerBlock();
+}
+
+/* =====================================================================
+   Sectie 15: PAGINA — Marktaandeel (RDW-registratieaandeel)
+   ===================================================================== */
+function renderMarktaandeel(filtered){
+  const ui = STATE.ui;
+  const groep = ui.marktaandeelGroep;
+  const scoped = groep==="alle" ? filtered : filtered.filter(r=>r.productgroep===groep);
+  const byBrand = groupBy(scoped, r=>r.brandId);
+  let items = BRANDS.map(b=>({ id:b.id, label:b.label, value:(byBrand.get(b.id)||[]).length, color: brandColor(b.id) })).filter(i=>i.value>0);
+  items.sort((a,b)=>b.value-a.value);
+  const total = items.reduce((a,b)=>a+b.value,0);
+  const top = items.slice(0,7);
+  const rest = items.slice(7);
+  const restSum = rest.reduce((a,b)=>a+b.value,0);
+  const donutItems = restSum>0 ? top.concat([{id:"other",label:"Overig",value:restSum,color:"var(--s-other)"}]) : top;
+  const now = new Date().getUTCFullYear();
+  return '<div class="page-head"><h2>Marktaandeel</h2><p>Berekend uitsluitend op basis van de geselecteerde relevante RDW-registraties — daarom expliciet <b>RDW-registratieaandeel</b> genoemd, niet "marktaandeel".</p></div>'+
+  '<div class="filterbar" style="position:static;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px;">'+
+    '<label class="fgroup">Productgroep<select id="marktaandeel-groep">'+
+      '<option value="alle" '+(groep==="alle"?"selected":"")+'>Alle productgroepen</option>'+
+      PRODUCT_GROUPS.map(g=>'<option value="'+esc(g)+'" '+(groep===g?"selected":"")+'>'+esc(g)+'</option>').join("")+
+    '</select></label>'+
+  '</div>'+
+  (total===0 ? '<div class="card empty-state">Geen registraties binnen deze selectie.</div>' :
+  '<div class="grid grid-2 section">'+
+    '<div class="card"><div class="card-title">RDW-registratieaandeel'+(groep!=="alle"?" — "+esc(groep):"")+'</div>'+
+      '<div class="card-sub">Registraties '+now+' (binnen actieve filters), n='+fmtNum(total)+'</div>'+
+      donutChart(donutItems)+
+    '</div>'+
+    '<div class="card"><div class="card-title">Ranglijst</div><div class="card-sub">Formule: registraties merk ÷ totaal geselecteerde registraties × 100</div>'+
+      barChartH(items.map(i=>Object.assign({},i,{share:(i.value/total)*100})), {showShare:true})+
+    '</div>'+
+  '</div>'+
+  '<div class="table-wrap section"><table><thead><tr><th>Merk</th><th>Registraties</th><th>RDW-registratieaandeel</th></tr></thead><tbody>'+
+    items.map(i=>'<tr><td>'+esc(i.label)+'</td><td class="tabular">'+fmtNum(i.value)+'</td><td class="tabular">'+fmtPct((i.value/total)*100,1)+'</td></tr>').join("")+
+  '</tbody></table></div>')+
+  disclaimerBlock();
+}
+
+/* =====================================================================
+   Sectie 16: PAGINA — Concurrentie
+   ===================================================================== */
+function renderConcurrentie(all){
+  const ui = STATE.ui;
+  const smtModels = Object.keys(COMPETITIVE_MATRIX);
+  const selected = ui.concurrentieModel;
+  const compModels = COMPETITIVE_MATRIX[selected] || [];
+  function statsFor(matchFn){
+    const recs = all.filter(matchFn);
+    const now = new Date().getUTCFullYear();
+    const thisYr = recs.filter(r=>r.jaar===now).length;
+    const prevYr = recs.filter(r=>r.jaar===now-1).length;
+    const withAge = recs.filter(r=>r.leeftijd!=null);
+    const gem = avg(withAge.map(r=>r.leeftijd));
+    const ouder10 = recs.filter(r=>r.leeftijd!=null && r.leeftijd>=STATE.settings.replacementAge).length;
+    const elek = recs.filter(r=>r.elektrisch==="Ja").length;
+    const laatste = recs.reduce((mx,r)=> (r.eersteToelating && (!mx||r.eersteToelating>mx)) ? r.eersteToelating : mx, null);
+    return { n:recs.length, thisYr, prevYr, gem, ouder10, elek, laatste };
+  }
+  function rowFor(label, matchFn, isSmt){
+    const s = statsFor(matchFn);
+    return '<tr>'+
+      '<td>'+(isSmt?'<b>'+esc(label)+'</b>':esc(label))+'</td>'+
+      '<td class="tabular">'+fmtNum(s.n)+'</td>'+
+      '<td class="tabular">'+fmtNum(s.thisYr)+'</td>'+
+      '<td class="tabular">'+fmtNum(s.prevYr)+'</td>'+
+      '<td class="tabular">'+(s.gem!=null?fmtDec(s.gem,1)+" jr":"—")+'</td>'+
+      '<td class="tabular">'+fmtNum(s.ouder10)+'</td>'+
+      '<td class="tabular">'+fmtNum(s.elek)+'</td>'+
+      '<td>'+(s.laatste?formatDateNL(s.laatste,true):"—")+'</td>'+
+    '</tr>';
+  }
+  const [smtMerk, ...rest] = selected.split(" ");
+  const smtModelKey = selected.replace(/^\S+\s/, "");
+  const rows = rowFor(selected, r=> (r.merkRdw===smtMerk) && r.handelsbenaming.toUpperCase().startsWith(smtModelKey.split(" ")[0].replace(/[A-Z]$/,"")), true) +
+    compModels.map(cm=>{
+      const [cMerk, ...cModelParts] = cm.split(" ");
+      const cModel = cModelParts.join(" ");
+      return rowFor(cm, r=> r.merkRdw===cMerk && r.handelsbenaming.toUpperCase().startsWith(cModel), false);
+    }).join("");
+  return '<div class="page-head"><h2>Concurrentie</h2><p>Selecteer een SMT-model om de handmatig samengestelde concurrentiematrix te vergelijken op registraties, leeftijd en elektrificatie.</p></div>'+
+  '<div class="filterbar" style="position:static;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px;">'+
+    '<label class="fgroup">SMT-model<select id="concurrentie-model">'+
+      smtModels.map(m=>'<option value="'+esc(m)+'" '+(m===selected?"selected":"")+'>'+esc(m)+'</option>').join("")+
+    '</select></label>'+
+  '</div>'+
+  '<div class="card section"><div class="card-title">'+esc(selected)+' — vergelijkbaar met</div>'+
+    '<div class="card-sub">'+(compModels.length?compModels.join(" · "):"Nog geen concurrentiemodellen gekoppeld voor dit model.")+'</div>'+
+    '<div class="table-wrap"><table><thead><tr><th>Model</th><th>Registraties</th><th>Dit jaar</th><th>Vorig jaar</th><th>Gem. leeftijd</th><th>10+ jaar</th><th>Elektrisch</th><th>Laatst geregistreerd</th></tr></thead><tbody>'+
+      rows+
+    '</tbody></table></div>'+
+  '</div>'+
+  '<div class="card-sub" style="margin-bottom:8px;">De concurrentiematrix is in versie 1 handmatig samengesteld in de code en kan eenvoudig worden uitgebreid.</div>'+
+  disclaimerBlock();
+}
+
+/* =====================================================================
+   Sectie 17: PAGINA — Machinepark (leeftijd)
+   ===================================================================== */
+function renderMachinepark(filtered){
+  const grens = STATE.ui.machineparkGrensLeeftijd;
+  const withAge = filtered.filter(r=>r.leeftijd!=null);
+  const cats = AGE_BUCKETS.map(b=>b.label.replace("tot","–"));
+  const topBrands = ["VOLVO_CE","SENNEBOGEN","CAT","LIEBHERR","KOMATSU"];
+  const series = topBrands.map(bid=>{
+    const b = brandById(bid);
+    const recs = withAge.filter(r=>r.brandId===bid);
+    return { id:bid, label:b.label, color:brandColor(bid), values: AGE_BUCKETS.map(bk=> recs.filter(r=>r.leeftijdscategorie===bk.id).length) };
+  });
+  const histAll = AGE_BUCKETS.map(bk=> withAge.filter(r=>r.leeftijdscategorie===bk.id).length);
+  const potentieel = withAge.filter(r=>r.leeftijd>=grens);
+  const byBrandTable = groupBy(withAge, r=>r.brandId);
+  const brandRows = BRANDS.filter(b=> (byBrandTable.get(b.id)||[]).length>0).map(b=>{
+    const recs = byBrandTable.get(b.id)||[];
+    const gem = avg(recs.map(r=>r.leeftijd));
+    const ouder = recs.filter(r=>r.leeftijd>=grens).length;
+    return '<tr><td>'+esc(b.label)+'</td><td class="tabular">'+fmtNum(recs.length)+'</td><td class="tabular">'+fmtDec(gem,1)+' jr</td>'+
+      '<td class="tabular">'+fmtNum(ouder)+'</td><td class="tabular">'+fmtPct((ouder/recs.length)*100,1)+'</td></tr>';
+  }).join("");
+  return '<div class="page-head"><h2>Machinepark</h2><p>Leeftijdsopbouw van het geregistreerde machinepark per merk, met instelbare vervangingsgrens.</p></div>'+
+  '<div class="card section">'+
+    '<div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:6px;">'+
+      '<div class="card-title" style="margin-bottom:0;">Leeftijdsopbouw per merk</div>'+
+      '<div style="display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-secondary);">Vervangingsgrens: '+
+        '<div class="pill-toggle" id="grens-toggle">'+[8,10,12,15].map(g=>'<button data-grens="'+g+'" class="'+(grens===g?"active":"")+'">'+g+' jr</button>').join("")+'</div>'+
+      '</div>'+
+    '</div>'+
+    stackedBarChart(cats, series)+
+  '</div>'+
+  '<div class="grid grid-2 section">'+
+    '<div class="card"><div class="card-title">Histogram — totale populatie</div>'+
+      stackedBarChart(cats, [{id:"all",label:"Alle merken",color:"var(--brand)",values:histAll}])+
+    '</div>'+
+    '<div class="card"><div class="card-title">Indicatief vervangingspotentieel</div>'+
+      '<div class="card-sub">Machines van '+grens+' jaar of ouder binnen de huidige selectie. Dit is een indicatie op basis van leeftijd — geen sales leads en geen weergave van daadwerkelijke vervangingsintentie.</div>'+
+      '<div class="kpi-value" style="margin:6px 0 2px;">'+fmtNum(potentieel.length)+'</div>'+
+      '<div class="kpi-note">'+(withAge.length?fmtPct((potentieel.length/withAge.length)*100,1):'—')+' van machines met bekende leeftijd binnen selectie</div>'+
+    '</div>'+
+  '</div>'+
+  '<div class="table-wrap section"><table><thead><tr><th>Merk</th><th>Aantal</th><th>Gem. leeftijd</th><th>'+grens+'+ jaar</th><th>Aandeel '+grens+'+</th></tr></thead><tbody>'+brandRows+'</tbody></table></div>'+
+  disclaimerBlock();
+}
+
+/* =====================================================================
+   Sectie 18: PAGINA — Elektrificatie
+   ===================================================================== */
+function renderElektrificatie(filtered){
+  const total = filtered.length;
+  const elekJa = filtered.filter(r=>r.elektrisch==="Ja");
+  const elekHyb = filtered.filter(r=>r.elektrisch==="Hybride");
+  const diesel = filtered.filter(r=>r.elektrisch==="Nee");
+  const onbekend = filtered.filter(r=>r.elektrisch==="Onbekend");
+  const now = new Date().getUTCFullYear();
+  const years = Array.from({length:5},(_,i)=> now-4+i);
+  const perJaar = years.map(y=> filtered.filter(r=>r.jaar===y && r.elektrisch==="Ja").length);
+  const perJaarTotal = years.map(y=> filtered.filter(r=>r.jaar===y).length);
+  const aandeelSeries = [{ id:"elek", label:"Aandeel elektrisch (%)", color:"var(--s2)", values: perJaarTotal.map((t,i)=> t? +( (perJaar[i]/t)*100 ).toFixed(1) : null) }];
+  const perFabrikant = groupBy(elekJa, r=>r.brandId);
+  const fabItems = BRANDS.filter(b=>(perFabrikant.get(b.id)||[]).length>0)
+    .map(b=>({ id:b.id, label:b.label, value:(perFabrikant.get(b.id)||[]).length, color:brandColor(b.id) }))
+    .sort((a,b)=>b.value-a.value);
+  const modellen = Array.from(new Set(elekJa.map(r=>r.handelsbenaming))).slice(0,14);
+  const lowData = total < 25;
+  return '<div class="page-head"><h2>Elektrificatie</h2><p>Ontwikkeling van elektrische en hybride registraties binnen SMT- en concurrentmerken.</p></div>'+
+  (lowData ? '<div class="info-block section"><span>⚠</span><div><b>Beperkte datagrondslag.</b> De huidige selectie bevat weinig registraties ('+fmtNum(total)+'); percentages en trends zijn hierdoor minder betrouwbaar.</div></div>' : '')+
+  '<div class="grid grid-kpi section">'+
+    kpiCard("Elektrische machines", fmtNum(elekJa.length))+
+    kpiCard("Aandeel elektrisch", total?fmtPct((elekJa.length/total)*100,1):"—")+
+    kpiCard("Hybride machines", fmtNum(elekHyb.length))+
+    kpiCard("Onbekende aandrijving", fmtNum(onbekend.length), "RDW-data onvoldoende eenduidig")+
+  '</div>'+
+  '<div class="grid grid-2 section">'+
+    '<div class="card"><div class="card-title">Aandrijving — verdeling</div>'+
+      donutChart([
+        {id:"e",label:"Elektrisch",value:elekJa.length,color:"var(--s2)"},
+        {id:"h",label:"Hybride",value:elekHyb.length,color:"var(--s3)"},
+        {id:"d",label:"Diesel",value:diesel.length,color:"var(--s-other)"},
+        {id:"o",label:"Onbekend",value:onbekend.length,color:"var(--text-muted)"},
+      ].filter(i=>i.value>0))+
+    '</div>'+
+    '<div class="card"><div class="card-title">Aandeel elektrisch per fabrikant</div>'+
+      (fabItems.length? barChartH(fabItems) : '<div class="empty-state">Geen elektrische registraties binnen selectie.</div>')+
+    '</div>'+
+  '</div>'+
+  '<div class="card section"><div class="card-title">Ontwikkeling laatste 5 jaar</div><div class="card-sub">Aandeel elektrische registraties per jaar (%)</div>'+
+    lineChart({ xLabels: years.map(String), series: aandeelSeries, valueFmt:v=>fmtPct(v,1) })+
+  '</div>'+
+  '<div class="card section"><div class="card-title">Elektrische modellen in selectie</div>'+
+    (modellen.length ? '<div style="display:flex;flex-wrap:wrap;gap:7px;">'+modellen.map(m=>'<span class="badge badge-good">'+esc(m)+'</span>').join("")+'</div>' : '<div class="empty-state">Geen elektrische modellen gevonden binnen selectie.</div>')+
+  '</div>'+
+  disclaimerBlock();
+}
+
+/* =====================================================================
+   Sectie 19: PAGINA — Nieuwe registraties
+   ===================================================================== */
+const NIEUWE_REG_PAGE_SIZE = 150;
+function renderNieuweRegistraties(filtered){
+  const ui = STATE.ui;
+  const per = ui.nieuweRegPeriode;
+  const now = new Date();
+  let cutoff = null;
+  if(per==="7"){ cutoff=new Date(now); cutoff.setUTCDate(cutoff.getUTCDate()-7); }
+  else if(per==="30"){ cutoff=new Date(now); cutoff.setUTCDate(cutoff.getUTCDate()-30); }
+  else if(per==="90"){ cutoff=new Date(now); cutoff.setUTCDate(cutoff.getUTCDate()-90); }
+  else if(per==="jaar"){ cutoff=new Date(Date.UTC(now.getUTCFullYear(),0,1)); }
+  let recs = filtered.filter(r=>r.eersteToelating).sort((a,b)=>b.eersteToelating-a.eersteToelating);
+  if(cutoff) recs = recs.filter(r=>r.eersteToelating>=cutoff);
+  // Vorige versie toonde altijd alleen de nieuwste 150 zonder paginering — bij
+  // "Dit jaar" met meerdere actieve merken overschrijden alleen al de laatste
+  // paar maanden die 150 ruimschoots, waardoor eerdere maanden (bv. jan/feb/mrt)
+  // volledig onzichtbaar bleven, ook al bevatte de dataset ze wél.
+  const totalPages = Math.max(1, Math.ceil(recs.length/NIEUWE_REG_PAGE_SIZE));
+  const page = Math.min(ui.nieuweRegPage, totalPages);
+  const shown = recs.slice((page-1)*NIEUWE_REG_PAGE_SIZE, page*NIEUWE_REG_PAGE_SIZE);
+  return '<div class="page-head"><h2>Nieuwe registraties</h2><p>Meest recente relevante RDW-registraties, standaard nieuwste eerst.</p></div>'+
+  '<div class="filterbar" style="position:static;border-radius:var(--radius);border:1px solid var(--border);margin-bottom:16px;">'+
+    '<div class="pill-toggle" id="nieuw-periode">'+
+      [["7","7 dagen"],["30","30 dagen"],["90","90 dagen"],["jaar","Dit jaar"]].map(([v,l])=>'<button data-nperiode="'+v+'" class="'+(per===v?"active":"")+'">'+l+'</button>').join("")+
+    '</div>'+
+    '<span style="margin-left:auto;font-size:12px;color:var(--text-muted);">'+fmtNum(recs.length)+' resultaten</span>'+
+  '</div>'+
+  '<div class="table-wrap"><table><thead><tr><th>Datum</th><th>Kenteken</th><th>Merk</th><th>Model</th><th>Productgroep</th><th>Brandstof</th><th>Elektrisch</th><th>Leeftijd</th><th>Status</th></tr></thead><tbody>'+
+    (shown.length ? shown.map(r=>{
+      const b = brandById(r.brandId);
+      return '<tr data-open-detail="'+esc(r.kenteken)+'"><td>'+(r.eersteToelating?formatDateNL(r.eersteToelating,true):"—")+importInfoIcon(r)+'</td>'+
+        '<td class="mono">'+esc(r.kenteken)+'</td><td>'+esc(b?b.label:r.merkRdw)+'</td><td>'+esc(r.handelsbenaming)+'</td>'+
+        '<td>'+esc(r.productgroep)+'</td><td>'+esc(r.brandstof)+'</td><td>'+elekBadge(r.elektrisch)+'</td>'+
+        '<td class="tabular">'+(r.leeftijd!=null?r.leeftijd+" jr":"—")+'</td><td>'+statusBadge(r.status)+'</td></tr>';
+    }).join("") : '<tr><td colspan="9"><div class="empty-state">Geen registraties gevonden binnen de gekozen periode en filters.</div></td></tr>')+
+  '</tbody></table>'+
+  '<div class="pagination"><button class="btn btn-sm" id="nieuw-reg-prev" '+(page<=1?"disabled":"")+'>← Vorige</button>'+
+    '<span>Pagina '+page+' van '+totalPages+' ('+fmtNum(recs.length)+' resultaten)</span>'+
+    '<button class="btn btn-sm" id="nieuw-reg-next" '+(page>=totalPages?"disabled":"")+'>Volgende →</button></div>'+
+  '</div>'+
+  '<div style="margin-top:14px;">'+disclaimerBlock()+'</div>';
+}
+
+/* =====================================================================
+   Sectie 20: PAGINA — Voertuigen (zoeken, sorteren, pagineren)
+   ===================================================================== */
+const VOERTUIGEN_PAGE_SIZE = 25;
+function renderVoertuigen(filtered){
+  const ui = STATE.ui;
+  let recs = filtered.slice();
+  if(ui.voertuigenSearch){
+    const q = ui.voertuigenSearch.toUpperCase();
+    recs = recs.filter(r=> r.kenteken.includes(q) || r.merkRdw.includes(q) || r.handelsbenaming.toUpperCase().includes(q));
+  }
+  const { col, dir } = ui.voertuigenSort;
+  const getVal = r=>{
+    if(col==="merk") return brandById(r.brandId)?brandById(r.brandId).label:r.merkRdw;
+    if(col==="handelsbenaming") return r.handelsbenaming;
+    if(col==="productgroep") return r.productgroep;
+    if(col==="eersteToelating") return r.eersteToelating?r.eersteToelating.getTime():0;
+    if(col==="tenaamstelling") return r.tenaamstelling?r.tenaamstelling.getTime():0;
+    if(col==="leeftijd") return r.leeftijd==null?-1:r.leeftijd;
+    if(col==="brandstof") return r.brandstof;
+    if(col==="elektrisch") return r.elektrisch;
+    if(col==="massa") return r.massa==null?-1:r.massa;
+    if(col==="confidence") return {Hoog:3,Middel:2,Laag:1}[r.confidence]||0;
+    return r.kenteken;
+  };
+  recs.sort((a,b)=>{ const av=getVal(a), bv=getVal(b); const cmp = av<bv?-1:av>bv?1:0; return dir==="asc"?cmp:-cmp; });
+  const totalPages = Math.max(1, Math.ceil(recs.length/VOERTUIGEN_PAGE_SIZE));
+  const page = Math.min(ui.voertuigenPage, totalPages);
+  const pageRecs = recs.slice((page-1)*VOERTUIGEN_PAGE_SIZE, page*VOERTUIGEN_PAGE_SIZE);
+  const cols = [
+    ["kenteken","Kenteken"],["merk","Merk"],["handelsbenaming","Handelsbenaming"],["productgroep","Productgroep"],
+    ["eersteToelating","Eerste toelating"],["tenaamstelling","Tenaamstelling"],["leeftijd","Leeftijd"],
+    ["brandstof","Brandstof"],["elektrisch","Elektrisch"],["massa","Massa rijklaar"],["confidence","Classificatiescore"],
+  ];
+  const arrow = c => col===c ? (dir==="asc"?" ▲":" ▼") : "";
+  return '<div class="page-head"><h2>Voertuigen</h2><p>Doorzoekbaar en sorteerbaar overzicht van alle geclassificeerde registraties binnen de actieve filters.</p></div>'+
+  '<div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px;">'+
+    '<div class="search-input" style="max-width:340px;flex:1;"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>'+
+      '<input type="text" id="voertuigen-search" placeholder="Zoek op kenteken, merk, model of handelsbenaming…" value="'+esc(ui.voertuigenSearch)+'"/></div>'+
+    '<div style="display:flex;gap:8px;align-items:center;">'+
+      '<span style="font-size:12px;color:var(--text-muted);">'+fmtNum(recs.length)+' resultaten</span>'+
+      '<button class="btn btn-accent btn-sm" id="export-csv-voertuigen"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>Exporteren</button>'+
+    '</div>'+
+  '</div>'+
+  '<div class="table-wrap"><table><thead><tr>'+cols.map(([c,l])=>'<th data-sort-col="'+c+'">'+l+arrow(c)+'</th>').join("")+'</tr></thead><tbody>'+
+    (pageRecs.length ? pageRecs.map(r=>{
+      const b = brandById(r.brandId);
+      return '<tr data-open-detail="'+esc(r.kenteken)+'"><td class="mono">'+esc(r.kenteken)+'</td><td>'+esc(b?b.label:r.merkRdw)+'</td>'+
+        '<td>'+esc(r.handelsbenaming)+'</td><td>'+esc(r.productgroep)+'</td>'+
+        '<td>'+(r.eersteToelating?formatDateNL(r.eersteToelating,true):"—")+importInfoIcon(r)+'</td>'+
+        '<td>'+(r.tenaamstelling?formatDateNL(r.tenaamstelling,true):"—")+'</td>'+
+        '<td class="tabular">'+(r.leeftijd!=null?r.leeftijd+" jr":"—")+'</td>'+
+        '<td>'+esc(r.brandstof)+'</td><td>'+elekBadge(r.elektrisch)+'</td>'+
+        '<td class="tabular">'+(r.massa!=null?fmtNum(r.massa)+" kg"+massaBronIcon(r):'<span class="notavail">onbekend</span>')+'</td>'+
+        '<td>'+confBadge(r.confidence)+'</td></tr>';
+    }).join("") : '<tr><td colspan="11"><div class="empty-state">Geen voertuigen gevonden. Pas de zoekopdracht of filters aan.</div></td></tr>')+
+  '</tbody></table>'+
+  '<div class="pagination"><button class="btn btn-sm" id="voertuigen-prev" '+(page<=1?"disabled":"")+'>← Vorige</button>'+
+    '<span>Pagina '+page+' van '+totalPages+'</span>'+
+    '<button class="btn btn-sm" id="voertuigen-next" '+(page>=totalPages?"disabled":"")+'>Volgende →</button></div>'+
+  '</div>';
+}
+
+/* =====================================================================
+   Sectie 21: detailpaneel voertuig
+   ===================================================================== */
+function renderDetailModal(all){
+  const kenteken = STATE.detailRecord;
+  if(!kenteken) return "";
+  const r = all.find(x=>x.kenteken===kenteken);
+  if(!r) return "";
+  const b = brandById(r.brandId);
+  return '<div class="modal-overlay" id="detail-overlay"><div class="modal-panel">'+
+    '<div class="modal-head"><div><div style="font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.3px;">Voertuigdetail</div>'+
+      '<h3 style="font-size:18px;">'+esc(r.kenteken)+'</h3></div>'+
+      '<button class="btn btn-sm" id="detail-close">✕</button></div>'+
+    '<div class="modal-body">'+
+      '<div class="detail-section-title" style="margin-top:0;border-top:none;padding-top:0;">Identificatie</div>'+
+      '<dl class="detail-grid">'+
+        '<div><dt>Kenteken</dt><dd class="mono">'+esc(r.kenteken)+'</dd></div>'+
+        '<div><dt>Merk</dt><dd>'+esc(b?b.label:r.merkRdw)+'</dd></div>'+
+        '<div><dt>Handelsbenaming</dt><dd>'+esc(r.handelsbenaming||"—")+'</dd></div>'+
+        '<div><dt>Productgroep</dt><dd>'+esc(r.productgroep)+'</dd></div>'+
+      '</dl>'+
+      '<div class="detail-section-title">Registratie</div>'+
+      '<dl class="detail-grid">'+
+        '<div><dt>Eerste toelating</dt><dd>'+(r.eersteToelating?formatDateNL(r.eersteToelating):"Onbekend")+'</dd></div>'+
+        '<div><dt>Tenaamstelling</dt><dd>'+(r.tenaamstelling?formatDateNL(r.tenaamstelling):"Onbekend")+'</dd></div>'+
+        '<div><dt>Leeftijd</dt><dd>'+(r.leeftijd!=null?r.leeftijd+" jaar":"Onbekend")+'</dd></div>'+
+        '<div><dt>Mogelijke import</dt><dd>'+(r.possibleImport?'<span class="badge badge-warn">Mogelijk</span>':'Geen aanwijzing')+'</dd></div>'+
+      '</dl>'+
+      (r.possibleImport ? '<div class="na-note">ⓘ Eerste toelating ligt aanzienlijk vóór Nederlandse registratie. Dit kan duiden op gebruikte import.</div>' : '')+
+      '<div class="detail-section-title">Techniek</div>'+
+      '<dl class="detail-grid">'+
+        '<div><dt>Massa (rijklaar)</dt><dd>'+(r.massa?fmtNum(r.massa)+" kg"+massaBronIcon(r):'<span class="notavail">Niet beschikbaar via openbare RDW-data</span>')+'</dd></div>'+
+        '<div><dt>Brandstof</dt><dd>'+esc(r.brandstof)+'</dd></div>'+
+        '<div><dt>Elektrisch</dt><dd>'+elekBadge(r.elektrisch)+'</dd></div>'+
+        '<div><dt>Voertuigcategorie</dt><dd>'+esc(r.voertuigsoort||"Onbekend")+'</dd></div>'+
+      '</dl>'+
+      '<div class="detail-section-title">SMT-classificatie</div>'+
+      '<dl class="detail-grid">'+
+        '<div><dt>SMT / concurrent</dt><dd>'+statusBadge(r.status)+'</dd></div>'+
+        '<div><dt>Productgroep</dt><dd>'+esc(r.productgroep)+'</dd></div>'+
+        '<div><dt>Concurrentiemodel</dt><dd>'+(COMPETITIVE_MATRIX[r.merkRdw+" "+r.handelsbenaming.toUpperCase()]?"Gekoppeld":"Niet gekoppeld")+'</dd></div>'+
+        '<div><dt>Classificatiebetrouwbaarheid</dt><dd>'+confBadge(r.confidence)+'</dd></div>'+
+      '</dl>'+
+      '<div class="na-note">ⓘ RDW Open Data bevat geen openbare eigenaar- of bedrijfsgegevens. Eigenaar, gebruiker, locatie, dealer, verkoopprijs en draaiuren zijn niet beschikbaar via openbare RDW-data.</div>'+
+    '</div>'+
+  '</div></div>';
+}
+
+/* =====================================================================
+   Sectie 22: PAGINA — Datakwaliteit
+   ===================================================================== */
+function renderDatakwaliteit(all, filtered){
+  const relevant = all.filter(r=>r.brandId);
+  const excluded = all.length - relevant.length;
+  const byConf = groupBy(relevant, r=>r.confidence);
+  const hoog = (byConf.get("Hoog")||[]).length, middel=(byConf.get("Middel")||[]).length, laag=(byConf.get("Laag")||[]).length;
+  const onbekendeModellen = detectUnknownModels(all).length;
+  const missing = {
+    massa: relevant.filter(r=>!r.massa).length,
+    brandstof: relevant.filter(r=>r.brandstof==="Onbekend"||!r.brandstof).length,
+    toelating: relevant.filter(r=>!r.eersteToelating).length,
+  };
+  const pct = n => relevant.length? fmtPct((n/relevant.length)*100,1) : "—";
+  return '<div class="page-head"><h2>Datakwaliteit</h2><p>RDW-data is oorspronkelijk voertuigregistratiedata, geen specifieke marktdatabase voor bouwmachines. Dit overzicht maakt zichtbaar hoe betrouwbaar de analyses op basis hiervan zijn.</p></div>'+
+  '<div class="grid grid-kpi section">'+
+    kpiCard("Totaal opgehaald", fmtNum(all.length))+
+    kpiCard("Relevant geclassificeerd", fmtNum(relevant.length), pct(relevant.length)+" van totaal")+
+    kpiCard("Uitgesloten (onherkend merk)", fmtNum(excluded))+
+    kpiCard("Classificatie hoog", fmtNum(hoog), pct(hoog))+
+    kpiCard("Classificatie middel", fmtNum(middel), pct(middel))+
+    kpiCard("Classificatie laag", fmtNum(laag), pct(laag))+
+    kpiCard("Onbekende modellen gesignaleerd", fmtNum(onbekendeModellen))+
+    kpiCard("Ontbrekende massa", fmtNum(missing.massa), pct(missing.massa))+
+  '</div>'+
+  '<div class="card section"><div class="card-title">Classificatiebetrouwbaarheid — verdeling</div>'+
+    donutChart([
+      {id:"h",label:"Hoog — exact model herkend",value:hoog,color:"var(--good)"},
+      {id:"m",label:"Middel — modelreeks herkend, uitvoering onzeker",value:middel,color:"var(--warning)"},
+      {id:"l",label:"Laag — alleen merk/gedeeltelijke naam herkend",value:laag,color:"var(--critical)"},
+    ].filter(i=>i.value>0))+
+  '</div>'+
+  '<div class="card section"><div class="card-title">Ontbrekende waarden</div>'+
+    '<div class="stat-row"><span>Massa rijklaar ontbreekt</span><b class="tabular">'+fmtNum(missing.massa)+' ('+pct(missing.massa)+')</b></div>'+
+    '<div class="stat-row"><span>Brandstofomschrijving onbekend</span><b class="tabular">'+fmtNum(missing.brandstof)+' ('+pct(missing.brandstof)+')</b></div>'+
+    '<div class="stat-row"><span>Datum eerste toelating ontbreekt</span><b class="tabular">'+fmtNum(missing.toelating)+' ('+pct(missing.toelating)+')</b></div>'+
+  '</div>'+
+  aboutDataBlock();
+}
+
+/* =====================================================================
+   Sectie 23: PAGINA — Instellingen (incl. diagnostiek, sectie 27)
+   ===================================================================== */
+function renderInstellingen(){
+  const s = STATE.settings;
+  const smtBrands = BRANDS.filter(b=>b.group==="SMT");
+  const compBrands = BRANDS.filter(b=>b.group==="Concurrent");
+  const allModels = MachineClassification.RULES.map(function(r){
+    const b = MachineClassification.brandById(r.brandId);
+    return { merk: b?b.label:r.brandId, pattern:r.source, groep:r.productGroup, status:r.status };
+  }).concat(s.extraModels.map(m=>Object.assign({},m,{regex:null,local:true})));
+  const diagBrands = BRANDS.map(b=>b.aliases[0]); // dynamisch — test elke merk-alias afzonderlijk
+  return '<div class="page-head"><h2>Instellingen</h2><p>Centrale configuratie van merken, vervangingsleeftijd en modellenbibliotheek. Wijzigingen gelden direct binnen deze sessie.</p></div>'+
+
+  '<div class="card section"><div class="card-title">SMT-merken</div>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;">'+smtBrands.map(b=>'<span class="badge badge-smt" style="font-size:11.5px;padding:5px 11px;">'+esc(b.label)+'</span>').join("")+'</div>'+
+  '</div>'+
+
+  '<div class="card section"><div class="card-title">Concurrenten</div><div class="card-sub">Zet merken aan of uit — dit bepaalt welke merken in de hele applicatie worden meegenomen.</div>'+
+    compBrands.map(b=>'<div class="checkbox-row"><label class="switch"><input type="checkbox" data-toggle-brand="'+b.id+'" '+(s.competitorActive[b.id]!==false?"checked":"")+'/><span class="track"></span></label>'+esc(b.label)+'</div>').join("")+
+  '</div>'+
+
+  '<div class="card section"><div class="card-title">Vervangingsleeftijd</div><div class="card-sub">Standaardgrens voor "indicatief vervangingspotentieel" op dashboard en machinepark.</div>'+
+    '<div class="pill-toggle" id="settings-grens">'+[8,10,12,15].map(g=>'<button data-settings-grens="'+g+'" class="'+(s.replacementAge===g?"active":"")+'">'+g+' jaar</button>').join("")+'</div>'+
+  '</div>'+
+
+  '<div class="card section"><div class="card-title">Modellenbibliotheek</div><div class="card-sub">Merk · patroon (reguliere expressie) · productgroep · status. Lokaal toevoegen mogelijk, bv. <code>VOLVO | ^L120 | Wiellader</code>.</div>'+
+    '<div class="table-wrap settings-table" style="max-height:320px;overflow-y:auto;"><table><thead><tr><th>Merk</th><th>Patroon</th><th>Productgroep</th><th>Status</th></tr></thead><tbody>'+
+      allModels.map(m=>'<tr><td>'+esc(m.merk)+'</td><td class="mono">'+esc(m.pattern)+'</td><td>'+esc(m.groep)+'</td><td>'+(m.local?'<span class="badge badge-warn">Lokaal</span>':(m.status==="SMT"?'<span class="badge badge-smt">SMT</span>':'<span class="badge badge-comp">Concurrent</span>'))+'</td></tr>').join("")+
+    '</tbody></table></div>'+
+    '<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;">'+
+      '<input type="text" id="new-model-merk" placeholder="Merk (bv. VOLVO)" style="flex:1;min-width:120px;padding:7px 10px;border-radius:5px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text-primary);font-size:12.5px;">'+
+      '<input type="text" id="new-model-pattern" placeholder="Patroon (bv. ^L120)" style="flex:1;min-width:120px;padding:7px 10px;border-radius:5px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text-primary);font-size:12.5px;">'+
+      '<select id="new-model-groep" style="padding:7px 10px;border-radius:5px;border:1px solid var(--border-strong);background:var(--surface);color:var(--text-primary);font-size:12.5px;">'+PRODUCT_GROUPS.map(g=>'<option value="'+esc(g)+'">'+esc(g)+'</option>').join("")+'</select>'+
+      '<button class="btn btn-primary btn-sm" id="add-model-row">Toevoegen</button>'+
+    '</div>'+
+  '</div>'+
+
+  '<div class="card section"><div class="card-title">Eerste API-test / diagnostiek</div><div class="card-sub">Test per merk afzonderlijk hoe RDW handelsbenamingen daadwerkelijk opslaat.</div>'+
+    '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;">'+
+      diagBrands.map(m=>'<button class="btn btn-sm" data-diag-test="'+m+'">Test '+m+'</button>').join("")+
+      '<button class="btn btn-sm btn-primary" id="diag-test-all">Test alle merken</button>'+
+    '</div>'+
+    diagBrands.map(m=>{
+      const r = STATE.liveDiag[m];
+      if(!r) return '<div class="stat-row"><span>'+m+'</span><span style="color:var(--text-muted);">Nog niet getest</span></div>';
+      return '<div style="padding:10px 0;border-top:1px solid var(--border);">'+
+        '<div style="display:flex;justify-content:space-between;font-size:13px;font-weight:700;"><span>'+m+'</span><span class="badge '+(r.ok?'badge-good':'badge-crit')+'">'+(r.ok?(r.empty?"Leeg resultaat":"OK"):"Fout")+'</span></div>'+
+        '<div class="mono" style="font-size:11px;color:var(--text-muted);margin:4px 0;word-break:break-all;">'+esc(r.url)+'</div>'+
+        '<div style="font-size:12px;color:var(--text-secondary);">Resultaten: <b>'+(r.records?r.records.length:0)+'</b> · Duur: '+r.ms+'ms'+(r.error?' · Fout: '+esc(r.error):'')+'</div>'+
+        (r.raw10 && r.raw10.length ? '<div style="font-size:12px;margin-top:4px;">Eerste handelsbenamingen: '+r.raw10.map(esc).join(", ")+'</div>' : '')+
+      '</div>';
+    }).join("")+
+  '</div>'+
+
+  '<div class="card section"><div class="card-title">Weergave</div>'+
+    '<div class="card-sub">Themavoorkeur voor deze pagina (systeem volgt automatisch de instelling van uw apparaat).</div>'+
+    '<div class="pill-toggle" id="theme-toggle">'+
+      [["system","Systeem"],["light","Licht"],["dark","Donker"]].map(([v,l])=>'<button data-theme-choice="'+v+'" class="'+(STATE.theme===v?"active":"")+'">'+l+'</button>').join("")+
+    '</div>'+
+  '</div>';
+}
+
+/* =====================================================================
+   Sectie 24: app-shell — navigatie, topbar, filterbalk, router
+   ===================================================================== */
+const PAGES = [
+  { id:"dashboard", label:"Dashboard", icon:'<rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/>' },
+  { id:"marktontwikkeling", label:"Marktontwikkeling", icon:'<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>' },
+  { id:"marktaandeel", label:"Marktaandeel", icon:'<path d="M12 2a10 10 0 1 0 10 10H12V2z"/><path d="M21.5 8H12V2a10 10 0 0 1 9.5 6z"/>' },
+  { id:"concurrentie", label:"Concurrentie", icon:'<circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="18" cy="9" r="2.6"/><path d="M15.5 14.2c2.6.3 4.6 2.5 4.6 5.3"/>' },
+  { id:"machinepark", label:"Machinepark", icon:'<rect x="2" y="10" width="12" height="7" rx="1"/><path d="M14 12h4l3 3v2h-7z"/><circle cx="6.5" cy="18.5" r="1.6"/><circle cx="17" cy="18.5" r="1.6"/>' },
+  { id:"elektrificatie", label:"Elektrificatie", icon:'<path d="M13 2 4 14h6l-1 8 9-12h-6z"/>' },
+  { id:"nieuweregistraties", label:"Nieuwe registraties", icon:'<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>' },
+  { id:"voertuigen", label:"Voertuigen", icon:'<line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="14" y2="18"/>' },
+  { id:"datakwaliteit", label:"Datakwaliteit", icon:'<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v14c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 12c0 1.7 3.6 3 8 3s8-1.3 8-3"/>' },
+  { id:"instellingen", label:"Instellingen", icon:'<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.9.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.9-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.9V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>' },
+];
+const PAGE_TITLES = Object.fromEntries(PAGES.map(p=>[p.id,p.label]));
+
+function renderSidebar(){
+  return '<nav class="sidebar'+(STATE.sidebarOpen?" open":"")+'" id="sidebar">'+
+    '<div class="sidebar-brand"><div class="name">SMT Market Intelligence</div><div class="sub">Marktanalyse op RDW-data</div></div>'+
+    '<ul class="nav">'+PAGES.map(p=>'<li class="nav-item'+(STATE.page===p.id?" active":"")+'" data-nav="'+p.id+'"><svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">'+p.icon+'</svg>'+p.label+'</li>').join("")+'</ul>'+
+    '<div class="sidebar-foot"><span class="dot"></span>Bron: RDW Open Data</div>'+
+  '</nav>';
+}
+
+function renderFilterBar(){
+  const f = STATE.filters;
+  const activeBrands = activeBrandList();
+  const n = activeFilterCount();
+  return '<div class="filterbar">'+
+    '<label class="fgroup">Periode<select id="f-periode">'+
+      [["alle","Alle"],["1m","Laatste maand"],["12m","Laatste 12 mnd"],["ytd","Dit jaar (YTD)"],["vorigjaar","Vorig jaar"]].map(([v,l])=>'<option value="'+v+'" '+(f.periodePreset===v?"selected":"")+'>'+l+'</option>').join("")+
+    '</select></label>'+
+    '<label class="fgroup">Jaar<select id="f-jaar">'+
+      '<option value="alle" '+(f.jaar==="alle"?"selected":"")+'>Alle jaren</option>'+
+      Array.from({length:16},(_,i)=>new Date().getUTCFullYear()-i).map(y=>'<option value="'+y+'" '+(String(f.jaar)===String(y)?"selected":"")+'>'+y+'</option>').join("")+
+    '</select></label>'+
+    '<label class="fgroup">Merk<select id="f-merk">'+
+      '<option value="alle" '+(!f.merkIds.length?"selected":"")+'>Alle merken</option>'+
+      activeBrands.map(b=>'<option value="'+b.id+'" '+(f.merkIds[0]===b.id?"selected":"")+'>'+esc(b.label)+'</option>').join("")+
+    '</select></label>'+
+    '<label class="fgroup">SMT/concurrent<select id="f-smtconc">'+
+      [["alle","Alle"],["SMT","SMT"],["Concurrent","Concurrent"]].map(([v,l])=>'<option value="'+v+'" '+(f.smtConcurrent===v?"selected":"")+'>'+l+'</option>').join("")+
+    '</select></label>'+
+    '<label class="fgroup">Productgroep<select id="f-groep">'+
+      '<option value="alle" '+(f.productgroep==="alle"?"selected":"")+'>Alle groepen</option>'+
+      PRODUCT_GROUPS.map(g=>'<option value="'+esc(g)+'" '+(f.productgroep===g?"selected":"")+'>'+esc(g)+'</option>').join("")+
+    '</select></label>'+
+    '<label class="fgroup">Model<input type="text" id="f-model" placeholder="bv. L120" value="'+esc(f.modelQuery)+'" style="width:88px;"/></label>'+
+    '<label class="fgroup">Brandstof<select id="f-brandstof">'+
+      '<option value="alle" '+(f.brandstof==="alle"?"selected":"")+'>Alle</option>'+
+      ["Diesel","Elektrisch","Hybride (Diesel/Elektrisch)","Onbekend"].map(b=>'<option value="'+esc(b)+'" '+(f.brandstof===b?"selected":"")+'>'+esc(b)+'</option>').join("")+
+    '</select></label>'+
+    '<label class="fgroup">Elektrisch<select id="f-elek">'+
+      [["alle","Alle"],["Ja","Ja"],["Nee","Nee"],["Hybride","Hybride"],["Onbekend","Onbekend"]].map(([v,l])=>'<option value="'+v+'" '+(f.elektrisch===v?"selected":"")+'>'+l+'</option>').join("")+
+    '</select></label>'+
+    '<label class="fgroup">Leeftijd<select id="f-leeftijd">'+
+      '<option value="alle" '+(f.leeftijdscategorie==="alle"?"selected":"")+'>Alle</option>'+
+      AGE_BUCKETS.map(b=>'<option value="'+b.id+'" '+(f.leeftijdscategorie===b.id?"selected":"")+'>'+esc(b.label)+'</option>').join("")+
+    '</select></label>'+
+    '<label class="fgroup">Betrouwbaarheid<select id="f-conf">'+
+      [["alle","Alle"],["Hoog","Hoog"],["Middel","Middel"],["Laag","Laag"]].map(([v,l])=>'<option value="'+v+'" '+(f.betrouwbaarheid===v?"selected":"")+'>'+l+'</option>').join("")+
+    '</select></label>'+
+    (n>0 ? '<span class="filter-chip">'+n+' actief<button id="clear-filters" style="background:none;border:none;color:inherit;cursor:pointer;font-weight:700;padding:0;margin-left:2px;">✕</button></span>' : '<button class="btn btn-sm" id="clear-filters" style="opacity:.6;">Filters wissen</button>')+
+  '</div>';
+}
+
+function pageBody(filtered, all){
+  switch(STATE.page){
+    case "dashboard": return renderDashboard(filtered, all);
+    case "marktontwikkeling": return renderMarktontwikkeling(filtered);
+    case "marktaandeel": return renderMarktaandeel(filtered);
+    case "concurrentie": return renderConcurrentie(all);
+    case "machinepark": return renderMachinepark(filtered);
+    case "elektrificatie": return renderElektrificatie(filtered);
+    case "nieuweregistraties": return renderNieuweRegistraties(filtered);
+    case "voertuigen": return renderVoertuigen(filtered);
+    case "datakwaliteit": return renderDatakwaliteit(all, filtered);
+    case "instellingen": return renderInstellingen();
+    default: return '<div class="empty-state">Onbekende pagina.</div>';
+  }
+}
+
+function render(){
+  applyTheme();
+  const all = STATE.data;
+  const filtered = applyFilters(all);
+  const app = document.getElementById("app");
+  app.innerHTML =
+    renderSidebar() +
+    '<div class="main">'+
+      '<div class="topbar"><h1>'+esc(PAGE_TITLES[STATE.page]||"")+'</h1>'+
+        '<div class="topbar-right">'+
+          (STATE.loading ? '<span class="loading" style="padding:0;"><span class="spinner"></span>Laden…</span>' : '')+
+          modeBanner()+
+          '<button class="btn btn-sm" id="btn-export"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>Exporteren</button>'+
+        '</div>'+
+      '</div>'+
+      renderFilterBar()+
+      '<div class="content">'+
+        (STATE.liveError ? '<div class="info-block section" style="border-color:var(--critical);background:var(--critical-tint);"><span>⚠</span><div><b>LIVE RDW niet beschikbaar.</b> '+esc(STATE.liveError)+' De applicatie toont daarom DEMODATA. Zie Instellingen → API-diagnostiek voor details.</div></div>' : '')+
+        pageBody(filtered, all)+
+      '</div>'+
+    '</div>'+
+    renderDetailModal(all);
+  wireTooltips();
+  wireEvents();
+}
+
+/* =====================================================================
+   Sectie 25: event delegation
+   ===================================================================== */
+function goPage(p){ STATE.page=p; STATE.detailRecord=null; STATE.sidebarOpen=false; render(); window.scrollTo(0,0); }
+
+async function loadLiveData(){
+  STATE.mode="live"; STATE.loading=true; STATE.liveError=null; render();
+  const brands = activeBrandList();
+  const results = await fetchAllActiveLive(brands, (brand,r)=>{ STATE.liveDiag[brand.aliases[0]]=r; });
+  const okResults = results.filter(r=>r.ok && r.records.length);
+  if(okResults.length===0){
+    const firstErr = results.find(r=>!r.ok);
+    STATE.liveError = firstErr ? firstErr.error : "Geen resultaten ontvangen van RDW Open Data.";
+    STATE.mode="demo";
+    STATE.data = generateDemoDataset();
+  } else {
+    let combined = [];
+    results.forEach(r=>{ if(r.ok) combined = combined.concat(r.records); });
+    STATE.data = dedupeRecords(combined);
+    if(okResults.length < results.length){
+      STATE.liveError = "Sommige merken konden niet worden opgehaald; getoonde data is gedeeltelijk LIVE RDW.";
+    }
+  }
+  STATE.loading=false; render();
+}
+
+async function toggleMode(){
+  if(STATE.mode==="demo"){
+    await loadLiveData();
+  } else {
+    STATE.mode="demo"; STATE.liveError=null; STATE.data = generateDemoDataset(); render();
+  }
+}
+
+async function runDiagTest(merk){
+  STATE.ui.diagRunning = true; render();
+  const r = await fetchRdwBrand(merk, {});
+  STATE.liveDiag[merk] = r;
+  STATE.ui.diagRunning = false; render();
+}
+
+function wireEvents(){
+  const app = document.getElementById("app");
+  app.querySelectorAll("[data-nav]").forEach(el=> el.addEventListener("click", ()=> goPage(el.getAttribute("data-nav"))));
+  const modeToggle = document.getElementById("mode-toggle");
+  if(modeToggle) modeToggle.addEventListener("click", toggleMode);
+
+  const exportBtn = document.getElementById("btn-export");
+  if(exportBtn) exportBtn.addEventListener("click", ()=> exportCSV(applyFilters(STATE.data), "smt-market-intelligence-export.csv"));
+  const exportBtn2 = document.getElementById("export-csv-voertuigen");
+  if(exportBtn2) exportBtn2.addEventListener("click", ()=> exportCSV(applyFilters(STATE.data), "smt-voertuigen-export.csv"));
+
+  // filters
+  const bind = (id, fn) => { const el=document.getElementById(id); if(el) el.addEventListener("change", fn); };
+  bind("f-periode", e=>{ STATE.filters.periodePreset=e.target.value; render(); });
+  bind("f-jaar", e=>{ STATE.filters.jaar=e.target.value; render(); });
+  bind("f-merk", e=>{ STATE.filters.merkIds = e.target.value==="alle" ? [] : [e.target.value]; render(); });
+  bind("f-smtconc", e=>{ STATE.filters.smtConcurrent=e.target.value; render(); });
+  bind("f-groep", e=>{ STATE.filters.productgroep=e.target.value; render(); });
+  bind("f-brandstof", e=>{ STATE.filters.brandstof=e.target.value; render(); });
+  bind("f-elek", e=>{ STATE.filters.elektrisch=e.target.value; render(); });
+  bind("f-leeftijd", e=>{ STATE.filters.leeftijdscategorie=e.target.value; render(); });
+  bind("f-conf", e=>{ STATE.filters.betrouwbaarheid=e.target.value; render(); });
+  const modelInput = document.getElementById("f-model");
+  if(modelInput){
+    let t; modelInput.addEventListener("input", e=>{ clearTimeout(t); const v=e.target.value; t=setTimeout(()=>{ STATE.filters.modelQuery=v; render(); document.getElementById("f-model").focus(); },350); });
+  }
+  const clearBtn = document.getElementById("clear-filters");
+  if(clearBtn) clearBtn.addEventListener("click", ()=>{ clearFilters(); render(); });
+
+  // marktontwikkeling
+  app.querySelectorAll("[data-gran]").forEach(el=> el.addEventListener("click", ()=>{ STATE.ui.marktontwGranularity=el.getAttribute("data-gran"); render(); }));
+  app.querySelectorAll("[data-toggle-mo-series]").forEach(el=> el.addEventListener("click", ()=>{
+    const id = el.getAttribute("data-toggle-mo-series");
+    const set = STATE.ui.marktontwOffSeries;
+    if(set.has(id)) set.delete(id); else set.add(id);
+    render();
+  }));
+
+  // marktaandeel
+  bind("marktaandeel-groep", e=>{ STATE.ui.marktaandeelGroep=e.target.value; render(); });
+
+  // concurrentie
+  bind("concurrentie-model", e=>{ STATE.ui.concurrentieModel=e.target.value; render(); });
+
+  // machinepark grens
+  app.querySelectorAll("[data-grens]").forEach(el=> el.addEventListener("click", ()=>{ STATE.ui.machineparkGrensLeeftijd=+el.getAttribute("data-grens"); render(); }));
+
+  // nieuwe registraties periode
+  app.querySelectorAll("[data-nperiode]").forEach(el=> el.addEventListener("click", ()=>{ STATE.ui.nieuweRegPeriode=el.getAttribute("data-nperiode"); STATE.ui.nieuweRegPage=1; render(); }));
+  const nrPrev = document.getElementById("nieuw-reg-prev"); if(nrPrev) nrPrev.addEventListener("click", ()=>{ STATE.ui.nieuweRegPage=Math.max(1,STATE.ui.nieuweRegPage-1); render(); });
+  const nrNext = document.getElementById("nieuw-reg-next"); if(nrNext) nrNext.addEventListener("click", ()=>{ STATE.ui.nieuweRegPage=STATE.ui.nieuweRegPage+1; render(); });
+
+  // voertuigen: search / sort / paginate
+  const vSearch = document.getElementById("voertuigen-search");
+  if(vSearch){ let t; vSearch.addEventListener("input", e=>{ clearTimeout(t); const v=e.target.value; t=setTimeout(()=>{ STATE.ui.voertuigenSearch=v; STATE.ui.voertuigenPage=1; render(); document.getElementById("voertuigen-search").focus(); document.getElementById("voertuigen-search").selectionStart = document.getElementById("voertuigen-search").value.length; },300); }); }
+  app.querySelectorAll("[data-sort-col]").forEach(el=> el.addEventListener("click", ()=>{
+    const col = el.getAttribute("data-sort-col");
+    const cur = STATE.ui.voertuigenSort;
+    STATE.ui.voertuigenSort = cur.col===col ? { col, dir: cur.dir==="asc"?"desc":"asc" } : { col, dir:"asc" };
+    render();
+  }));
+  const vPrev = document.getElementById("voertuigen-prev"); if(vPrev) vPrev.addEventListener("click", ()=>{ STATE.ui.voertuigenPage=Math.max(1,STATE.ui.voertuigenPage-1); render(); });
+  const vNext = document.getElementById("voertuigen-next"); if(vNext) vNext.addEventListener("click", ()=>{ STATE.ui.voertuigenPage=STATE.ui.voertuigenPage+1; render(); });
+
+  // row click -> detail
+  app.querySelectorAll("[data-open-detail]").forEach(el=> el.addEventListener("click", (ev)=>{
+    if(ev.target.closest("[data-tip]") && ev.target.tagName==="SPAN" && ev.target.classList.contains("tag-icon-info")) return;
+    STATE.detailRecord = el.getAttribute("data-open-detail"); render();
+  }));
+  const detailClose = document.getElementById("detail-close"); if(detailClose) detailClose.addEventListener("click", ()=>{ STATE.detailRecord=null; render(); });
+  const detailOverlay = document.getElementById("detail-overlay"); if(detailOverlay) detailOverlay.addEventListener("click", (e)=>{ if(e.target===detailOverlay){ STATE.detailRecord=null; render(); } });
+
+  // nieuwe modellen widget
+  app.querySelectorAll("[data-add-model]").forEach(el=> el.addEventListener("click", ()=>{
+    const [merk, model] = el.getAttribute("data-add-model").split("|");
+    STATE.newDetectedAdded.add(merk+"|"+model.toUpperCase());
+    STATE.settings.extraModels.push({ merk, pattern:"^"+model.replace(/[.*+?^${}()|[\]\\]/g,"\\$&"), groep:"Overig", status: MachineClassification.brandByAlias(merk)?.group==="SMT"?"SMT":"Concurrent" });
+    render();
+  }));
+
+  // instellingen
+  app.querySelectorAll("[data-toggle-brand]").forEach(el=> el.addEventListener("change", ()=>{
+    const id = el.getAttribute("data-toggle-brand");
+    STATE.settings.competitorActive[id] = el.checked;
+    render();
+  }));
+  app.querySelectorAll("[data-settings-grens]").forEach(el=> el.addEventListener("click", ()=>{ STATE.settings.replacementAge=+el.getAttribute("data-settings-grens"); STATE.ui.machineparkGrensLeeftijd=STATE.settings.replacementAge; render(); }));
+  app.querySelectorAll("[data-theme-choice]").forEach(el=> el.addEventListener("click", ()=>{ STATE.theme=el.getAttribute("data-theme-choice"); localStorage_set("smt_theme",STATE.theme); render(); }));
+  const addModelBtn = document.getElementById("add-model-row");
+  if(addModelBtn) addModelBtn.addEventListener("click", ()=>{
+    const merk = (document.getElementById("new-model-merk").value||"").toUpperCase().trim();
+    const pattern = (document.getElementById("new-model-pattern").value||"").trim();
+    const groep = document.getElementById("new-model-groep").value;
+    if(!merk || !pattern) return;
+    const brand = MachineClassification.brandByAlias(merk);
+    STATE.settings.extraModels.push({ merk, pattern, groep, status: brand&&brand.group==="SMT"?"SMT":"Concurrent" });
+    document.getElementById("new-model-merk").value=""; document.getElementById("new-model-pattern").value="";
+    render();
+  });
+  app.querySelectorAll("[data-diag-test]").forEach(el=> el.addEventListener("click", ()=> runDiagTest(el.getAttribute("data-diag-test"))));
+  const diagAll = document.getElementById("diag-test-all");
+  if(diagAll) diagAll.addEventListener("click", async ()=>{ for(const b of BRANDS) await runDiagTest(b.aliases[0]); });
+}
+
+/* =====================================================================
+   Sectie 26: boot
+   ===================================================================== */
+function boot(){
+  STATE.data = generateDemoDataset();
+  render();
+  loadLiveData();
+}
+boot();
+</script>
+
+
+</body></html>
