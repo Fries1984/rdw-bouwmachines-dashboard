@@ -309,7 +309,11 @@ const BRANDS = [
   { id:"SENNEBOGEN", label:"Sennebogen",   group:"SMT",       aliases:["SENNEBOGEN"],                              colorVar:"--s2", active:true },
 
   // --- bestaande concurrenten ---
-  { id:"CAT",       label:"Caterpillar", group:"Concurrent", aliases:["CATERPILLAR"],                              colorVar:"--s3", active:true },
+  // RDW bevat naast "CATERPILLAR" ook 39 registraties onder de kale afkorting
+  // "CAT" (bevestigd: allemaal herkenbare Cat-modelcodes zoals MH3024, 972,
+  // M314/M318/M320F, 930M — geen andere merken versmolten in deze exacte
+  // waarde, in tegenstelling tot bv. "ARCTIC CAT"/"CATERHAM" die apart staan).
+  { id:"CAT",       label:"Caterpillar", group:"Concurrent", aliases:["CATERPILLAR","CAT"],                        colorVar:"--s3", active:true },
   { id:"LIEBHERR",  label:"Liebherr",    group:"Concurrent", aliases:["LIEBHERR"],                                 colorVar:"--s4", active:true },
   { id:"HITACHI",   label:"Hitachi",     group:"Concurrent", aliases:["HITACHI"],                                  colorVar:"--s5", active:true },
   { id:"KOMATSU",   label:"Komatsu",     group:"Concurrent", aliases:["KOMATSU"],                                  colorVar:"--s6", active:true },
@@ -970,6 +974,7 @@ if (typeof module !== "undefined" && module.exports) {
 }
 
 })(typeof window !== "undefined" ? window : globalThis);
+
 
 
 
